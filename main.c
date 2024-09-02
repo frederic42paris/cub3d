@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/02 12:17:31 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/02 12:41:21 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 #define SH 480
 #define MAPW 24
 #define MAPH 24
+#define KEY_W	119
+#define KEY_S	115
+#define KEY_D	100
+#define KEY_A	97
 
 typedef struct s_mlx
 {
@@ -108,18 +112,22 @@ void	raycasting(t_mlx *mlx)
 	x = 0;
 	while (x < SW)
 	{
+		//calculate ray position and direction
 		mlx->cameraX = 2 * x / (double)SW - 1;
 		mlx->rayDirX = mlx->dirX + mlx->planeX * mlx->cameraX;
 		mlx->rayDirY = mlx->dirY + mlx->planeY * mlx->cameraX;
 
+		//which box of the map we're in
 		mlx->mapX = (int)mlx->posX;
 		mlx->mapY = (int)mlx->posY;
 
+		//length of ray from one x or y-side to next x or y-side
 		mlx->deltaDistX = fabs(1 / mlx->rayDirX);
 		mlx->deltaDistY = fabs(1 / mlx->rayDirY);
 
 		mlx->hit = 0;
 
+		//calculate step and initial sideDist
 		if (mlx->rayDirX < 0)
 		{
 			mlx->stepX = -1;
@@ -141,6 +149,7 @@ void	raycasting(t_mlx *mlx)
 			mlx->sideDistY = (mlx->mapY + 1.0 - mlx->posY) * mlx->deltaDistY;
 		}
 
+		//perform DDA
 		while (mlx->hit == 0)
 		{
 			if (mlx->sideDistX < mlx->sideDistY)
@@ -159,12 +168,16 @@ void	raycasting(t_mlx *mlx)
 				mlx->hit = 1;
 		}
 
+		//Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
 		if (mlx->side == 0)
 			mlx->perpWallDist = (mlx->sideDistX - mlx->deltaDistX);
 		else
 			mlx->perpWallDist = (mlx->sideDistY - mlx->deltaDistY);
 
+		//Calculate height of line to draw on screen
 		mlx->lineHeight = (int)(SH / mlx->perpWallDist);
+
+		//calculate lowest and highest pixel to fill in current stripe
 		mlx->drawStart = -mlx->lineHeight / 2 + SH / 2;
 		if (mlx->drawStart < 0)
 			mlx->drawStart = 0;
@@ -172,6 +185,7 @@ void	raycasting(t_mlx *mlx)
 		if (mlx->drawEnd >= SH)
 			mlx->drawEnd = SH - 1;
 
+		//choose wall color
 		if (worldMap[mlx->mapX][mlx->mapY] == 1)
 			mlx->color = 0xFF0000;
 		else if (worldMap[mlx->mapX][mlx->mapY] == 2)
@@ -183,9 +197,11 @@ void	raycasting(t_mlx *mlx)
 		else
 			mlx->color = 0xFFFF00;
 
+		//give x and y sides different brightness
 		if (mlx->side == 1)
 			mlx->color = mlx->color / 2;
 
+		//draw the pixels of the stripe as a vertical line
 		draw_vertical_line(mlx, x);
 		x++;
 	}
@@ -198,7 +214,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx_p, mlx->win_ptr);
 		exit(0);
 	}
-	if (keycode == 119)
+	if (keycode == KEY_W)
 	{
 		if (!worldMap[(int)(mlx->posX + mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX += mlx->dirX * mlx->moveSpeed;
@@ -207,7 +223,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx_clear_window(mlx->mlx_p, mlx->win_ptr);
 		raycasting(mlx);
 	}
-	if (keycode == 115)
+	if (keycode == KEY_S)
 	{
 		if (!worldMap[(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX -= mlx->dirX * mlx->moveSpeed;
@@ -216,7 +232,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx_clear_window(mlx->mlx_p, mlx->win_ptr);
 		raycasting(mlx);
 	}
-	if (keycode == 97)
+	if (keycode == KEY_A)
 	{
 		mlx->oldDirX = mlx->dirX;
 		mlx->dirX = mlx->dirX * cos(mlx->rotSpeed) - mlx->dirY * sin(mlx->rotSpeed);
@@ -227,7 +243,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx_clear_window(mlx->mlx_p, mlx->win_ptr);
 		raycasting(mlx);
 	}
-	if (keycode == 100)
+	if (keycode == KEY_D)
 	{
 		mlx->oldDirX = mlx->dirX;
 		mlx->dirX = mlx->dirX * cos(-mlx->rotSpeed) - mlx->dirY * sin(-mlx->rotSpeed);
@@ -251,8 +267,8 @@ void	init_values(t_mlx *mlx)
 	mlx->planeY = 0.66;
 	mlx->time = 0;
 	mlx->oldTime = 0;
-	mlx->moveSpeed = 0.1;
-	mlx->rotSpeed = 0.1;
+	mlx->moveSpeed = 1;
+	mlx->rotSpeed = 0.5;
 }
 
 void	start_game(t_mlx *mlx)
