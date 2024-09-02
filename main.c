@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/02 12:41:21 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/02 18:57:44 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ typedef struct s_mlx
 {
 	void	*mlx_p;
 	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	void	*win_ptr;
 	double	posX;
 	double	posY;
@@ -93,6 +97,14 @@ int worldMap[MAPW][MAPH]=
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 void	draw_vertical_line(t_mlx *mlx, int x)
 {
 	int	y;
@@ -100,12 +112,33 @@ void	draw_vertical_line(t_mlx *mlx, int x)
 	y = mlx->drawStart;
 	while (y <= mlx->drawEnd)
 	{
-		mlx_pixel_put(mlx->mlx_p, mlx->win_ptr, x, y, mlx->color);
+		my_mlx_pixel_put(mlx, x, y, mlx->color);
 		y++;
 	}
 }
 
-void	raycasting(t_mlx *mlx)
+
+void clear_image(t_mlx *mlx)
+{
+    int x;
+	int	y;
+	int color;
+
+	x = 0;
+	color = 0x000000;
+	while (x < SW)
+	{
+		y = 0;
+		while (y <= SH)
+		{
+			my_mlx_pixel_put(mlx, x, y, color);
+			y++;
+		}
+		x++;
+	}
+}
+
+int	raycasting(t_mlx *mlx)
 {
 	int	x;
 
@@ -205,6 +238,8 @@ void	raycasting(t_mlx *mlx)
 		draw_vertical_line(mlx, x);
 		x++;
 	}
+	mlx_put_image_to_window(mlx->mlx_p, mlx->win_ptr, mlx->img, 0, 0);
+	return 0;
 }
 
 int	key_hook(int keycode, t_mlx *mlx)
@@ -220,40 +255,41 @@ int	key_hook(int keycode, t_mlx *mlx)
 			mlx->posX += mlx->dirX * mlx->moveSpeed;
 		if (!worldMap[(int)mlx->posX][(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)])
 			mlx->posY += mlx->dirY * mlx->moveSpeed;
-		mlx_clear_window(mlx->mlx_p, mlx->win_ptr);
-		raycasting(mlx);
+		clear_image(mlx);
 	}
 	if (keycode == KEY_S)
 	{
+
 		if (!worldMap[(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX -= mlx->dirX * mlx->moveSpeed;
 		if (!worldMap[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
 			mlx->posY -= mlx->dirY * mlx->moveSpeed;
-		mlx_clear_window(mlx->mlx_p, mlx->win_ptr);
-		raycasting(mlx);
+		clear_image(mlx);
 	}
 	if (keycode == KEY_A)
 	{
+
 		mlx->oldDirX = mlx->dirX;
 		mlx->dirX = mlx->dirX * cos(mlx->rotSpeed) - mlx->dirY * sin(mlx->rotSpeed);
 		mlx->dirY = mlx->oldDirX * sin(mlx->rotSpeed) + mlx->dirY * cos(mlx->rotSpeed);
 		mlx->oldPlaneX = mlx->planeX;
 		mlx->planeX = mlx->planeX * cos(mlx->rotSpeed) - mlx->planeY * sin(mlx->rotSpeed);
 		mlx->planeY = mlx->oldPlaneX * sin(mlx->rotSpeed) + mlx->planeY * cos(mlx->rotSpeed);
-		mlx_clear_window(mlx->mlx_p, mlx->win_ptr);
-		raycasting(mlx);
+		clear_image(mlx);
 	}
 	if (keycode == KEY_D)
 	{
+
 		mlx->oldDirX = mlx->dirX;
 		mlx->dirX = mlx->dirX * cos(-mlx->rotSpeed) - mlx->dirY * sin(-mlx->rotSpeed);
 		mlx->dirY = mlx->oldDirX * sin(-mlx->rotSpeed) + mlx->dirY * cos(-mlx->rotSpeed);
 		mlx->oldPlaneX = mlx->planeX;
 		mlx->planeX = mlx->planeX * cos(-mlx->rotSpeed) - mlx->planeY * sin(-mlx->rotSpeed);
 		mlx->planeY = mlx->oldPlaneX * sin(-mlx->rotSpeed) + mlx->planeY * cos(-mlx->rotSpeed);
-		mlx_clear_window(mlx->mlx_p, mlx->win_ptr);
-		raycasting(mlx);
+		clear_image(mlx);
 	}
+	
+
 	return (0);
 }
 
@@ -267,7 +303,7 @@ void	init_values(t_mlx *mlx)
 	mlx->planeY = 0.66;
 	mlx->time = 0;
 	mlx->oldTime = 0;
-	mlx->moveSpeed = 1;
+	mlx->moveSpeed = 0.5;
 	mlx->rotSpeed = 0.5;
 }
 
@@ -275,8 +311,10 @@ void	start_game(t_mlx *mlx)
 {
 	mlx->mlx_p = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->mlx_p, SW, SH, "cub3d");
+	mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	mlx_hook(mlx->win_ptr, KeyPress, KeyPressMask, &key_hook, mlx);
-	raycasting(mlx);
+	mlx_loop_hook(mlx->mlx_p, raycasting, mlx);
 	mlx_loop(mlx->mlx_p);
 }
 
