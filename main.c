@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/03 14:08:52 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/03 17:05:05 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,27 +114,6 @@ void	draw_vertical_line(t_mlx *mlx, int x)
 	{
 		my_mlx_pixel_put(mlx, x, y, mlx->color);
 		y++;
-	}
-}
-
-
-void clear_image(t_mlx *mlx)
-{
-    int x;
-	int	y;
-	// int color;
-
-	x = 0;
-	// color = 0x000000;
-	while (x < SW)
-	{
-		y = 0;
-		while (y <= SH)
-		{
-			my_mlx_pixel_put(mlx, x, y, 0);
-			y++;
-		}
-		x++;
 	}
 }
 
@@ -255,9 +234,6 @@ int	key_hook(int keycode, t_mlx *mlx)
 			mlx->posX += mlx->dirX * mlx->moveSpeed;
 		if (!worldMap[(int)mlx->posX][(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)])
 			mlx->posY += mlx->dirY * mlx->moveSpeed;
-		mlx_destroy_image(mlx->mlx_p, mlx->img);
-		mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
-		mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	}
 	if (keycode == KEY_S)
 	{
@@ -266,9 +242,6 @@ int	key_hook(int keycode, t_mlx *mlx)
 			mlx->posX -= mlx->dirX * mlx->moveSpeed;
 		if (!worldMap[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
 			mlx->posY -= mlx->dirY * mlx->moveSpeed;
-		mlx_destroy_image(mlx->mlx_p, mlx->img);
-		mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
-		mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	}
 	if (keycode == KEY_A)
 	{
@@ -279,9 +252,6 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx->oldPlaneX = mlx->planeX;
 		mlx->planeX = mlx->planeX * cos(mlx->rotSpeed) - mlx->planeY * sin(mlx->rotSpeed);
 		mlx->planeY = mlx->oldPlaneX * sin(mlx->rotSpeed) + mlx->planeY * cos(mlx->rotSpeed);
-		mlx_destroy_image(mlx->mlx_p, mlx->img);
-		mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
-		mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	}
 	if (keycode == KEY_D)
 	{
@@ -292,10 +262,11 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx->oldPlaneX = mlx->planeX;
 		mlx->planeX = mlx->planeX * cos(-mlx->rotSpeed) - mlx->planeY * sin(-mlx->rotSpeed);
 		mlx->planeY = mlx->oldPlaneX * sin(-mlx->rotSpeed) + mlx->planeY * cos(-mlx->rotSpeed);
-		mlx_destroy_image(mlx->mlx_p, mlx->img);
-		mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
-		mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	
 	}
+	mlx_destroy_image(mlx->mlx_p, mlx->img);
+	mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	return (0);
 }
 
@@ -309,8 +280,8 @@ void	init_values(t_mlx *mlx)
 	mlx->planeY = 0.66;
 	mlx->time = 0;
 	mlx->oldTime = 0;
-	mlx->moveSpeed = 0.1;
-	mlx->rotSpeed = 0.1;
+	mlx->moveSpeed = 1;
+	mlx->rotSpeed = 0.5;
 }
 
 void	start_game(t_mlx *mlx)
@@ -332,3 +303,23 @@ int	main(void)
 	init_values(mlx);
 	start_game(mlx);
 }
+
+// void clear_image(t_mlx *mlx)
+// {
+//     int x;
+// 	int	y;
+// 	// int color;
+
+// 	x = 0;
+// 	// color = 0x000000;
+// 	while (x < SW)
+// 	{
+// 		y = 0;
+// 		while (y <= SH)
+// 		{
+// 			my_mlx_pixel_put(mlx, x, y, 0);
+// 			y++;
+// 		}
+// 		x++;
+// 	}
+// }
