@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/03 17:05:05 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/03 19:00:09 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #define KEY_S	115
 #define KEY_D	100
 #define KEY_A	97
+#define TEXTW 64
+#define TEXTH 64
 
 typedef struct s_mlx
 {
@@ -66,36 +68,88 @@ typedef struct s_mlx
 	int		drawStart;
 	int		drawEnd;
 	int		color;
+
+	void	*eagle;
+	void	*redbrick;
+	void	*purplestone;
+	void	*greystone;
+	void	*bluestone;
+	void	*mossy;
+	void	*wood;
+	void	*colorstone;
+
+	int		texNum;
+	double	wallX;
+	int 	texX;
+	double 	step;
+	double	texPos;
+	int		texY;
 }	t_mlx;
 
+int	store_images(t_mlx *mlx)
+{
+	int		img_width;
+	int		img_height;
+
+	mlx->eagle = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/eagle.xpm", &img_width, &img_height);
+	mlx->redbrick = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/redbrick.xpm", &img_width, &img_height);
+	mlx->purplestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/purplestone.xpm", &img_width, &img_height);
+	mlx->greystone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/greystone.xpm", &img_width, &img_height);
+	mlx->bluestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/bluestone.xpm", &img_width, &img_height);
+	mlx->mossy = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/mossy.xpm", &img_width, &img_height);
+	mlx->wood = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/wood.xpm", &img_width, &img_height);
+	mlx->colorstone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/colorstone.xpm", &img_width, &img_height);
+	return (0);
+}
+
+int	store_images_addr(t_mlx *mlx)
+{
+	int		img_width;
+	int		img_height;
+
+	mlx->eagle = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/eagle.xpm", &img_width, &img_height);
+	mlx->redbrick = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/redbrick.xpm", &img_width, &img_height);
+	mlx->purplestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/purplestone.xpm", &img_width, &img_height);
+	mlx->greystone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/greystone.xpm", &img_width, &img_height);
+	mlx->bluestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/bluestone.xpm", &img_width, &img_height);
+	mlx->mossy = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/mossy.xpm", &img_width, &img_height);
+	mlx->wood = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/wood.xpm", &img_width, &img_height);
+	mlx->colorstone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/colorstone.xpm", &img_width, &img_height);
+	return (0);
+}
+
+// mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 
 int worldMap[MAPW][MAPH]=
 {
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+  {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
+  {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
+  {4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
+  {4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
+  {4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
+  {4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
+  {6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+  {6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
+  {4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
 };
+
+int buffer[SH][SW];
+int texture[8];
 
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {
@@ -120,6 +174,7 @@ void	draw_vertical_line(t_mlx *mlx, int x)
 int	raycasting(t_mlx *mlx)
 {
 	int	x;
+	int y;
 
 	x = 0;
 	while (x < SW)
@@ -197,24 +252,54 @@ int	raycasting(t_mlx *mlx)
 		if (mlx->drawEnd >= SH)
 			mlx->drawEnd = SH - 1;
 
-		//choose wall color
-		if (worldMap[mlx->mapX][mlx->mapY] == 1)
-			mlx->color = 0xFF0000;
-		else if (worldMap[mlx->mapX][mlx->mapY] == 2)
-			mlx->color = 0x00FF00;
-		else if (worldMap[mlx->mapX][mlx->mapY] == 3)
-			mlx->color = 0x0000FF;
-		else if (worldMap[mlx->mapX][mlx->mapY] == 4)
-			mlx->color = 0xFFFFFF;
+
+		mlx->texNum = worldMap[mlx->mapX][mlx->mapY] - 1;
+		if(mlx->side == 0)
+			mlx->wallX = mlx->posY + mlx->perpWallDist * mlx->rayDirY;
 		else
-			mlx->color = 0xFFFF00;
+			mlx->wallX = mlx->posX + mlx->perpWallDist * mlx->rayDirX;
+		mlx->wallX -= floor((mlx->wallX));
 
-		//give x and y sides different brightness
-		if (mlx->side == 1)
-			mlx->color = mlx->color / 2;
+		mlx->texX = (int)(mlx->wallX * (double)(TEXTW));
+		if(mlx->side == 0 && mlx->rayDirX > 0)
+			mlx->texX = TEXTW - mlx->texX - 1;
+		if(mlx->side == 1 && mlx->rayDirY < 0)
+			mlx->texX = TEXTW - mlx->texX - 1;
 
-		//draw the pixels of the stripe as a vertical line
-		draw_vertical_line(mlx, x);
+		mlx->step = 1.0 * TEXTH / mlx->lineHeight;
+		mlx->texPos = (mlx->drawStart - SH / 2 + mlx->lineHeight / 2) * mlx->step;
+
+		y = mlx->drawStart;
+		while (y < mlx->drawEnd)
+		{
+			 mlx->texY = (int)mlx->texPos & (TEXTH - 1);
+        	mlx->texPos += mlx->step;
+        	// mlx->color = texture[mlx->texNum][(TEXTH) * mlx->texY + mlx->texX];
+        //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+			if(mlx->side == 1)
+				mlx->color = (mlx->color >> 1) & 8355711;
+			buffer[y][x] = mlx->color;
+			y++;
+		}
+
+		// //choose wall color
+		// if (worldMap[mlx->mapX][mlx->mapY] == 1)
+		// 	mlx->color = 0xFF0000;
+		// else if (worldMap[mlx->mapX][mlx->mapY] == 2)
+		// 	mlx->color = 0x00FF00;
+		// else if (worldMap[mlx->mapX][mlx->mapY] == 3)
+		// 	mlx->color = 0x0000FF;
+		// else if (worldMap[mlx->mapX][mlx->mapY] == 4)
+		// 	mlx->color = 0xFFFFFF;
+		// else
+		// 	mlx->color = 0xFFFF00;
+
+		// //give x and y sides different brightness
+		// if (mlx->side == 1)
+		// 	mlx->color = mlx->color / 2;
+
+		// //draw the pixels of the stripe as a vertical line
+		// draw_vertical_line(mlx, x);
 		x++;
 	}
 	mlx_put_image_to_window(mlx->mlx_p, mlx->win_ptr, mlx->img, 0, 0);
@@ -290,6 +375,8 @@ void	start_game(t_mlx *mlx)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_p, SW, SH, "cub3d");
 	mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	store_images(mlx);
+	store_images_addr(mlx);
 	mlx_hook(mlx->win_ptr, KeyPress, KeyPressMask, &key_hook, mlx);
 	mlx_loop_hook(mlx->mlx_p, raycasting, mlx);
 	mlx_loop(mlx->mlx_p);
