@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/04 16:28:47 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/04 18:58:16 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,25 @@ typedef struct s_mlx
 	int		bits_per_pixel_text;
 	int		line_length_text;
 	int		endian_text;
+
+	float	rayDirX0;
+	float	rayDirY0;
+	float	rayDirX1;
+	float	rayDirY1;
+	int		p;
+	float	posZ;
+	float	rowDistance;
+	float	floorStepX;
+	float	floorStepY;
+	float	floorX;
+	float	floorY;
+	int		cellX;
+	int		cellY;
+	int		tx;
+	int		ty;
+	int		checkerBoardPattern;
+	int		floorTexture;
+	int		ceilingTexture;
 }	t_mlx;
 
 int worldMap[MAPW][MAPH]=
@@ -167,6 +186,55 @@ int	raycasting(t_mlx *mlx)
 {
 	int	x;
 	int y;
+
+	y = SH / 2 + 1;
+	
+	while (y < SH)
+	{
+		mlx->rayDirX0 = mlx->dirX - mlx->planeX;
+		mlx->rayDirY0 = mlx->dirY - mlx->planeY;
+		mlx->rayDirX1 = mlx->dirX + mlx->planeX;
+		mlx->rayDirY1 = mlx->dirY + mlx->planeY;
+
+		mlx->p = y - SH / 2;
+
+		mlx->posZ = 0.5 * SH;
+		mlx->rowDistance = mlx->posZ / mlx->p;
+
+		mlx->floorStepX = mlx->rowDistance * (mlx->rayDirX1 - mlx->rayDirX0) / SW;
+		mlx->floorStepY = mlx->rowDistance * (mlx->rayDirY1 - mlx->rayDirY0) / SW;
+
+		mlx->floorX = mlx->posX + mlx->rowDistance * mlx->rayDirX0;
+		mlx->floorY = mlx->posY + mlx->rowDistance * mlx->rayDirY0;
+
+		x = 0;
+		while (x < SW)
+		{
+			mlx->cellX = (int)(mlx->floorX);
+			mlx->cellY = (int)(mlx->floorY);
+			mlx->tx = (int)(TEXTW * (mlx->floorX - mlx->cellX)) & (TEXTW - 1);
+			mlx->ty = (int)(TEXTH * (mlx->floorY - mlx->cellY)) & (TEXTH - 1);
+
+			mlx->floorX += mlx->floorStepX;
+			mlx->floorY += mlx->floorStepY;
+
+
+			mlx->color = 0xFFFFFF;
+			// mlx->color = texture[mlx->floorTexture][mlx->texWidth * ty + tx];
+			// mlx->color = (mlx->color >> 1) & 8355711; // make a bit darker
+			my_mlx_pixel_put(mlx, x, y, mlx->color);
+			// buffer[y][x] = mlx->color;
+			mlx->color = 0x0000FF;
+			// mlx->color = texture[mlx->ceilingTexture][mlx->texWidth * ty + tx];
+			// mlx->color = (mlx->color >> 1) & 8355711; // make a bit darker
+			my_mlx_pixel_put(mlx, x, SH - y - 1, mlx->color);
+			// buffer[SH - y - 1][x] = mlx->color;
+
+			x++;
+		}
+
+		y++;
+	}
 
 	x = 0;
 	while (x < SW)
