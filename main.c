@@ -212,8 +212,7 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-
-int	raycasting(t_mlx *mlx)
+void floor_ceiling(t_mlx *mlx)
 {
 	int	x;
 	int y;
@@ -262,6 +261,12 @@ int	raycasting(t_mlx *mlx)
 
 		y++;
 	}
+}
+
+void walls(t_mlx *mlx)
+{
+	int	x;
+	int y;
 
 	x = 0;
 	while (x < SW)
@@ -385,6 +390,12 @@ int	raycasting(t_mlx *mlx)
 		}
 		x++;
 	}
+}
+
+int	raycasting(t_mlx *mlx)
+{
+	floor_ceiling(mlx);
+	walls(mlx);
 	mlx_put_image_to_window(mlx->mlx_p, mlx->win_ptr, mlx->img, 0, 0);
 	return 0;
 }
