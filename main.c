@@ -71,15 +71,30 @@ typedef struct s_mlx
 
 	void	*greystone;
 	int		*greystone_addr;
+	void	*bluestone;
+	int		*bluestone_addr;
+	void	*red;
+	int		*red_addr;
+	void	*wood;
+	int		*wood_addr;
 	int		texNum;
 	double	wallX;
 	int 	texX;
 	double 	step;
 	double	texPos;
 	int		texY;
-	int		bits_per_pixel_text;
-	int		line_length_text;
-	int		endian_text;
+	int		bits_per_pixel_grey;
+	int		line_length_grey;
+	int		endian_grey;
+	int		bits_per_pixel_blue;
+	int		line_length_blue;
+	int		endian_blue;
+	int		bits_per_pixel_red;
+	int		line_length_red;
+	int		endian_red;
+	int		bits_per_pixel_wood;
+	int		line_length_wood;
+	int		endian_wood;
 
 	float	rayDirX0;
 	float	rayDirY0;
@@ -336,8 +351,15 @@ int	raycasting(t_mlx *mlx)
 		{
 			mlx->texY = (int)mlx->texPos & (TEXTH - 1);
         	mlx->texPos += mlx->step;
-			mlx->color = mlx->greystone_addr[mlx->texY * TEXTH + mlx->texX];
-	
+
+			if (mlx->side == 0 && mlx->rayDirX < 0)
+				mlx->color = mlx->bluestone_addr[mlx->texY * TEXTH + mlx->texX];
+			else if (mlx->side == 0 && mlx->rayDirX >= 0)
+				mlx->color = mlx->greystone_addr[mlx->texY * TEXTH + mlx->texX];
+			else if (mlx->side == 1 && mlx->rayDirY < 0)
+				mlx->color = mlx->red_addr[mlx->texY * TEXTH + mlx->texX];
+			else if (mlx->side == 1 && mlx->rayDirY >= 0)
+				mlx->color = mlx->wood_addr[mlx->texY * TEXTH + mlx->texX];
 			// int d = y * 256 - SH * 128 + mlx->lineHeight * 128;
 			// mlx->texY = ((d * TEXTH) / mlx->lineHeight) / 256;
 			// mlx->color = mlx->greystone_addr[mlx->texY * TEXTW + mlx->texX];
@@ -371,12 +393,18 @@ int	store_images(t_mlx *mlx)
 	int		img_height;
 
 	mlx->greystone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/greystone.xpm", &img_width, &img_height);
+	mlx->bluestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/bluestone.xpm", &img_width, &img_height);
+	mlx->red = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/red.xpm", &img_width, &img_height);
+	mlx->wood = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/wood.xpm", &img_width, &img_height);
 	return (0);
 }
 
 int	store_images_addr(t_mlx *mlx)
 {
-	mlx->greystone_addr = (int *)mlx_get_data_addr(mlx->greystone, &mlx->bits_per_pixel_text, &mlx->line_length_text, &mlx->endian_text);
+	mlx->greystone_addr = (int *)mlx_get_data_addr(mlx->greystone, &mlx->bits_per_pixel_grey, &mlx->line_length_grey, &mlx->endian_grey);
+	mlx->bluestone_addr = (int *)mlx_get_data_addr(mlx->bluestone, &mlx->bits_per_pixel_blue, &mlx->line_length_blue, &mlx->endian_blue);
+	mlx->red_addr = (int *)mlx_get_data_addr(mlx->red, &mlx->bits_per_pixel_red, &mlx->line_length_red, &mlx->endian_red);
+	mlx->wood_addr = (int *)mlx_get_data_addr(mlx->wood, &mlx->bits_per_pixel_wood, &mlx->line_length_wood, &mlx->endian_wood);
 	return (0);
 }
 
