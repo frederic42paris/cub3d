@@ -26,6 +26,8 @@
 #define KEY_S	115
 #define KEY_D	100
 #define KEY_A	97
+#define KEY_LEFT 65361
+#define KEY_RIGHT 65363
 #define TEXTW 64
 #define TEXTH 64
 
@@ -165,7 +167,21 @@ int	key_hook(int keycode, t_mlx *mlx)
 		if (!worldMap[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
 			mlx->posY -= mlx->dirY * mlx->moveSpeed;
 	}
+	if (keycode == KEY_D)
+	{
+		if (!worldMap[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
+			mlx->posX += mlx->dirY * mlx->moveSpeed;
+		if (!worldMap[(int)mlx->posX][(int)(mlx->posY - mlx->dirX * mlx->moveSpeed)])
+			mlx->posY -= mlx->dirX * mlx->moveSpeed;
+	}
 	if (keycode == KEY_A)
+	{
+		if (!worldMap[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
+			mlx->posX -= mlx->dirY * mlx->moveSpeed;
+		if (!worldMap[(int)mlx->posX][(int)(mlx->posY + mlx->dirX * mlx->moveSpeed)])
+			mlx->posY += mlx->dirX * mlx->moveSpeed;
+	}
+	if (keycode == KEY_LEFT)
 	{
 		mlx->oldDirX = mlx->dirX;
 		mlx->dirX = mlx->dirX * cos(mlx->rotSpeed) - mlx->dirY * sin(mlx->rotSpeed);
@@ -174,7 +190,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx->planeX = mlx->planeX * cos(mlx->rotSpeed) - mlx->planeY * sin(mlx->rotSpeed);
 		mlx->planeY = mlx->oldPlaneX * sin(mlx->rotSpeed) + mlx->planeY * cos(mlx->rotSpeed);
 	}
-	if (keycode == KEY_D)
+	if (keycode == KEY_RIGHT)
 	{
 		mlx->oldDirX = mlx->dirX;
 		mlx->dirX = mlx->dirX * cos(-mlx->rotSpeed) - mlx->dirY * sin(-mlx->rotSpeed);
