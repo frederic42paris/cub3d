@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/04 18:58:16 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/04 18:59:52 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,15 +220,11 @@ int	raycasting(t_mlx *mlx)
 
 
 			mlx->color = 0xFFFFFF;
-			// mlx->color = texture[mlx->floorTexture][mlx->texWidth * ty + tx];
-			// mlx->color = (mlx->color >> 1) & 8355711; // make a bit darker
+
 			my_mlx_pixel_put(mlx, x, y, mlx->color);
-			// buffer[y][x] = mlx->color;
 			mlx->color = 0x0000FF;
-			// mlx->color = texture[mlx->ceilingTexture][mlx->texWidth * ty + tx];
-			// mlx->color = (mlx->color >> 1) & 8355711; // make a bit darker
+
 			my_mlx_pixel_put(mlx, x, SH - y - 1, mlx->color);
-			// buffer[SH - y - 1][x] = mlx->color;
 
 			x++;
 		}
