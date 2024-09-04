@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/03 19:00:09 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/04 13:03:47 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,24 @@ typedef struct s_mlx
 	void	*wood;
 	void	*colorstone;
 
+	void	*eagle_addr;
+	void	*redbrick_addr;
+	void	*purplestone_addr;
+	void	*greystone_addr;
+	void	*bluestone_addr;
+	void	*mossy_addr;
+	void	*wood_addr;
+	void	*colorstone_addr;
+
 	int		texNum;
 	double	wallX;
 	int 	texX;
 	double 	step;
 	double	texPos;
 	int		texY;
+	int		bits_per_pixel_text;
+	int		line_length_text;
+	int		endian_text;
 }	t_mlx;
 
 int	store_images(t_mlx *mlx)
@@ -91,61 +103,56 @@ int	store_images(t_mlx *mlx)
 	int		img_width;
 	int		img_height;
 
-	mlx->eagle = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/eagle.xpm", &img_width, &img_height);
-	mlx->redbrick = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/redbrick.xpm", &img_width, &img_height);
-	mlx->purplestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/purplestone.xpm", &img_width, &img_height);
+	// mlx->eagle = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/eagle.xpm", &img_width, &img_height);
+	// mlx->redbrick = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/redbrick.xpm", &img_width, &img_height);
+	// mlx->purplestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/purplestone.xpm", &img_width, &img_height);
 	mlx->greystone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/greystone.xpm", &img_width, &img_height);
-	mlx->bluestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/bluestone.xpm", &img_width, &img_height);
-	mlx->mossy = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/mossy.xpm", &img_width, &img_height);
-	mlx->wood = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/wood.xpm", &img_width, &img_height);
-	mlx->colorstone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/colorstone.xpm", &img_width, &img_height);
+	// mlx->bluestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/bluestone.xpm", &img_width, &img_height);
+	// mlx->mossy = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/mossy.xpm", &img_width, &img_height);
+	// mlx->wood = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/wood.xpm", &img_width, &img_height);
+	// mlx->colorstone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/colorstone.xpm", &img_width, &img_height);
 	return (0);
 }
 
 int	store_images_addr(t_mlx *mlx)
 {
-	int		img_width;
-	int		img_height;
-
-	mlx->eagle = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/eagle.xpm", &img_width, &img_height);
-	mlx->redbrick = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/redbrick.xpm", &img_width, &img_height);
-	mlx->purplestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/purplestone.xpm", &img_width, &img_height);
-	mlx->greystone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/greystone.xpm", &img_width, &img_height);
-	mlx->bluestone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/bluestone.xpm", &img_width, &img_height);
-	mlx->mossy = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/mossy.xpm", &img_width, &img_height);
-	mlx->wood = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/wood.xpm", &img_width, &img_height);
-	mlx->colorstone = mlx_xpm_file_to_image(mlx->mlx_p, "./textures/colorstone.xpm", &img_width, &img_height);
+	// mlx->eagle_addr = mlx_get_data_addr(mlx->eagle, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	// mlx->redbrick_addr = mlx_get_data_addr(mlx->redbrick, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	// mlx->purplestone_addr = mlx_get_data_addr(mlx->purplestone, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	mlx->greystone_addr = mlx_get_data_addr(mlx->greystone, &mlx->bits_per_pixel_text, &mlx->line_length_text, &mlx->endian_text);
+	// mlx->bluestone_addr = mlx_get_data_addr(mlx->bluestone, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	// mlx->mossy_addr = mlx_get_data_addr(mlx->mossy, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	// mlx->wood_addr = mlx_get_data_addr(mlx->wood, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	// mlx->colorstone_addr = mlx_get_data_addr(mlx->colorstone, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	return (0);
 }
 
-// mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
-
 int worldMap[MAPW][MAPH]=
 {
-  {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
-  {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-  {4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-  {4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-  {4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-  {4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
-  {4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
-  {4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-  {4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
-  {4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-  {4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
-  {4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
-  {6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-  {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-  {6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-  {4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-  {4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
-  {4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-  {4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-  {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
+  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
 int buffer[SH][SW];
@@ -252,33 +259,42 @@ int	raycasting(t_mlx *mlx)
 		if (mlx->drawEnd >= SH)
 			mlx->drawEnd = SH - 1;
 
-
+		//texturing calculations
 		mlx->texNum = worldMap[mlx->mapX][mlx->mapY] - 1;
+		
+		//calculate value of wallX
 		if(mlx->side == 0)
 			mlx->wallX = mlx->posY + mlx->perpWallDist * mlx->rayDirY;
 		else
 			mlx->wallX = mlx->posX + mlx->perpWallDist * mlx->rayDirX;
 		mlx->wallX -= floor((mlx->wallX));
-
+		
+		//x coordinate on the texture
 		mlx->texX = (int)(mlx->wallX * (double)(TEXTW));
 		if(mlx->side == 0 && mlx->rayDirX > 0)
 			mlx->texX = TEXTW - mlx->texX - 1;
 		if(mlx->side == 1 && mlx->rayDirY < 0)
 			mlx->texX = TEXTW - mlx->texX - 1;
 
+		// How much to increase the texture coordinate per screen pixel
 		mlx->step = 1.0 * TEXTH / mlx->lineHeight;
+
+		// Starting texture coordinate
 		mlx->texPos = (mlx->drawStart - SH / 2 + mlx->lineHeight / 2) * mlx->step;
 
 		y = mlx->drawStart;
 		while (y < mlx->drawEnd)
 		{
-			 mlx->texY = (int)mlx->texPos & (TEXTH - 1);
+			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+			mlx->texY = (int)mlx->texPos & (TEXTH - 1);
         	mlx->texPos += mlx->step;
-        	// mlx->color = texture[mlx->texNum][(TEXTH) * mlx->texY + mlx->texX];
-        //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+			mlx->color = *(unsigned int*)(mlx->greystone_addr + (TEXTH * mlx->texY + mlx->texX));
+			
+			//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 			if(mlx->side == 1)
 				mlx->color = (mlx->color >> 1) & 8355711;
-			buffer[y][x] = mlx->color;
+	
+			my_mlx_pixel_put(mlx, x, y, mlx->color);
 			y++;
 		}
 
