@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/04 13:03:47 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/04 13:55:28 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct s_mlx
 	void	*eagle_addr;
 	void	*redbrick_addr;
 	void	*purplestone_addr;
-	void	*greystone_addr;
+	int		*greystone_addr;
 	void	*bluestone_addr;
 	void	*mossy_addr;
 	void	*wood_addr;
@@ -119,7 +119,7 @@ int	store_images_addr(t_mlx *mlx)
 	// mlx->eagle_addr = mlx_get_data_addr(mlx->eagle, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	// mlx->redbrick_addr = mlx_get_data_addr(mlx->redbrick, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	// mlx->purplestone_addr = mlx_get_data_addr(mlx->purplestone, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
-	mlx->greystone_addr = mlx_get_data_addr(mlx->greystone, &mlx->bits_per_pixel_text, &mlx->line_length_text, &mlx->endian_text);
+	mlx->greystone_addr = (int *)mlx_get_data_addr(mlx->greystone, &mlx->bits_per_pixel_text, &mlx->line_length_text, &mlx->endian_text);
 	// mlx->bluestone_addr = mlx_get_data_addr(mlx->bluestone, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	// mlx->mossy_addr = mlx_get_data_addr(mlx->mossy, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	// mlx->wood_addr = mlx_get_data_addr(mlx->wood, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
@@ -285,16 +285,27 @@ int	raycasting(t_mlx *mlx)
 		y = mlx->drawStart;
 		while (y < mlx->drawEnd)
 		{
-			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-			mlx->texY = (int)mlx->texPos & (TEXTH - 1);
-        	mlx->texPos += mlx->step;
-			mlx->color = *(unsigned int*)(mlx->greystone_addr + (TEXTH * mlx->texY + mlx->texX));
+			// // Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+			// mlx->texY = (int)mlx->texPos & (TEXTH - 1);
+        	// mlx->texPos += mlx->step;
+			// mlx->color = *(unsigned int*)(mlx->greystone_addr + (TEXTH * mlx->texY + mlx->texX));
 			
-			//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-			if(mlx->side == 1)
-				mlx->color = (mlx->color >> 1) & 8355711;
+			// //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+			// if(mlx->side == 1)
+			// 	mlx->color = (mlx->color >> 1) & 8355711;
 	
-			my_mlx_pixel_put(mlx, x, y, mlx->color);
+			// my_mlx_pixel_put(mlx, x, y, mlx->color);
+			// y++;
+
+			int d = y * 256 - SH * 128 + mlx->lineHeight * 128;  // 256 and 128 factors to avoid floating point precision issues
+			mlx->texY = ((d * TEXTH) / mlx->lineHeight) / 256;
+
+			// Get the color from the texture
+			int color = mlx->greystone_addr[mlx->texY * TEXTW + mlx->texX];
+
+			my_mlx_pixel_put(mlx, x, y, color);
+			// Draw the pixel
+			// buffer[y][x] = color;
 			y++;
 		}
 
