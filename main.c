@@ -6,39 +6,39 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/05 13:09:36 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/05 15:30:46 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int worldMap[MAPW][MAPH]=
-{
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};
+// int mlx->map_int[MAPW][MAPH]=
+// {
+//   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+//   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+//   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+// };
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
@@ -49,30 +49,30 @@ int	key_hook(int keycode, t_mlx *mlx)
 	}
 	if (keycode == KEY_W)
 	{
-		if (!worldMap[(int)(mlx->posX + mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)(mlx->posX + mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX += mlx->dirX * mlx->moveSpeed;
-		if (!worldMap[(int)mlx->posX][(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)])
 			mlx->posY += mlx->dirY * mlx->moveSpeed;
 	}
 	if (keycode == KEY_S)
 	{
-		if (!worldMap[(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX -= mlx->dirX * mlx->moveSpeed;
-		if (!worldMap[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
 			mlx->posY -= mlx->dirY * mlx->moveSpeed;
 	}
 	if (keycode == KEY_D)
 	{
-		if (!worldMap[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX += mlx->dirY * mlx->moveSpeed;
-		if (!worldMap[(int)mlx->posX][(int)(mlx->posY - mlx->dirX * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY - mlx->dirX * mlx->moveSpeed)])
 			mlx->posY -= mlx->dirX * mlx->moveSpeed;
 	}
 	if (keycode == KEY_A)
 	{
-		if (!worldMap[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX -= mlx->dirY * mlx->moveSpeed;
-		if (!worldMap[(int)mlx->posX][(int)(mlx->posY + mlx->dirX * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY + mlx->dirX * mlx->moveSpeed)])
 			mlx->posY += mlx->dirX * mlx->moveSpeed;
 	}
 	if (keycode == KEY_LEFT)
@@ -217,7 +217,7 @@ void walls(t_mlx *mlx)
 				mlx->mapY += mlx->stepY;
 				mlx->side = 1;
 			}
-			if (worldMap[mlx->mapX][mlx->mapY] > 0)
+			if (mlx->map_int[mlx->mapX][mlx->mapY] > 0)
 				mlx->hit = 1;
 		}
 
@@ -239,7 +239,7 @@ void walls(t_mlx *mlx)
 			mlx->drawEnd = SH - 1;
 
 		//texturing calculations
-		mlx->texNum = worldMap[mlx->mapX][mlx->mapY] - 1;
+		mlx->texNum = mlx->map_int[mlx->mapX][mlx->mapY] - 1;
 		
 		//calculate value of wallX
 		if(mlx->side == 0)
@@ -296,8 +296,8 @@ int	raycasting(t_mlx *mlx)
 
 void	init_values(t_mlx *mlx)
 {
-	mlx->posX = 22;
-	mlx->posY = 12;
+	// mlx->posX = 22;
+	// mlx->posY = 12;
 	mlx->dirX = -1;
 	mlx->dirY = 0;
 	mlx->planeX = 0;
@@ -342,11 +342,239 @@ void	init_minilibx(t_mlx *mlx)
 	mlx_loop(mlx->mlx_p);
 }
 
-int	main(void)
+void	error_message(int num)
+{
+	if (num == 1)
+		ft_printf("Error\nNumber of arguments incorrect\n");
+	else if (num == 2)
+		ft_printf("Error\nFile name incorrect\n");
+	else if (num == 3)
+		ft_printf("Error\nFile not found\n");
+	else if (num == 4)
+		ft_printf("Error\nEmpty map\n");
+	else if (num == 5)
+		ft_printf("Error\nEmpty line in map\n");
+	else if (num == 6)
+		ft_printf("Error\nElements number incorrect\n");
+	else if (num == 7)
+		ft_printf("Error\nMap not rectangular\n");
+	else if (num == 8)
+		ft_printf("Error\nWalls incorrect\n");
+	else if (num == 9)
+		ft_printf("Error\nWindow closed due to invalid path.\n");
+	else if (num == 10)
+		ft_printf("Error\nUnknown element\n");
+}
+
+int	wrong_input(char *filename, int inputnumber)
+{
+	char	*string;
+
+	if (inputnumber != 2)
+	{
+		error_message(1);
+		return (1);
+	}
+	string = ft_strrchr(filename, '.');
+	if (string == 0)
+	{
+		error_message(2);
+		return (1);
+	}
+	if (ft_strncmp(string, ".cub", 4) != 0)
+	{
+		error_message(2);
+		return (1);
+	}
+	return (0);
+}
+
+int	open_file(t_mlx	*mlx, char *string)
+{
+	mlx->fd = open(string, O_RDONLY);
+	if (mlx->fd < 0)
+	{
+		error_message(3);
+		return (1);
+	}
+	return (0);
+}
+
+int	is_empty(t_mlx *mlx, char *temp, char *concat)
+{
+	int	i;
+
+	i = 0;
+	if (concat[0] == '\0')
+	{
+		error_message(4);
+		free(temp);
+		return (1);
+	}
+	while (concat[i] != '\0')
+	{
+		if (concat[i] == '\n' && concat[i + 1] == '\n')
+		{
+			error_message(5);
+			free(temp);
+			return (1);
+		}
+		i++;
+	}
+	mlx->map_char = ft_split(concat, '\n');
+	free(concat);
+	return (0);
+}
+
+int	store_map(t_mlx *mlx)
+{
+	char	*string;
+	char	*temp;
+	char	*concat;
+
+	string = "1";
+	concat = ft_strdup("");
+	while (string)
+	{
+		string = NULL;
+		temp = concat;
+		string = get_next_line(mlx->fd);
+		if (string)
+		{
+			concat = ft_strjoin(temp, string);
+			free(string);
+			free(temp);
+		}
+	}
+	if (is_empty(mlx, temp, concat) == 1)
+		return (1);
+	return (0);
+}
+
+
+void	find_player(t_mlx *mlx, int i, int j)
+{
+	if (mlx->map_char[j][i] == 'N')
+	{
+		mlx->posX = i;
+		mlx->posY = j;
+		mlx->hasplayer++;
+	}
+}
+
+void	measure_map(t_mlx *mlx, int i, int j)
+{
+	mlx->map_width = i;
+	mlx->map_height = j;
+}
+
+void	analyse_map(t_mlx *mlx)
+{
+	int		i;
+	int		j;
+
+	mlx->hasplayer = 0;
+	j = 0;
+	while (mlx->map_char[j])
+	{
+		i = 0;
+		while (mlx->map_char[j][i] != '\0')
+		{
+			find_player(mlx, i, j);
+			i++;
+		}
+		j++;
+	}
+	measure_map(mlx, i, j);
+}
+
+void	copymap(t_mlx *mlx)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	mlx->map_int = malloc(sizeof(int *) * (mlx->map_height));
+	while (i < mlx->map_height)
+	{
+		mlx->map_int[i] = malloc(sizeof(int) * (mlx->map_width));
+		j = 0;
+		while (j < mlx->map_width)
+		{
+			if (mlx->map_char[i][j] == 'N')
+				mlx->map_int[i][j] = 0;
+			else
+				mlx->map_int[i][j] = mlx->map_char[i][j] - '0';
+			// printf("%d %d [%d]\n", i, j, mlx->map_int[i][j]);
+			// printf("[%d]", mlx->map_int[i][j]);
+			j++;
+		}
+		// printf("\n");
+		i++;
+	}
+	// printf("[%d]", mlx->map_int[1][2]);
+}
+
+void check_map_int(t_mlx *mlx)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	// printf("[%d]", mlx->map_int[1][2]);
+	while(i < mlx->map_height)
+	{
+		j = 0;
+		while(j < mlx->map_width)
+		{
+			printf("%d", mlx->map_int[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
+int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 
+
 	mlx = malloc(sizeof(t_mlx));
+	mlx->map_char = NULL;
+	if (wrong_input(argv[1], argc) == 1)
+		return (1);
+	if (open_file(mlx, argv[1]) == 1)
+		return (0);
+	if (store_map(mlx) == 1)
+		return (0);
+	analyse_map(mlx);
+	copymap(mlx);
+	check_map_int(mlx);
+	
 	init_values(mlx);
 	init_minilibx(mlx);
+	return (0);
 }
+
+// void check_map_char(t_mlx *mlx)
+// {
+// 	int i;
+// 	int j;
+
+// 	i = 0;
+// 	j = 0;
+// 	while(mlx->map[i])
+// 	{
+// 		j = 0;
+// 		while(mlx->map[i][j])
+// 		{
+// 			printf("%c", mlx->map[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// }
+

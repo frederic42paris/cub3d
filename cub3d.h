@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/05 13:09:17 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/05 14:56:50 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "./minilibx/mlx.h"
+# include "./libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
@@ -119,6 +120,13 @@ typedef struct s_mlx
 	int		checkerBoardPattern;
 	int		floorTexture;
 	int		ceilingTexture;
+
+	char			**map_char;
+	int				**map_int;
+	int				fd;
+	int				hasplayer;
+	int				map_width;
+	int				map_height;
 }	t_mlx;
 
 #endif
