@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/05 14:56:50 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/05 17:27:39 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,18 @@ typedef struct s_mlx
 	int				hasplayer;
 	int				map_width;
 	int				map_height;
+	char			*path_north;
+	char			*path_south;
+	char			*path_west;
+	char			*path_east;
+	int				floor_r;
+	int				floor_g;
+	int				floor_b;
+	int				ceiling_r;
+	int				ceiling_g;
+	int				ceiling_b;
+	int				ceiling_color;
+	int				floor_color;
 }	t_mlx;
 
 #endif
