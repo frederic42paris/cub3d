@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 12:54:01 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 14:04:10 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ int	main(int argc, char **argv)
 
 	if (parse_elements(mlx) == 1)
 		return (1);
-	parse_map(mlx);
+	// parse_map(mlx);
 	// check_file(mlx);
 	analyse_map(mlx);
+	if (mlx->hasplayer != 1)
+	{
+		error_message(6);
+		return (1);
+	}
 	copymap(mlx);
 	display_parsing(mlx);
 	free(mlx);

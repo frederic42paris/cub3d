@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:18:57 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 12:54:47 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 13:35:05 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,12 @@ void	error_message(int num)
 		ft_printf("Error\nUnknown element\n");
 	else if (num == 11)
 		ft_printf("Error\nWrong id\n");
+	else if (num == 12)
+		ft_printf("Error\nToo many id\n");
+	else if (num == 13)
+		ft_printf("Error\nDup id\n");
+	else if (num == 14)
+		ft_printf("Error\nXpm not found\n");
+	else if (num == 15)
+		ft_printf("Error\nWrong rgb\n");
 }

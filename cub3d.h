@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 12:54:12 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 13:28:48 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,14 @@ typedef struct s_mlx
 	int				ceiling_b;
 	int				ceiling_color;
 	int				floor_color;
+
+	int				count_no;
+	int				count_so;
+	int				count_ea;
+	int				count_we;
+	int				count_c;
+	int				count_f;
+
 }	t_mlx;
 
 int		check_argument(char *filename, int inputnumber);
@@ -166,10 +174,10 @@ int	ft_strdup_digit(const char *s, int *j);
 char	*ft_strdup_path(const char *s);
 
 
-int	is_identifier(t_mlx *mlx, char *str);
+int	is_identifier(t_mlx *mlx, char *str, int *counter);
 
 
-int	parse_information(t_mlx *mlx, char *str);
+int	parse_information(t_mlx *mlx, char *str, int *counter);
 
 
 int	parse_elements(t_mlx *mlx);
