@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:15:31 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 12:28:49 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 12:54:31 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ int	is_identifier(t_mlx *mlx, char *str)
 		mlx->floor_b = ft_strdup_digit(str + len, &len);
 		mlx->floor_color = 	create_argb(0, mlx->floor_r, mlx->floor_g, mlx->floor_b);
 	}
+	else
+		return (1);
 	return (0);
 }
 
@@ -137,11 +139,15 @@ int	parse_information(t_mlx *mlx, char *str)
 	i = 0;
 	while (is_space(str[i]))
 		i++;
-	is_identifier(mlx, str + i);
+	if (is_identifier(mlx, str + i) == 1)
+	{
+		error_message(11);
+		return (1);
+	}
 	return 0;
 }
 
-void	parse_elements(t_mlx *mlx)
+int	parse_elements(t_mlx *mlx)
 {
 	char	*string;
 	int		counter;
@@ -155,7 +161,8 @@ void	parse_elements(t_mlx *mlx)
 			if (has_alpha_num(string))
 			{
 				// printf("[%s]", string);
-				parse_information(mlx, string);
+				if (parse_information(mlx, string) == 1)
+					return (1);
 				counter++;
 			}
 			free(string);
@@ -163,4 +170,5 @@ void	parse_elements(t_mlx *mlx)
 		else
 			break;
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 12:21:20 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 12:54:12 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ int	is_identifier(t_mlx *mlx, char *str);
 int	parse_information(t_mlx *mlx, char *str);
 
 
-void	parse_elements(t_mlx *mlx);
+int	parse_elements(t_mlx *mlx);
 
 int	is_empty(t_mlx *mlx, char *temp, char *concat);
 

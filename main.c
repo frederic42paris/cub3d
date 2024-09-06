@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 12:19:19 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 12:54:01 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int argc, char **argv)
 	if (open_file(mlx, argv[1]) == 1)
 		return (1);
 
-	parse_elements(mlx);
+	if (parse_elements(mlx) == 1)
+		return (1);
 	parse_map(mlx);
 	// check_file(mlx);
 	analyse_map(mlx);
