@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 18:37:50 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 18:56:02 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:05:55 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ int	up_to_down_subroutine(char **map, int i, int j)
 		return (0);
 	}
 	if (map[i + 1][j] == ' ')
+	{
+		if (map[i][j] == '0')
+			return (1);
+		return (0);
+	}
+	return (2);
+}
+
+int	down_to_up_subroutine(char **map, int i, int j)
+{
+	if (i == 0)
+	{
+		if (map[i][j] == '0')
+			return (1);
+		return (0);
+	}
+	if (map[i - 1][j] == ' ')
 	{
 		if (map[i][j] == '0')
 			return (1);

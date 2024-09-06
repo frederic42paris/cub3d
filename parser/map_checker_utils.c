@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 18:21:56 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 18:59:04 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:06:44 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,31 @@ static int	up_to_down(char **map)
 }
 
 static int	down_to_up(char **map)
+{
+	int	i;
+	int	j;
+	int end;
+
+	j = 0;
+	i = 0;
+	end = 0;
+	while (map[end] != NULL)
+		end++;
+	while ((map[i][j] != '\n') && (map[i][j] != '\0'))
+	{
+		i = end;
+		while (i >= 0)
+		{
+			if (down_to_up_subroutine(map, i, j) == 1)
+				return (1);
+			if (down_to_up_subroutine(map, i, j) == 0)
+				break ;
+			i--;
+		}
+		j++;
+	}
+	return (0);
+}
 
 int	check_surrounded_map(char **map)
 {

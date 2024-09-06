@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 18:58:15 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:06:28 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,5 +186,6 @@ int		check_surrounded_map(char **map);
 int		is_empty_line(char *line);
 int		right_to_left_subroutine(char **map, int i, int j);
 int		up_to_down_subroutine(char **map, int i, int j);
+int		down_to_up_subroutine(char **map, int i, int j);
 
 #endif
