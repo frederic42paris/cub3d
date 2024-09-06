@@ -1,14 +1,20 @@
 SRCS = main.c \
-./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c\
-./simple_parsing_fred/check_argument.c\
-./simple_parsing_fred/error_message.c\
-./simple_parsing_fred/open_file.c\
-./simple_parsing_fred/analyse_map.c\
-./simple_parsing_fred/copy_map.c\
-./simple_parsing_fred/display_parsing.c\
-./simple_parsing_fred/parse_element.c\
-./simple_parsing_fred/parse_map.c\
-./simple_parsing_fred/parsing_utils.c\
+	get_next_line/get_next_line.c \
+	get_next_line/get_next_line_utils.c \
+	simple_parsing_fred/check_argument.c \
+	simple_parsing_fred/error_message.c \
+	simple_parsing_fred/open_file.c \
+	simple_parsing_fred/analyse_map.c \
+	simple_parsing_fred/copy_map.c \
+	simple_parsing_fred/display_parsing.c \
+	simple_parsing_fred/parse_element.c \
+	simple_parsing_fred/parse_map.c \
+	simple_parsing_fred/parsing_utils.c \
+	init.c \
+	parsing_utils.c \
+	parsing_utils2.c \
+	map_builder_utils.c \
+	rgb_checks.c
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
 
