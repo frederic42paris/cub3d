@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 14:34:37 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 19:32:16 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:54:45 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ int	count_lines(char *filename)
 	return (res);
 }
 
-static int	texture_count_subroutine(char *tmp, int **textures)
+static int	texture_count_subroutine(char *tmp, int *textures)
 {
 	if (ft_strncmp(tmp, "NO ", 3) == 0)
-		return (*textures[0] += 1, 1);
+		return (textures[0] += 1, 1);
 	else if (ft_strncmp(tmp, "EA ", 3) == 0)
-		return (*textures[1] += 1, 1);
+		return (textures[1] += 1, 1);
 	else if (ft_strncmp(tmp, "SO ", 3) == 0)
-		return (*textures[2] += 1, 1);
+		return (textures[2] += 1, 1);
 	else if (ft_strncmp(tmp, "WE ", 3) == 0)
-		return (*textures[3] += 1, 1);
+		return (textures[3] += 1, 1);
 	else if (ft_strncmp(tmp, "F ", 2) == 0)
-		return (*textures[4] += 1, 1);
+		return (textures[4] += 1, 1);
 	else if (ft_strncmp(tmp, "C ", 2) == 0)
-		return (*textures[5] += 1, 1);
+		return (textures[5] += 1, 1);
 	else if (tmp[0] == '\n')
 		return (1);
 	return (0);
@@ -63,7 +63,7 @@ char	*get_tag(char *line)
 	return (&line[i]);
 }
 
-void	count_texture_tags(char **map, int **textures)
+void	count_texture_tags(char **map, int *textures)
 {
 	char	*tmp;
 	int		i;

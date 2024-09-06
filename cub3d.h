@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 19:06:28 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:55:25 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ int		args_checker(int argc, char *filename);
 int		**parser(char *filename, t_mlx *mlx);
 void	array_incrementer(char *line, int **textures);
 int		count_lines(char *filename);
-void	count_texture_tags(char **map, int **textures);
+void	count_texture_tags(char **map, int *textures);
 char	*get_tag(char *line);
 int		test_access(char **map, char *tag);
 int		get_map_size(char **map, t_mlx *mlx);

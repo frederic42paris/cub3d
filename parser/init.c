@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 13:13:05 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 19:33:01 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:55:10 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,17 @@ static int	checkfor_textures(char **map)
 
 	textures = malloc (6 * sizeof(int));
 	ft_memset(textures, 0, 6);
-	count_texture_tags(map, &textures);
+	count_texture_tags(map, textures);
 	i = 0;
 	while (i < 6)
 	{
-		if (textures[i] != 1)
-		{
-			free(textures);
-			return (printf("Error: there needs to be exactly \
-				1 path per texture\n"), 1);
-		}
+		printf("[%d]\n", textures[i]);
+		// if (textures[i] != 1)
+		// {
+		// 	free(textures);
+		// 	return (printf("Error: there needs to be exactly \
+		// 		1 path per texture\n"), 1);
+		// }
 		i++;
 	}
 	free(textures);
