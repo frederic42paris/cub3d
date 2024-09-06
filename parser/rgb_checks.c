@@ -6,11 +6,11 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:35:58 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:16:05 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:31:39 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static char	*get_rgb_addr(char **map, char *target)
 {

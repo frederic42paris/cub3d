@@ -6,11 +6,11 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 14:34:37 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 15:04:38 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:31:34 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	count_lines(char *filename)
 {
