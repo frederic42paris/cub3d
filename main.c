@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 15:09:05 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 16:46:47 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 	simple_parsing_fred(mlx);
 	// parsing result
 	display_parsing(mlx);
+	init_values(mlx);
+	init_minilibx(mlx);
 	free(mlx);
 	return (0);
 }

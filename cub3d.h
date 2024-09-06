@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 15:51:55 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 16:47:32 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,5 +176,7 @@ char	*get_tag(char *line);
 int		test_access(char **map, char *tag);
 int		get_map_size(char **map, t_mlx *mlx);
 
-
+void	init_minilibx(t_mlx *mlx);
+void	init_values(t_mlx *mlx);
+int		raycasting(t_mlx *mlx);
 #endif

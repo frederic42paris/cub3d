@@ -9,6 +9,7 @@ SRCS = main.c \
 ./simple_parsing_fred/parse_element.c\
 ./simple_parsing_fred/parse_map.c\
 ./simple_parsing_fred/parsing_utils.c\
+./raycasting/raycasting.c\
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
 
