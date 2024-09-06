@@ -1,23 +1,25 @@
-SRCS = main.o \
-./get_next_line/get_next_line.o ./get_next_line/get_next_line_utils.o\
-./simple_parsing_fred/check_argument.o\
-./simple_parsing_fred/error_message.o\
-./simple_parsing_fred/open_file.o\
-./simple_parsing_fred/analyse_map.o\
-./simple_parsing_fred/copy_map.o\
-./simple_parsing_fred/display_parsing.o\
-./simple_parsing_fred/parse_element.o\
-./simple_parsing_fred/parse_map.o\
-./simple_parsing_fred/parsing_utils.o\
+SRCS = main.c \
+./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c\
+./simple_parsing_fred/check_argument.c\
+./simple_parsing_fred/error_message.c\
+./simple_parsing_fred/open_file.c\
+./simple_parsing_fred/analyse_map.c\
+./simple_parsing_fred/copy_map.c\
+./simple_parsing_fred/display_parsing.c\
+./simple_parsing_fred/parse_element.c\
+./simple_parsing_fred/parse_map.c\
+./simple_parsing_fred/parsing_utils.c\
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
+
+OBJS = ${SRCS:.c=.o}
 
 NAME = cub3d
 
 all: libft $(NAME)
 
-$(NAME): $(SRCS)
-	cc -Wall -Wextra -Werror -o $(NAME) $(SRCS) $(MINILIBX) -lm -L libft -lft
+$(NAME): $(OBJS)
+	cc -Wall -Wextra -Werror -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
 
 %.o:%.c 
 	cc -Wall -Wextra -Werror -o $@ -c $<
@@ -26,7 +28,7 @@ libft:
 	cd libft ; make
 
 clean:
-	rm -f $(SRCS)
+	rm -f $(OBJS)
 	cd libft ; make clean
 
 fclean: clean
