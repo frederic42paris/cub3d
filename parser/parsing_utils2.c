@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:56:52 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 18:18:33 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:20:39 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	get_map_size(char **map, t_mlx *mlx)
 	while (map[i] != NULL)
 	{
 		mlx->map_height++;
-		if (ft_strlen(map[i]) > mlx->map_width)
+		if (ft_strlen(map[i]) > (size_t)mlx->map_width)
 			mlx->map_width = ft_strlen(map[i]);
 		i++;
 	}

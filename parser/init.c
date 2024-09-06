@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 13:13:05 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:59:48 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:33:01 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,23 @@ static int	check_files_access(char **map)
 int	**parser(char *filename, t_mlx *mlx)
 {
 	int		errors;
-	char	**map;
 
 	errors = 0;
-	map = file_to_array(filename);
-	errors += checkfor_textures(map);
-	errors += check_files_access(map);
+	mlx->map_char = file_to_array(filename);
+	errors += checkfor_textures(mlx->map_char);
+	errors += check_files_access(mlx->map_char);
 	if (errors != 0)
 		return (NULL);
-	textures_loader(mlx, map);
-	errors += rgb_checker(mlx, map);
-	errors += get_map_size(map, mlx);
-	errors += check_valid_map(mlx, map);
+	textures_loader(mlx, mlx->map_char);
+	errors += rgb_checker(mlx, mlx->map_char);
+	errors += get_map_size(mlx->map_char, mlx);
+	errors += check_valid_map(mlx, mlx->map_char);
 	if (errors != 0)
 		return (NULL);
 	mlx->map_int = malloc (mlx->map_height * sizeof(int *));
 	if (mlx->map_int == NULL)
 		return (printf("Error: malloc failed\n"), NULL);
-	map_filler(mlx, map);
+	map_filler(mlx, mlx->map_char);
 	if (errors == 0)
 		return (mlx->map_int);
 	return (NULL);

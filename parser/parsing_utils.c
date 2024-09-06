@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 14:34:37 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:31:34 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:32:16 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ char	*get_tag(char *line)
 {
 	int	i;
 
+	if (line == NULL)
+		return (NULL);
+	if (line[0] == '\0')
+		return (NULL);
 	i = 0;
 	while (line[i] == ' ')
 		i++;
@@ -86,6 +90,11 @@ int	test_access(char **map, char *tag)
 	while (1)
 	{
 		ftag = get_tag(map[i]);
+		if (ftag == NULL)
+		{
+			i++;
+			continue ;
+		}
 		if (ft_strncmp(tag, ftag, ft_strlen(tag)) == 0)
 		{
 			j = 3;
