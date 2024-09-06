@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 13:13:05 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 19:33:36 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:48:06 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	checkfor_textures(char **map)
 		{
 			free(textures);
 			return (printf("Error: there needs to be exactly \
-				1 path per texture\n"), 1);
+1 path per texture\n"), 1);
 		}
 		i++;
 	}

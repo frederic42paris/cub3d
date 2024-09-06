@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 14:34:37 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 19:34:14 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:46:40 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char	*get_tag(char *line)
 	int	i;
 
 	i = 0;
+	if (line == NULL)
+		return (printf("line is null\n"), NULL);
 	while (line[i] == ' ')
 		i++;
 	return (&line[i]);
@@ -83,7 +85,7 @@ int	test_access(char **map, char *tag)
 	char	*ftag;
 
 	i = 0;
-	while (1)
+	while (map[i] != NULL)
 	{
 		ftag = get_tag(map[i]);
 		if (ft_strncmp(tag, ftag, ft_strlen(tag)) == 0)
@@ -101,6 +103,8 @@ int	test_access(char **map, char *tag)
 		}
 		i++;
 	}
+	if (map[i] == NULL)
+		return (1);
 	free(texture_path);
 	if (fd < 0)
 		return (1);
