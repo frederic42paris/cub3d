@@ -1,14 +1,14 @@
 SRCS = main.o \
 ./get_next_line/get_next_line.o ./get_next_line/get_next_line_utils.o\
-./parsing/check_argument.c\
-./parsing/error_message.c\
-./parsing/open_file.c\
-./parsing/analyse_map.c\
-./parsing/copy_map.c\
-./parsing/display_parsing.c\
-./parsing/parse_element.c\
-./parsing/parse_map.c\
-./parsing/parsing_utils.c\
+./simple_parsing_fred/check_argument.o\
+./simple_parsing_fred/error_message.o\
+./simple_parsing_fred/open_file.o\
+./simple_parsing_fred/analyse_map.o\
+./simple_parsing_fred/copy_map.o\
+./simple_parsing_fred/display_parsing.o\
+./simple_parsing_fred/parse_element.o\
+./simple_parsing_fred/parse_map.o\
+./simple_parsing_fred/parsing_utils.o\
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
 
