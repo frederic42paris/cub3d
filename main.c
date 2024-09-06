@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 15:09:05 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:14:30 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ int	main(int argc, char **argv)
 	if (open_file(mlx, argv[1]) == 1)
 		return (1);
 	// parsing
-	simple_parsing_fred(mlx);
+	// simple_parsing_fred(mlx);
+	parser(argv[1], mlx);
 	// parsing result
-	display_parsing(mlx);
-	free(mlx);
+	// display_parsing(mlx);
+	// free(mlx);
 	return (0);
 }

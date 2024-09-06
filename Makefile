@@ -17,6 +17,7 @@ SRCS = main.c \
 	parser/map_builder_utils.c \
 	parser/map_checker.c \
 	parser/map_checker_utils.c \
+	parser/map_checker_utils2.c \
 	parser/rgb_checks.c
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
@@ -28,10 +29,10 @@ NAME = cub3d
 all: libft $(NAME)
 
 $(NAME): $(OBJS)
-	cc -Wall -Wextra -Werror -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
+	cc -g -Wall -Wextra -Werror -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
 
 %.o:%.c 
-	cc -Wall -Wextra -Werror -o $@ -c $<
+	cc -g -Wall -Wextra -Werror -o $@ -c $<
 
 libft:
 	cd libft ; make

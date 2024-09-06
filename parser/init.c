@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 13:13:05 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:59:48 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 19:33:36 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,16 @@ static char	**file_to_array(char *filename)
 	char	**res;
 	int		i;
 	int		fd;
+	int		len;
 
-	res = malloc((count_lines(filename) + 1) * sizeof(char *));
+	len = 0;
+	len = count_lines(filename) + 1;
+	res = malloc((len + 1) * sizeof(char *));
 	if (res == NULL)
 		return (printf("Error: memory allocation failed\n"), NULL);
 	i = 0;
 	fd = open(filename, O_RDONLY);
-	while (1)
+	while (i < len)
 	{
 		res[i] = get_next_line(fd);
 		if (res[i] == NULL)
@@ -62,9 +65,9 @@ static int	checkfor_textures(char **map)
 	int	i;
 	int	*textures;
 
-	textures = malloc (6 * sizeof(int));
+	textures = malloc(6 * sizeof(int));
 	ft_memset(textures, 0, 6);
-	count_texture_tags(map, &textures);
+	count_texture_tags(map, textures);
 	i = 0;
 	while (i < 6)
 	{
