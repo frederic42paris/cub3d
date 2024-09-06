@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 14:34:37 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 19:54:45 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 20:12:11 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	test_access(char **map, char *tag)
 	char	*ftag;
 
 	i = 0;
-	while (1)
+	while (map[i] != NULL)
 	{
 		ftag = get_tag(map[i]);
 		if (ftag == NULL)
@@ -102,17 +102,25 @@ int	test_access(char **map, char *tag)
 				j++;
 			while ((ftag[j] != ' ') && (ftag[j] != '\n') && (ftag[j] != '\0'))
 				j++;
-			while (*ftag + 3 == ' ')
-				*ftag += 1;
-			texture_path = ft_substr(ftag, 0, j);
+			while (*ftag != ' ')
+				ftag += 1;
+			while (*ftag == ' ')
+				ftag += 1;
+			texture_path = ft_substr(ftag, 3, j - 2);
+			printf("%s\n", texture_path);
 			fd = open(texture_path, O_RDONLY);
 			break ;
 		}
 		i++;
 	}
-	free(texture_path);
-	if (fd < 0)
+	if (map[i] != NULL)
+	{
+		free(texture_path);
+		if (fd < 0)
+			return (1);
+		close(fd);
+	}
+	else
 		return (1);
-	close(fd);
 	return (0);
 }

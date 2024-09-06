@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 13:13:05 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 19:55:10 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 20:01:44 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,34 @@ static char	**file_to_array(char *filename)
 	return (res);
 }
 
+static void trash(int *textures)
+{
+	textures[0] = 0;
+	textures[1] = 0;
+	textures[2] = 0;
+	textures[3] = 0;
+	textures[4] = 0;
+	textures[5] = 0;
+}
+
 static int	checkfor_textures(char **map)
 {
 	int	i;
 	int	*textures;
 
 	textures = malloc (6 * sizeof(int));
-	ft_memset(textures, 0, 6);
+	trash(textures);
 	count_texture_tags(map, textures);
 	i = 0;
 	while (i < 6)
 	{
 		printf("[%d]\n", textures[i]);
-		// if (textures[i] != 1)
-		// {
-		// 	free(textures);
-		// 	return (printf("Error: there needs to be exactly \
-		// 		1 path per texture\n"), 1);
-		// }
+		if (textures[i] != 1)
+		{
+		free(textures);
+		return (printf("Error: there needs to be exactly \
+1 path per texture\n"), 1);
+		}
 		i++;
 	}
 	free(textures);
