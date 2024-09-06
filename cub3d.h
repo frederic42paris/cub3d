@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/05 17:27:39 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 12:21:20 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,43 @@ typedef struct s_mlx
 	int				ceiling_color;
 	int				floor_color;
 }	t_mlx;
+
+int		check_argument(char *filename, int inputnumber);
+void	error_message(int num);
+int	open_file(t_mlx	*mlx, char *string);
+void	display_parsing(t_mlx *mlx);
+int	has_alpha_num(char *str);
+int	is_space(char c);
+int	is_not_space(char c);
+
+void	find_player(t_mlx *mlx, int i, int j);
+void	measure_map(t_mlx *mlx, int i, int j);
+void	analyse_map(t_mlx *mlx);
+void	copymap(t_mlx *mlx);
+
+
+size_t	ft_strlen_word(const char *s);
+
+int create_argb(int a, int r, int g, int b);
+
+
+int	ft_strdup_digit(const char *s, int *j);
+
+
+char	*ft_strdup_path(const char *s);
+
+
+int	is_identifier(t_mlx *mlx, char *str);
+
+
+int	parse_information(t_mlx *mlx, char *str);
+
+
+void	parse_elements(t_mlx *mlx);
+
+int	is_empty(t_mlx *mlx, char *temp, char *concat);
+
+
+int	parse_map(t_mlx *mlx);
 
 #endif
