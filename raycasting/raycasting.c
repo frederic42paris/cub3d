@@ -6,18 +6,24 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 16:46:53 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:14:04 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+int destroy(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx_p, mlx->win_ptr);
+	exit(0);
+	return (0);
+}
+
 int	key_hook(int keycode, t_mlx *mlx)
 {
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(mlx->mlx_p, mlx->win_ptr);
-		exit(0);
+		destroy(mlx);
 	}
 	if (keycode == KEY_W)
 	{
@@ -310,6 +316,7 @@ void	init_minilibx(t_mlx *mlx)
 	store_images(mlx);
 	store_images_addr(mlx);
 	mlx_hook(mlx->win_ptr, KeyPress, KeyPressMask, &key_hook, mlx);
+	mlx_hook(mlx->win_ptr, DestroyNotify, StructureNotifyMask, &destroy, mlx);
 	mlx_loop_hook(mlx->mlx_p, raycasting, mlx);
 	mlx_loop(mlx->mlx_p);
 }
