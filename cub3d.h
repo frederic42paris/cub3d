@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 18:00:10 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 18:58:15 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,5 +182,9 @@ int		rgb_checker(t_mlx *mlx, char **map);
 char	*get_tag_addr(char **map, char *target);
 int		textures_loader(t_mlx *mlx, char **map);
 int		check_valid_map(t_mlx *mlx, char **map);
+int		check_surrounded_map(char **map);
+int		is_empty_line(char *line);
+int		right_to_left_subroutine(char **map, int i, int j);
+int		up_to_down_subroutine(char **map, int i, int j);
 
 #endif

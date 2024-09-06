@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:56:18 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 18:16:23 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 18:20:36 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,20 @@ static int	check_map_symbols(char **map)
 				return (printf("Error: invalid symbols in map\n"), 1);
 			j++;
 		}
+		i++;
+	}
+	return (0);
+}
+
+static int	check_empty_lines(char **map)
+{
+	int	i;
+
+	i = get_map_index(map);
+	while (map[i] != NULL)
+	{
+		if (is_empty_line(map[i]) == 1)
+			return (printf("Error: empty lines in map detected\n"), 1);
 		i++;
 	}
 	return (0);

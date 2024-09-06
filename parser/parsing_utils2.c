@@ -6,13 +6,13 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:56:52 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:31:29 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 18:18:33 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	is_empty_line(char *line)
+int	is_empty_line(char *line)
 {
 	int	i;
 

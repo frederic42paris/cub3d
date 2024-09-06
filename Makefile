@@ -15,6 +15,8 @@ SRCS = main.c \
 	parser/parsing_utils2.c \
 	parser/parsing_utils3.c \
 	parser/map_builder_utils.c \
+	parser/map_checker.c \
+	parser/map_checker_utils.c \
 	parser/rgb_checks.c
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
