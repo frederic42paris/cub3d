@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 12:21:20 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 15:33:47 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,13 @@ typedef struct s_mlx
 	int		ceilingTexture;
 
 	char			**map_char;
-	int				**map_int;
 	int				fd;
 	int				hasplayer;
+	int				ceiling_color;
+	int				floor_color;
+
+	// values needed from parsing
+	int				**map_int;
 	int				map_width;
 	int				map_height;
 	char			*path_north;
@@ -137,8 +141,7 @@ typedef struct s_mlx
 	int				ceiling_r;
 	int				ceiling_g;
 	int				ceiling_b;
-	int				ceiling_color;
-	int				floor_color;
+	
 }	t_mlx;
 
 int		check_argument(char *filename, int inputnumber);
