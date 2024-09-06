@@ -10,11 +10,12 @@ SRCS = main.c \
 	simple_parsing_fred/parse_element.c \
 	simple_parsing_fred/parse_map.c \
 	simple_parsing_fred/parsing_utils.c \
-	init.c \
-	parsing_utils.c \
-	parsing_utils2.c \
-	map_builder_utils.c \
-	rgb_checks.c
+	parser/init.c \
+	parser/parsing_utils.c \
+	parser/parsing_utils2.c \
+	parser/parsing_utils3.c \
+	parser/map_builder_utils.c \
+	parser/rgb_checks.c
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
 

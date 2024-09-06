@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 13:13:05 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:31:18 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:52:12 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	**parser(char *filename, t_mlx *mlx)
 	errors += check_files_access(map);
 	if (errors != 0)
 		return (NULL);
-	textures_loader(map, mlx);
+	textures_loader(mlx, map);
 	errors += rgb_checker(mlx, map);
 	errors += get_map_size(map, mlx);
 	errors += check_valid_map(map);

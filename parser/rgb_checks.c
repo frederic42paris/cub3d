@@ -6,22 +6,22 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:35:58 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:31:39 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/06 17:42:15 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static char	*get_rgb_addr(char **map, char *target)
+char	*get_tag_addr(char **map, char *target)
 {
 	char	*tag;
 	int		i;
 
 	i = 0;
-	while (ft_strncmp(get_tag(map[i]), target, 2) != 0)
+	while (ft_strncmp(get_tag(map[i]), target, ft_strlen(target)) != 0)
 		i++;
 	tag = get_tag(map[i]);
-	tag += 2;
+	tag += ft_strlen(target);
 	while (*tag == ' ')
 		tag++;
 	return (tag);
@@ -86,8 +86,8 @@ int	rgb_checker(t_mlx *mlx, char **map)
 	char	*floor_vals;
 	char	*ceil_vals;
 
-	floor_vals = get_rgb_addr(map, "F ");
-	ceil_vals = get_rgb_addr(map, "C ");
+	floor_vals = get_tag_addr(map, "F ");
+	ceil_vals = get_tag_addr(map, "C ");
 	if ((check_rgb_format(floor_vals) == 0) || (check_rgb_format(ceil_vals) == 0))
 		return (printf("Error: RGB values must be \
 			formatted as: [val],[val],[val]\n"), 1);
