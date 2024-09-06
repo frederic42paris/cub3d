@@ -12,31 +12,31 @@
 
 #include "../cub3d.h"
 
-int	is_empty(t_mlx *mlx, char *temp, char *concat)
-{
-	int	i;
+// int	is_empty(t_mlx *mlx, char *temp, char *concat)
+// {
+// 	int	i;
 
-	i = 0;
-	if (concat[0] == '\0')
-	{
-		error_message(4);
-		free(temp);
-		return (1);
-	}
-	while (concat[i] != '\0')
-	{
-		if (concat[i] == '\n' && concat[i + 1] == '\n')
-		{
-			error_message(5);
-			free(temp);
-			return (1);
-		}
-		i++;
-	}
-	mlx->map_char = ft_split(concat, '\n');
-	free(concat);
-	return (0);
-}
+// 	i = 0;
+// 	if (concat[0] == '\0')
+// 	{
+// 		error_message(4);
+// 		free(temp);
+// 		return (1);
+// 	}
+// 	while (concat[i] != '\0')
+// 	{
+// 		if (concat[i] == '\n' && concat[i + 1] == '\n')
+// 		{
+// 			error_message(5);
+// 			free(temp);
+// 			return (1);
+// 		}
+// 		i++;
+// 	}
+// 	mlx->map_char = ft_split(concat, '\n');
+// 	free(concat);
+// 	return (0);
+// }
 
 int	parse_map(t_mlx *mlx)
 {

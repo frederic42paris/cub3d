@@ -141,6 +141,7 @@ typedef struct s_mlx
 	int				ceiling_r;
 	int				ceiling_g;
 	int				ceiling_b;
+	char			**textures;
 	
 }		t_mlx;
 
@@ -164,7 +165,7 @@ char	*ft_strdup_path(const char *s);
 int		is_identifier(t_mlx *mlx, char *str);
 int		parse_information(t_mlx *mlx, char *str);
 void	parse_elements(t_mlx *mlx);
-int		is_empty(t_mlx *mlx, char *temp, char *concat);
+// int		is_empty(t_mlx *mlx, char *temp, char *concat);
 int		parse_map(t_mlx *mlx);
 
 int		args_checker(int argc, char *filename);
