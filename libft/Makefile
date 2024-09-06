@@ -38,7 +38,8 @@ SRCS := ft_isalpha.c \
 	   hexa_converter.c \
 	   pointers_converter.c \
 	   get_next_line.c \
-	   get_next_line_utils.c
+	   get_next_line_utils.c \
+	   double_free.c
 
 OBJS = ${SRCS:.c=.o}
 
