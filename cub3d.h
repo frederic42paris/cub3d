@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 15:33:47 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/06 15:51:55 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,44 +142,39 @@ typedef struct s_mlx
 	int				ceiling_g;
 	int				ceiling_b;
 	
-}	t_mlx;
+}		t_mlx;
 
 int		check_argument(char *filename, int inputnumber);
 void	error_message(int num);
-int	open_file(t_mlx	*mlx, char *string);
+int		open_file(t_mlx	*mlx, char *string);
 void	display_parsing(t_mlx *mlx);
-int	has_alpha_num(char *str);
-int	is_space(char c);
-int	is_not_space(char c);
+int		has_alpha_num(char *str);
+int		is_space(char c);
+int		is_not_space(char c);
 
 void	find_player(t_mlx *mlx, int i, int j);
 void	measure_map(t_mlx *mlx, int i, int j);
 void	analyse_map(t_mlx *mlx);
 void	copymap(t_mlx *mlx);
 
-
 size_t	ft_strlen_word(const char *s);
-
-int create_argb(int a, int r, int g, int b);
-
-
-int	ft_strdup_digit(const char *s, int *j);
-
-
+int 	create_argb(int a, int r, int g, int b);
+int		ft_strdup_digit(const char *s, int *j);
 char	*ft_strdup_path(const char *s);
-
-
-int	is_identifier(t_mlx *mlx, char *str);
-
-
-int	parse_information(t_mlx *mlx, char *str);
-
-
+int		is_identifier(t_mlx *mlx, char *str);
+int		parse_information(t_mlx *mlx, char *str);
 void	parse_elements(t_mlx *mlx);
+int		is_empty(t_mlx *mlx, char *temp, char *concat);
+int		parse_map(t_mlx *mlx);
 
-int	is_empty(t_mlx *mlx, char *temp, char *concat);
+int		args_checker(int argc, char *filename);
+int		**parser(char *filename, t_mlx *mlx);
+void	array_incrementer(char *line, int **textures);
+int		count_lines(char *filename);
+void	count_texture_tags(char **map, int **textures);
+char	*get_tag(char *line);
+int		test_access(char **map, char *tag);
+int		get_map_size(char **map, t_mlx *mlx);
 
-
-int	parse_map(t_mlx *mlx);
 
 #endif
