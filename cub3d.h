@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/07 15:33:38 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 16:42:11 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,9 +199,12 @@ int	store_map(t_mlx *mlx);
 void	find_player(t_mlx *mlx);
 void	measure_map(t_mlx *mlx);
 void	display_data(t_mlx *mlx);
-int	check_identifier(t_mlx *mlx);
+int	check_identifier(t_mlx *mlx, char *str);
 int	check_duplicates(t_mlx *mlx);
-int	check_path(t_mlx *mlx);
-int	check_rgb(t_mlx *mlx);
+int	check_path(char *str);
+int	check_rgb(char *str);
+size_t	ft_strlen_word(const char *s);
+int	parse_input(char *string);
+long	ft_atoi_fred(const char *string);
 
 #endif

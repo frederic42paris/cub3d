@@ -6,6 +6,7 @@ SRCS = main.c \
 	parsing_fred/display_parsing.c \
 	parsing_fred/open_file.c \
 	parsing_fred/parsing_utils.c \
+	parsing_fred/parsing_utils2.c \
 	parsing_fred/store_textures.c \
 	parsing_fred/check_identifier.c \
 	parsing_fred/store_map.c \

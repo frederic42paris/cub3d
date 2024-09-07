@@ -6,21 +6,13 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:01:44 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 13:24:58 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 16:19:40 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-size_t	ft_strlen_word(const char *s)
-{
-	size_t	i;
 
-	i = 0;
-	while (is_not_space(s[i]))
-		i++;
-	return (i);
-}
 
 int create_argb(int a, int r, int g, int b)
 {
@@ -55,13 +47,13 @@ char	*ft_strdup_path(const char *s)
 	int		i;
 
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n' && is_not_space(s[i]))
+	while (s[i] != '\0' && s[i] != '\n' && ft_isalnum(s[i]))
 		i++;
 	dest = (char *)malloc(i + 1);
 	if (dest == NULL)
 		return (NULL);
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n' && is_not_space(s[i]))
+	while (s[i] != '\0' && s[i] != '\n' && ft_isalnum(s[i]))
 	{
 		dest[i] = s[i];
 		i++;

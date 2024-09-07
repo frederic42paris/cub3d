@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:16:25 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 15:33:45 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 16:26:58 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,12 @@ int	is_not_space(char c)
 		return (0);
 }
 
+size_t	ft_strlen_word(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (ft_isalnum(s[i]))
+		i++;
+	return (i);
+}

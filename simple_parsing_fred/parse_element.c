@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:15:31 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 12:28:49 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 16:19:51 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen_word(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (is_not_space(s[i]))
+	while (ft_isalnum(s[i]))
 		i++;
 	return (i);
 }
@@ -55,13 +55,13 @@ char	*ft_strdup_path(const char *s)
 	int		i;
 
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n' && is_not_space(s[i]))
+	while (s[i] != '\0' && s[i] != '\n' && ft_isalnum(s[i]))
 		i++;
 	dest = (char *)malloc(i + 1);
 	if (dest == NULL)
 		return (NULL);
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n' && is_not_space(s[i]))
+	while (s[i] != '\0' && s[i] != '\n' && ft_isalnum(s[i]))
 	{
 		dest[i] = s[i];
 		i++;
