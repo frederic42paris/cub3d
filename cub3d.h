@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/07 14:52:45 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 15:33:38 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,6 @@ void	display_data(t_mlx *mlx);
 int	check_identifier(t_mlx *mlx);
 int	check_duplicates(t_mlx *mlx);
 int	check_path(t_mlx *mlx);
+int	check_rgb(t_mlx *mlx);
 
 #endif

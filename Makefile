@@ -13,6 +13,7 @@ SRCS = main.c \
 	parsing_fred/find_player.c \
 	parsing_fred/check_duplicates.c \
 	parsing_fred/check_path.c \
+	parsing_fred/check_rgb.c \
 	parser/init.c \
 	parser/parsing_utils.c \
 	parser/parsing_utils2.c \

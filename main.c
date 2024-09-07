@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 14:48:44 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 15:13:13 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 	if (check_duplicates(mlx) == 1)
 		return (1);
 	if (check_path(mlx) == 1)
+		return (1);
+	if (check_rgb(mlx) == 1)
 		return (1);
 	display_data(mlx);
 	// store_textures(mlx);
