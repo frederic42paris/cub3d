@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 16:30:19 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 16:38:32 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 17:10:37 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,7 @@ int	parse_input(char *string)
 
 	int_from_str = ft_atoi_fred(string);
 	str_from_int = ft_itoa(int_from_str);
-	if (!str_from_int)
-		return (free(str_from_int), -1);
 	if (ft_strncmp(string, str_from_int, ft_strlen(string)))
-		return (free(str_from_int), -1);
-	if (!int_from_str)
 		return (free(str_from_int), -1);
 	return (free(str_from_int), int_from_str);
 }

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:13:22 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 16:43:38 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 17:10:43 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_rgb_value(char *str)
 	while (ft_isalnum(str[i]))
 		i++;
 	path = ft_substr(str, 0, i);
-	nb = parse_input(str);
+	nb = parse_input(path);
 	if (nb > 255 || nb < 0)
 	{
 		printf("wrong rgb value\n");
@@ -52,7 +52,7 @@ int	check_rgb(char *str)
 		{
 			while (ft_isalnum(str[j]))
 				j++;
-			while (is_space(str[j]))
+			while (!ft_isalnum(str[j]))
 				j++;
 			if (check_rgb_value(str + j) == 1)
 				return (1);
