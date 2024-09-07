@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:01:44 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 16:19:40 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 17:56:25 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ char	*ft_strdup_path(const char *s)
 	int		i;
 
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n' && ft_isalnum(s[i]))
+	while (s[i] != '\0' && s[i] != '\n' && is_not_space(s[i]))
 		i++;
 	dest = (char *)malloc(i + 1);
 	if (dest == NULL)
 		return (NULL);
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n' && ft_isalnum(s[i]))
+	while (s[i] != '\0' && s[i] != '\n' && is_not_space(s[i]))
 	{
 		dest[i] = s[i];
 		i++;
@@ -140,6 +140,7 @@ int	store_textures(t_mlx *mlx)
 	while (i < 6)
 	{
 		parse_information(mlx, mlx->textures[i]);
+		
 		i++;
 	}
 	return (0);

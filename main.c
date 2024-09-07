@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 16:57:01 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 18:49:59 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,22 @@ int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 	
-	
 	check_argument(argv[1], argc);
 	mlx = malloc(sizeof(t_mlx));
 	open_file(mlx, argv[1]);
 	if (store_data(mlx) == 1)
 		return (1);
-	if (check_textures(mlx) == 1)
-		return (1);
-	display_data(mlx);
+	// if (check_textures(mlx) == 1)
+		// return (1);
+	// display_data(mlx);
 	
-	// store_textures(mlx);
-	// find_player(mlx);
-	// measure_map(mlx);
-	// store_map(mlx);
-	// display_parsing(mlx);
+	find_player(mlx);
+	measure_map(mlx);
+	store_map_one(mlx);
+	check_map_walls_x(mlx);
+	check_map_walls_y(mlx);
+	store_textures(mlx);
+	store_map(mlx);
+	display_parsing(mlx);
 	return (0);
 }

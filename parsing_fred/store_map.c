@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:16:10 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 12:34:26 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 17:51:11 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,34 @@ int	store_map(t_mlx *mlx)
 				mlx->map_int[i][j] = 1;
 			else
 				mlx->map_int[i][j] = mlx->map_char[i][j] - '0';
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	store_map_one(t_mlx *mlx)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	mlx->map_int_one = malloc(sizeof(int *) * (mlx->map_height));
+	while (i < mlx->map_height)
+	{
+		mlx->map_int_one[i] = malloc(sizeof(int) * (mlx->map_width));
+		j = 0;
+		while (j < mlx->map_width)
+		{
+			if (mlx->map_char[i][j] == 'N')
+				mlx->map_int_one[i][j] = 0;
+			else if (mlx->map_char[i][j] == ' ')
+				mlx->map_int_one[i][j] = 2;
+			else if (mlx->map_char[i][j] == '\0')
+				mlx->map_int_one[i][j] = 2;
+			else
+				mlx->map_int_one[i][j] = mlx->map_char[i][j] - '0';
 			j++;
 		}
 		i++;
