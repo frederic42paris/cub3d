@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:23:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 11:21:55 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 12:33:05 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,13 @@ void	display_parsing(t_mlx *mlx)
 	printf("%d\n", mlx->ceiling_g);
 	printf("%d\n", mlx->ceiling_b);
 	printf("----------\n");
-	// check_map_char(mlx);
-	// printf("----------\n");
-	printf("%d\n", mlx->map_width);
-	printf("%d\n", mlx->map_height);
+	check_map_char(mlx);
+	printf("----------\n");
 	printf("%f\n", mlx->posX);
 	printf("%f\n", mlx->posY);
+	printf("----------\n");
+	printf("%d\n", mlx->map_width);
+	printf("%d\n", mlx->map_height);
 	printf("----------\n");
 	check_map_int(mlx);
 }

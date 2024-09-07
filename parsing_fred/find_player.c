@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   analyse_map.c                                      :+:      :+:    :+:   */
+/*   find_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 12:17:28 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 12:17:29 by ftanon           ###   ########.fr       */
+/*   Created: 2024/09/07 11:59:37 by ftanon            #+#    #+#             */
+/*   Updated: 2024/09/07 12:31:38 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	find_player(t_mlx *mlx, int i, int j)
-{
-	if (mlx->map_char[j][i] == 'N')
-	{
-		mlx->posX = i;
-		mlx->posY = j;
-		mlx->hasplayer++;
-	}
-}
-
-void	measure_map(t_mlx *mlx, int i, int j)
-{
-	mlx->map_width = i;
-	mlx->map_height = j;
-}
-
-void	analyse_map(t_mlx *mlx)
+void	find_player(t_mlx *mlx)
 {
 	int		i;
 	int		j;
@@ -40,10 +24,13 @@ void	analyse_map(t_mlx *mlx)
 		i = 0;
 		while (mlx->map_char[j][i] != '\0')
 		{
-			find_player(mlx, i, j);
+			if (mlx->map_char[j][i] == 'N')
+			{
+				mlx->posX = i;
+				mlx->posY = j;
+			}
 			i++;
 		}
 		j++;
 	}
-	measure_map(mlx, i, j);
 }

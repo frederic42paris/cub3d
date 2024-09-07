@@ -9,7 +9,8 @@ SRCS = main.c \
 	parsing_fred/parsing_utils.c \
 	parsing_fred/store_textures.c \
 	parsing_fred/store_map.c \
-	parsing_fred/analyse_map.c \
+	parsing_fred/measure_map.c \
+	parsing_fred/find_player.c \
 	parser/init.c \
 	parser/parsing_utils.c \
 	parser/parsing_utils2.c \

@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   measure_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 12:32:22 by ftanon           ###   ########.fr       */
+/*   Created: 2024/09/06 12:17:28 by ftanon            #+#    #+#             */
+/*   Updated: 2024/09/07 12:00:04 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	main(int argc, char **argv)
+void	measure_map(t_mlx *mlx)
 {
-	t_mlx	*mlx;
-	
-	check_argument(argv[1], argc);
-	mlx = malloc(sizeof(t_mlx));
-	open_file(mlx, argv[1]);
-	store_data(mlx);
-	store_textures(mlx);
-	find_player(mlx);
-	measure_map(mlx);
-	store_map(mlx);
-	display_parsing(mlx);
-	return (0);
+	int		i;
+	int		j;
+	int		width;
+
+	width = 0;
+	j = 0;
+	while (mlx->map_char[j])
+	{
+		i = 0;
+		while (mlx->map_char[j][i] != '\0')
+		{
+			i++;
+			if (i > width)
+				width++;
+		}
+		j++;
+	}
+	mlx->map_width = width;
+	mlx->map_height = j;
 }

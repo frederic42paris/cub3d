@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:16:10 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 11:19:00 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 12:08:05 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	store_map(t_mlx *mlx)
 		while (j < mlx->map_width)
 		{
 			if (mlx->map_char[i][j] == 'N')
-				mlx->map_int[i][j] = 0;
+				mlx->map_int[i][j] = 2;
 			else if (mlx->map_char[i][j] == ' ')
 				mlx->map_int[i][j] = 1;
 			else if (mlx->map_char[i][j] == '\0')

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/07 11:18:51 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 12:02:33 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,10 +153,6 @@ int		has_alpha_num(char *str);
 int		is_space(char c);
 int		is_not_space(char c);
 
-void	find_player(t_mlx *mlx, int i, int j);
-void	measure_map(t_mlx *mlx, int i, int j);
-void	analyse_map(t_mlx *mlx);
-void	copymap(t_mlx *mlx);
 
 size_t	ft_strlen_word(const char *s);
 int 	create_argb(int a, int r, int g, int b);
@@ -192,5 +188,7 @@ int		down_to_up_subroutine(char **map, int i, int j);
 int	store_data(t_mlx *mlx);
 int	store_textures(t_mlx *mlx);
 int	store_map(t_mlx *mlx);
+void	find_player(t_mlx *mlx);
+void	measure_map(t_mlx *mlx);
 
 #endif
