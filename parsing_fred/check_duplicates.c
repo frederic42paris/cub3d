@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_argument.c                                   :+:      :+:    :+:   */
+/*   check_duplicates.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 10:18:26 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 13:14:25 by ftanon           ###   ########.fr       */
+/*   Created: 2024/09/07 13:39:00 by ftanon            #+#    #+#             */
+/*   Updated: 2024/09/07 13:41:50 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	check_argument(char *filename, int inputnumber)
+int	check_duplicates(t_mlx *mlx)
 {
-	char	*string;
-
-	if (inputnumber != 2)
+	if (mlx->count_no != 1
+		|| mlx->count_so != 1
+		|| mlx->count_ea != 1
+		|| mlx->count_we != 1
+		|| mlx->count_c != 1
+		|| mlx->count_f != 1)
 	{
-		printf("Error\nNumber of arguments incorrect\n");
+		printf("Error\nDuplicates ID\n");
 		return (1);
 	}
-	string = ft_strrchr(filename, '.');
-	if (string == 0)
-	{
-		printf("Error\nFile name incorrect\n");
-		return (1);
-	}
-	if (ft_strncmp(string, ".cub", 4) != 0)
-	{
-		printf("Error\nFile name incorrect\n");
-		return (1);
-	}
-	return (0);
+		return (0);
 }

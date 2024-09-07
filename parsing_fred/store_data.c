@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 13:02:02 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 13:13:57 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_empty(t_mlx *mlx, char *temp, char *concat)
 	i = 0;
 	if (concat[0] == '\0')
 	{
-		error_message(4);
+		printf("Error\nEmpty map\n");
 		free(temp);
 		return (1);
 	}
@@ -27,7 +27,7 @@ int	is_empty(t_mlx *mlx, char *temp, char *concat)
 	{
 		if (concat[i] == '\n' && concat[i + 1] == '\n')
 		{
-			error_message(5);
+			printf("Error\nEmpty line in map\n");
 			free(temp);
 			return (1);
 		}
@@ -45,7 +45,7 @@ int	is_empty2(t_mlx *mlx, char *temp, char *concat)
 	i = 0;
 	if (concat[0] == '\0')
 	{
-		error_message(4);
+		printf("Error\nEmpty map\n");
 		free(temp);
 		return (1);
 	}
@@ -53,7 +53,7 @@ int	is_empty2(t_mlx *mlx, char *temp, char *concat)
 	{
 		if (concat[i] == '\n' && concat[i + 1] == '\n')
 		{
-			error_message(5);
+			printf("Error\nEmpty line in map\n");
 			free(temp);
 			return (1);
 		}
@@ -119,7 +119,10 @@ int	skip_empty_line(t_mlx *mlx, char **string)
 				break;
 		}
 		else
-			break;
+		{
+			printf("Error\nIncomplete file\n");
+			return (1);
+		}
 	}
 	return (0);
 }
@@ -161,11 +164,14 @@ int	store_data(t_mlx *mlx)
 	string = NULL;
 	if (store_six_line(mlx, &string))
 		return (1);
-	skip_empty_line(mlx, &string);
-	if (string == NULL)
+	if (skip_empty_line(mlx, &string))
 		return (1);
+	if (string == NULL)
+	{
+		printf("Error\nIncomplete file\n");
+		return (1);
+	}
 	else
 		store_map_char(mlx, &string);
-	// printf("%s\n", string);
 	return (0);
 }

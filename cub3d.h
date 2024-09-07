@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/07 12:49:08 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 14:52:45 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,13 @@ typedef struct s_mlx
 	int				ceiling_b;
 	char			**textures;
 	char			*string_buffer;
+	int				count_no;
+	int				count_so;
+	int				count_ea;
+	int				count_we;
+	int				count_c;
+	int				count_f;
+	
 	
 }		t_mlx;
 
@@ -192,5 +199,8 @@ int	store_map(t_mlx *mlx);
 void	find_player(t_mlx *mlx);
 void	measure_map(t_mlx *mlx);
 void	display_data(t_mlx *mlx);
+int	check_identifier(t_mlx *mlx);
+int	check_duplicates(t_mlx *mlx);
+int	check_path(t_mlx *mlx);
 
 #endif
