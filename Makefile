@@ -23,7 +23,9 @@ SRCS = main.c \
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
 
-OBJS = ${SRCS:.c=.o}
+OBJDIR = .obj
+
+OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
 NAME = cub3d
 
@@ -32,18 +34,19 @@ all: libft $(NAME)
 $(NAME): $(OBJS)
 	cc -Wall -Wextra -Werror -o $(NAME) $(OBJS) $(MINILIBX) -lm -L libft -lft
 
-%.o:%.c 
+$(OBJDIR)/%.o : %.c
+	mkdir -p $(dir $@)
 	cc -g3 -Wall -Wextra -Werror -o $@ -c $<
 
 libft:
 	cd libft ; make
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJDIR)
 	cd libft ; make clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 	cd libft ; make fclean
 
 re: fclean all
