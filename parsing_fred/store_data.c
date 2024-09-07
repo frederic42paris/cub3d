@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 12:55:13 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 13:02:02 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	store_six_line(t_mlx *mlx, char **string)
 		*string = NULL;
 		temp = concat2;
 		*string = get_next_line(mlx->fd);
-		if (string)
+		if (*string)
 		{
 			if (has_alpha_num(*string))
 			{
@@ -93,7 +93,10 @@ int	store_six_line(t_mlx *mlx, char **string)
 				free(*string);
 		}
 		else
-			break;
+		{
+			printf("Error\nIncomplete file\n");
+			return (1);
+		}
 	}
 	if (is_empty2(mlx, temp, concat2) == 1)
 		return (1);
@@ -156,7 +159,8 @@ int	store_data(t_mlx *mlx)
 	char	*string;
 
 	string = NULL;
-	store_six_line(mlx, &string);
+	if (store_six_line(mlx, &string))
+		return (1);
 	skip_empty_line(mlx, &string);
 	if (string == NULL)
 		return (1);
