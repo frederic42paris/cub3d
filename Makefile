@@ -1,15 +1,15 @@
 SRCS = main.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c \
-	simple_parsing_fred/check_argument.c \
-	simple_parsing_fred/error_message.c \
-	simple_parsing_fred/open_file.c \
-	simple_parsing_fred/analyse_map.c \
-	simple_parsing_fred/copy_map.c \
-	simple_parsing_fred/display_parsing.c \
-	simple_parsing_fred/parse_element.c \
-	simple_parsing_fred/parse_map.c \
-	simple_parsing_fred/parsing_utils.c \
+	parsing_fred/store_data.c \
+	parsing_fred/error_message.c \
+	parsing_fred/check_argument.c \
+	parsing_fred/display_parsing.c \
+	parsing_fred/open_file.c \
+	parsing_fred/parsing_utils.c \
+	parsing_fred/store_textures.c \
+	parsing_fred/store_map.c \
+	parsing_fred/analyse_map.c \
 	parser/init.c \
 	parser/parsing_utils.c \
 	parser/parsing_utils2.c \
@@ -18,7 +18,8 @@ SRCS = main.c \
 	parser/map_checker.c \
 	parser/map_checker_utils.c \
 	parser/map_checker_utils2.c \
-	parser/rgb_checks.c
+	parser/rgb_checks.c \
+
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11
 
@@ -48,3 +49,6 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re libft
+
+# simple_parsing_fred/parse_element.c \
+# simple_parsing_fred/parse_map.c \
