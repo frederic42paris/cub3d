@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 11:02:05 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 12:55:13 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,50 +64,52 @@ int	is_empty2(t_mlx *mlx, char *temp, char *concat)
 	return (0);
 }
 
-int	store_data(t_mlx *mlx)
+int	store_six_line(t_mlx *mlx, char **string)
 {
-	char	*string;
 	int		counter;
-	char	*temp;
-	char	*concat;
 	char	*concat2;
-
+	char	*temp;
 	counter = 0;
 	concat2 = ft_strdup("");
 	while (1)
 	{
 		if (counter == 6)
 			break;
-		string = NULL;
+		*string = NULL;
 		temp = concat2;
-		string = get_next_line(mlx->fd);
+		*string = get_next_line(mlx->fd);
 		if (string)
 		{
-			if (has_alpha_num(string))
+			if (has_alpha_num(*string))
 			{
-				concat2 = ft_strjoin(temp, string);
-				free(string);
+				concat2 = ft_strjoin(temp, *string);
+				free(*string);
 				free(temp);
 				// mlx->textures[counter] = ft_strdup(string);
 				// parse_information(mlx, string);
 				counter++;
 			}
 			else
-				free(string);
+				free(*string);
 		}
 		else
 			break;
 	}
 	if (is_empty2(mlx, temp, concat2) == 1)
 		return (1);
+	return (0);
+}
+
+int	skip_empty_line(t_mlx *mlx, char **string)
+{
 	while (1)
 	{
-		string = get_next_line(mlx->fd);
-		if (string)
+		*string = get_next_line(mlx->fd);
+		if (*string)
 		{
-			if (!has_alpha_num(string))
+			if (!has_alpha_num(*string))
 			{
-				free(string);
+				free(*string);
 				continue;
 			}
 			else
@@ -116,25 +118,29 @@ int	store_data(t_mlx *mlx)
 		else
 			break;
 	}
-	if (string == NULL)
-		return (1);
-	else
-	{
-		concat = ft_strdup("");
-		temp = concat;
-		concat = ft_strjoin(temp, string);
-		free(string);
-		free(temp);
-	}
+	return (0);
+}
+
+int	store_map_char(t_mlx *mlx, char **string)
+{
+	char	*temp;
+	char	*concat;
+
+	concat = ft_strdup("");
+	temp = concat;
+	concat = ft_strjoin(temp, *string);
+	free(*string);
+	free(temp);
+
 	while (1)
 	{
-		string = NULL;
+		*string = NULL;
 		temp = concat;
-		string = get_next_line(mlx->fd);
-		if (string)
+		*string = get_next_line(mlx->fd);
+		if (*string)
 		{
-			concat = ft_strjoin(temp, string);
-			free(string);
+			concat = ft_strjoin(temp, *string);
+			free(*string);
 			free(temp);
 		}
 		else
@@ -142,20 +148,20 @@ int	store_data(t_mlx *mlx)
 	}
 	if (is_empty(mlx, temp, concat) == 1)
 		return (1);
+	return (0);
+}
 
-	// int k;
-	// k = 0;
-	// while(k < 6)
-	// {
-	// 	printf("[%s]\n", mlx->textures[k]);
-	// 	k++;
-	// }
-	// k = 0;
-	// while (mlx->map_char[k])
-	// {
-	// 	printf("[%s]\n", mlx->map_char[k]);
-	// 	k++;
-	// }		
+int	store_data(t_mlx *mlx)
+{
+	char	*string;
 
+	string = NULL;
+	store_six_line(mlx, &string);
+	skip_empty_line(mlx, &string);
+	if (string == NULL)
+		return (1);
+	else
+		store_map_char(mlx, &string);
+	// printf("%s\n", string);
 	return (0);
 }

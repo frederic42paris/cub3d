@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:23:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 12:33:05 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 12:36:48 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,21 @@ void	display_parsing(t_mlx *mlx)
 	printf("%d\n", mlx->map_height);
 	printf("----------\n");
 	check_map_int(mlx);
+}
+
+void	display_data(t_mlx *mlx)
+{
+	int k;
+	k = 0;
+	while(k < 6)
+	{
+		printf("[%s]\n", mlx->textures[k]);
+		k++;
+	}
+	k = 0;
+	while (mlx->map_char[k])
+	{
+		printf("[%s]\n", mlx->map_char[k]);
+		k++;
+	}
 }

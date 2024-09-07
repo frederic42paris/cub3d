@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/07 12:02:33 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/07 12:49:08 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef struct s_mlx
 	int				ceiling_g;
 	int				ceiling_b;
 	char			**textures;
+	char			*string_buffer;
 	
 }		t_mlx;
 
@@ -190,5 +191,6 @@ int	store_textures(t_mlx *mlx);
 int	store_map(t_mlx *mlx);
 void	find_player(t_mlx *mlx);
 void	measure_map(t_mlx *mlx);
+void	display_data(t_mlx *mlx);
 
 #endif
