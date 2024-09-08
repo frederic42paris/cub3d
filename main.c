@@ -53,7 +53,8 @@ int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 	
-	check_argument(argv[1], argc);
+	if (check_argument(argv[1], argc) == 1)
+		return (1);
 	mlx = malloc(sizeof(t_mlx));
 	open_file(mlx, argv[1]);
 	if (store_data(mlx) == 1)
