@@ -67,7 +67,7 @@ int	store_map_one(t_mlx *mlx)
 			else if (mlx->map_char[i][j] == ' ')
 				mlx->map_int_one[i][j] = 2;
 			else if (mlx->map_char[i][j] == '\0')
-				mlx->map_int_one[i][j] = 2;
+				fill_empty(mlx, i, j, 2);
 			else
 				mlx->map_int_one[i][j] = mlx->map_char[i][j] - '0';
 			j++;
