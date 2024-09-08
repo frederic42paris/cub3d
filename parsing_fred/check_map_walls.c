@@ -18,22 +18,22 @@ int	check_map_walls_x(t_mlx *mlx)
 	int x;
 
 	y = 0;
-	while(y < mlx->map_height)
+	while(y < mlx->map_width)
 	{
 		x = 0;
-		while (x < mlx->map_width)
+		while (x < mlx->map_height)
 		{
-			while(x < mlx->map_width && mlx->map_int_one[y][x] == 2)
+			while(x < mlx->map_height && mlx->map_int_one[y][x] == 2)
 				x++;
 			// printf("%d %d %d\n",y, x, mlx->map_int_one[y][x]);
-			if (x < mlx->map_width && mlx->map_int_one[y][x] != 1)
+			if (x < mlx->map_height && mlx->map_int_one[y][x] != 1)
 			{
 				printf("x error 1 map %d %d\n", y ,x);
 				return (1);
 			}
-			else if (x == mlx->map_width)
+			else if (x == mlx->map_height)
 				break;
-			while(x < mlx->map_width && mlx->map_int_one[y][x] != 2)
+			while(x < mlx->map_height && mlx->map_int_one[y][x] != 2)
 				x++;
 			if (mlx->map_int_one[y][x - 1] != 1)
 			{
@@ -52,22 +52,22 @@ int	check_map_walls_y(t_mlx *mlx)
 	int x;
 
 	x = 0;
-	while(x < mlx->map_width)
+	while(x < mlx->map_height)
 	{
 		y = 0;
-		while (y < mlx->map_height)
+		while (y < mlx->map_width)
 		{
-			while(y < mlx->map_height && mlx->map_int_one[y][x] == 2)
+			while(y < mlx->map_width && mlx->map_int_one[y][x] == 2)
 				y++;
-			// printf("%d %d %d\n", x, y, mlx->map_height);
-			if (y < mlx->map_height && mlx->map_int_one[y][x] != 1)
+			// printf("%d %d %d\n", x, y, mlx->map_width);
+			if (y < mlx->map_width && mlx->map_int_one[y][x] != 1)
 			{
 				printf("y error  1map %d %d\n", y ,x);
 				return (1);
 			}
-			else if (y == mlx->map_height)
+			else if (y == mlx->map_width)
 				break;
-			while(y < mlx->map_height && mlx->map_int_one[y][x] != 2)
+			while(y < mlx->map_width && mlx->map_int_one[y][x] != 2)
 				y++;
 			if (mlx->map_int_one[y - 1][x] != 1)
 			{

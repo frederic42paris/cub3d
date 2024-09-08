@@ -40,11 +40,11 @@ int	check_map(t_mlx *mlx)
 {
 	if (check_map_line(mlx) == 1)
 		return (1);
-	if (check_map_walls(mlx) == 1)
-		return (1);
 	if (check_map_character(mlx) == 1)
 		return (1);
 	if (check_map_players(mlx) == 1)
+		return (1);
+	if (check_map_walls(mlx) == 1)
 		return (1);
 	return (0);
 }
@@ -64,9 +64,9 @@ int	main(int argc, char **argv)
 	// display_data(mlx);
 	find_player(mlx);
 	measure_map(mlx);
-	// store_map_one(mlx);
-	// if (check_map(mlx) == 1)
-		// return (1);
+	store_map_one(mlx);
+	if (check_map(mlx) == 1)
+		return (1);
 	store_textures(mlx);
 	store_map(mlx);
 	display_parsing(mlx);

@@ -21,6 +21,15 @@ void	fill_empty(t_mlx *mlx, int i, int j, int k)
 	}
 }
 
+void	fill_empty_one(t_mlx *mlx, int i, int j, int k)
+{
+	while (j < mlx->map_height)
+	{
+		mlx->map_int_one[i][j] = k;
+		j++;
+	}
+}
+
 int	store_map(t_mlx *mlx)
 {
 	int	i;
@@ -67,7 +76,7 @@ int	store_map_one(t_mlx *mlx)
 			else if (mlx->map_char[i][j] == ' ')
 				mlx->map_int_one[i][j] = 2;
 			else if (mlx->map_char[i][j] == '\0')
-				fill_empty(mlx, i, j, 2);
+				fill_empty_one(mlx, i, j, 2);
 			else
 				mlx->map_int_one[i][j] = mlx->map_char[i][j] - '0';
 			j++;
