@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/08 12:45:18 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 13:31:01 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,16 +200,16 @@ int	store_map(t_mlx *mlx);
 void	find_player(t_mlx *mlx);
 void	measure_map(t_mlx *mlx);
 void	display_data(t_mlx *mlx);
-int	check_identifier(t_mlx *mlx, char *str);
-int	check_duplicates(t_mlx *mlx);
-int	check_path(char *str);
-int	check_rgb(char *str);
+int	check_text_id(t_mlx *mlx, char *str);
+int	check_text_dup(t_mlx *mlx);
+int	check_text_path(char *str);
+int	check_text_rgb(char *str);
 size_t	ft_strlen_word(const char *s);
 int	parse_input(char *string);
 long	ft_atoi_fred(const char *string);
 int	check_map_walls(t_mlx *mlx);
 int	store_map_one(t_mlx *mlx);
-int check_characters(t_mlx *mlx);
-int check_nb_players(t_mlx *mlx);
+int check_map_character(t_mlx *mlx);
+int check_map_players(t_mlx *mlx);
 int check_map_line(t_mlx *mlx);
 #endif

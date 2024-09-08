@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 13:26:13 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 13:31:16 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	check_textures(t_mlx *mlx)
 		j = 0;
 		while (is_space(mlx->textures[i][j]))
 			j++;
-		if (check_identifier(mlx, (mlx->textures[i]) + j) == 1)
+		if (check_text_id(mlx, (mlx->textures[i]) + j) == 1)
 			return (1);
-		if (check_path((mlx->textures[i]) + j) == 1)
+		if (check_text_path((mlx->textures[i]) + j) == 1)
 			return (1);
-		if (check_rgb((mlx->textures[i]) + j) == 1)
+		if (check_text_rgb((mlx->textures[i]) + j) == 1)
 			return (1);
 		i++;
 	}
-	if (check_duplicates(mlx) == 1)
+	if (check_text_dup(mlx) == 1)
 		return (1);
 	return (0);
 }
@@ -42,9 +42,9 @@ int	check_map(t_mlx *mlx)
 		return (1);
 	if (check_map_walls(mlx) == 1)
 		return (1);
-	if (check_characters(mlx) == 1)
+	if (check_map_character(mlx) == 1)
 		return (1);
-	if (check_nb_players(mlx) == 1)
+	if (check_map_players(mlx) == 1)
 		return (1);
 	return (0);
 }

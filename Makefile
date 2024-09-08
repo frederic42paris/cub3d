@@ -8,17 +8,17 @@ SRCS = main.c \
 	parsing_fred/parsing_utils.c \
 	parsing_fred/parsing_utils2.c \
 	parsing_fred/store_textures.c \
-	parsing_fred/check_identifier.c \
 	parsing_fred/store_map.c \
 	parsing_fred/measure_map.c \
 	parsing_fred/find_player.c \
-	parsing_fred/check_duplicates.c \
+	parsing_fred/check_text_id.c \
+	parsing_fred/check_text_dup.c \
+	parsing_fred/check_text_path.c \
+	parsing_fred/check_text_rgb.c \
 	parsing_fred/check_map_walls.c \
-	parsing_fred/check_characters.c \
-	parsing_fred/check_nb_players.c \
+	parsing_fred/check_map_character.c \
+	parsing_fred/check_map_players.c \
 	parsing_fred/check_map_line.c \
-	parsing_fred/check_path.c \
-	parsing_fred/check_rgb.c \
 	parser/init.c \
 	parser/parsing_utils.c \
 	parser/parsing_utils2.c \
