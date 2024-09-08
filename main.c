@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 18:39:22 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:42:09 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 		// return (1);
 	store_textures(mlx);
 	store_map(mlx);
-	// display_parsing(mlx);
+	display_parsing(mlx);
 	init_values(mlx);
 	init_minilibx(mlx);
 	return (0);
