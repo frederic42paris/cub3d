@@ -25,10 +25,7 @@ int check_map_character(t_mlx *mlx)
 		{
 			if (mlx->map_char[i][j] != '0'
 				&& mlx->map_char[i][j] != '1'
-				&& mlx->map_char[i][j] != 'N'
-				&& mlx->map_char[i][j] != 'S'
-				&& mlx->map_char[i][j] != 'E'
-				&& mlx->map_char[i][j] != 'W'
+				&& is_player_character(mlx->map_char[i][j]) == 0
 				&& mlx->map_char[i][j] != ' '
 			)
 			{

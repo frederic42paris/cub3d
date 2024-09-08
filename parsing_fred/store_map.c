@@ -43,7 +43,7 @@ int	store_map(t_mlx *mlx)
 		j = 0;
 		while (j < mlx->map_height)
 		{
-			if (mlx->map_char[i][j] == 'N')
+			if (is_player_character(mlx->map_char[i][j]) == 1)
 				mlx->map_int[i][j] = 0;
 			else if (mlx->map_char[i][j] == ' ')
 				mlx->map_int[i][j] = 1;
@@ -71,7 +71,7 @@ int	store_map_one(t_mlx *mlx)
 		j = 0;
 		while (j < mlx->map_height)
 		{
-			if (mlx->map_char[i][j] == 'N')
+			if (is_player_character(mlx->map_char[i][j]) == 1)
 				mlx->map_int_one[i][j] = 0;
 			else if (mlx->map_char[i][j] == ' ')
 				mlx->map_int_one[i][j] = 2;

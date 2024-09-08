@@ -150,7 +150,7 @@ typedef struct s_mlx
 	int				count_c;
 	int				count_f;
 	int				**map_int_one;
-	
+	char			player_char;
 	
 }		t_mlx;
 
@@ -215,4 +215,5 @@ int check_map_line(t_mlx *mlx);
 void	init_minilibx(t_mlx *mlx);
 void	init_values(t_mlx *mlx);
 int		raycasting(t_mlx *mlx);
+int is_player_character(char c);
 #endif

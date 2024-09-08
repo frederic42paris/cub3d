@@ -51,3 +51,10 @@ size_t	ft_strlen_word(const char *s)
 		i++;
 	return (i);
 }
+
+int	is_player_character(char c)
+{
+	if ((c == 'N') || (c == 'S') || (c == 'W') || (c == 'E'))
+		return (1);
+	return (0);
+}

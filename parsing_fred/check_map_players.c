@@ -25,11 +25,7 @@ int check_map_players(t_mlx *mlx)
 		j = 0;
 		while (mlx->map_char[i][j])
 		{
-			if (mlx->map_char[i][j] == 'N'
-				|| mlx->map_char[i][j] == 'S'
-				|| mlx->map_char[i][j] == 'E'
-				|| mlx->map_char[i][j] == 'W'
-			)
+			if (is_player_character(mlx->map_char[i][j]) == 1)
 				counter++;
 			j++;
 		}

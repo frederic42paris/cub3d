@@ -90,6 +90,7 @@ void	display_parsing(t_mlx *mlx)
 	printf("----------\n");
 	printf("%f\n", mlx->posX);
 	printf("%f\n", mlx->posY);
+	printf("%c\n", mlx->player_char);
 	printf("----------\n");
 	printf("%d\n", mlx->map_width);
 	printf("%d\n", mlx->map_height);
