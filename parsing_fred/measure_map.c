@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:17:28 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 12:00:04 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:07:58 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	measure_map(t_mlx *mlx)
 		}
 		j++;
 	}
-	mlx->map_width = width;
-	mlx->map_height = j;
+	mlx->map_width = j;
+	mlx->map_height = width;
 }

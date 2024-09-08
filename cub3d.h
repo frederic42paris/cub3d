@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/08 17:53:41 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:04:20 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 #define SW 640
 #define SH 480
-#define MAPW 24
-#define MAPH 24
+#define MAPW 5
+#define MAPH 10
 #define KEY_W	119
 #define KEY_S	115
 #define KEY_D	100

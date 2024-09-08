@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 13:13:57 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 17:57:25 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,10 +133,10 @@ int	store_map_char(t_mlx *mlx, char **string)
 	char	*concat;
 
 	concat = ft_strdup("");
-	temp = concat;
-	concat = ft_strjoin(temp, *string);
-	free(*string);
-	free(temp);
+	// temp = concat;
+	// concat = ft_strjoin(temp, *string);
+	// free(*string);
+	// free(temp);
 
 	while (1)
 	{
@@ -162,16 +162,16 @@ int	store_data(t_mlx *mlx)
 	char	*string;
 
 	string = NULL;
-	if (store_six_line(mlx, &string))
-		return (1);
-	if (skip_empty_line(mlx, &string))
-		return (1);
-	if (string == NULL)
-	{
-		printf("Error\nIncomplete file\n");
-		return (1);
-	}
-	else
-		store_map_char(mlx, &string);
+	// if (store_six_line(mlx, &string))
+	// 	return (1);
+	// if (skip_empty_line(mlx, &string))
+	// 	return (1);
+	// if (string == NULL)
+	// {
+	// 	printf("Error\nIncomplete file\n");
+	// 	return (1);
+	// }
+	// else
+	store_map_char(mlx, &string);
 	return (0);
 }

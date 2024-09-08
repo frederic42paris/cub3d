@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 17:08:49 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:21:36 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,8 +270,8 @@ void	init_values(t_mlx *mlx)
 {
 	// mlx->posX = 22;
 	// mlx->posY = 12;
-	mlx->dirX = -1;
-	mlx->dirY = 0;
+	mlx->dirX = 0;
+	mlx->dirY = -1;
 	mlx->planeX = 0;
 	mlx->planeY = 0.66;
 	mlx->time = 0;

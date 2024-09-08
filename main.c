@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 17:53:22 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:25:29 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,13 @@
 // 	return (0);
 // }
 
-int worldMap[MAPW][MAPH]=
+int worldMap[5][10]=
 {
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+{1,1,1,1,1,1,1,1,1,1},
+{1,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,1},
+{1,1,1,1,1,1,1,1,1,1}
 };
 
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
@@ -181,7 +162,7 @@ int	raycasting(t_mlx *mlx)
 				mlx->mapY += mlx->stepY;
 				mlx->side = 1;
 			}
-			if (worldMap[mlx->mapX][mlx->mapY] > 0)
+			if (mlx->map_int[mlx->mapX][mlx->mapY] > 0)
 				mlx->hit = 1;
 		}
 
@@ -203,13 +184,13 @@ int	raycasting(t_mlx *mlx)
 			mlx->drawEnd = SH - 1;
 
 		//choose wall color
-		if (worldMap[mlx->mapX][mlx->mapY] == 1)
+		if (mlx->map_int[mlx->mapX][mlx->mapY] == 1)
 			mlx->color = 0xFF0000;
-		else if (worldMap[mlx->mapX][mlx->mapY] == 2)
+		else if (mlx->map_int[mlx->mapX][mlx->mapY] == 2)
 			mlx->color = 0x00FF00;
-		else if (worldMap[mlx->mapX][mlx->mapY] == 3)
+		else if (mlx->map_int[mlx->mapX][mlx->mapY] == 3)
 			mlx->color = 0x0000FF;
-		else if (worldMap[mlx->mapX][mlx->mapY] == 4)
+		else if (mlx->map_int[mlx->mapX][mlx->mapY] == 4)
 			mlx->color = 0xFFFFFF;
 		else
 			mlx->color = 0xFFFF00;
@@ -235,17 +216,17 @@ int	key_hook(int keycode, t_mlx *mlx)
 	}
 	if (keycode == KEY_W)
 	{
-		if (!worldMap[(int)(mlx->posX + mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)(mlx->posX + mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX += mlx->dirX * mlx->moveSpeed;
-		if (!worldMap[(int)mlx->posX][(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)])
 			mlx->posY += mlx->dirY * mlx->moveSpeed;
 	}
 	if (keycode == KEY_S)
 	{
 
-		if (!worldMap[(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
 			mlx->posX -= mlx->dirX * mlx->moveSpeed;
-		if (!worldMap[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
 			mlx->posY -= mlx->dirY * mlx->moveSpeed;
 	}
 	if (keycode == KEY_A)
@@ -277,12 +258,12 @@ int	key_hook(int keycode, t_mlx *mlx)
 
 void	init_values(t_mlx *mlx)
 {
-	mlx->posX = 22;
-	mlx->posY = 12;
-	mlx->dirX = -1;
-	mlx->dirY = 0;
-	mlx->planeX = 0;
-	mlx->planeY = 0.66;
+	// mlx->posX = 2;
+	// mlx->posY = 2;
+	mlx->dirX = 0;
+	mlx->dirY = 1;
+	mlx->planeX = 0.66;
+	mlx->planeY = 0;
 	mlx->time = 0;
 	mlx->oldTime = 0;
 	mlx->moveSpeed = 1;
@@ -300,11 +281,45 @@ void	start_game(t_mlx *mlx)
 	mlx_loop(mlx->mlx_p);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 
+	check_argument(argv[1], argc);
 	mlx = malloc(sizeof(t_mlx));
+	open_file(mlx, argv[1]);
+	store_data(mlx);
+	display_data(mlx);
+	find_player(mlx);
+	measure_map(mlx);
+	store_map(mlx);
+	display_parsing(mlx);
+	
 	init_values(mlx);
 	start_game(mlx);
 }
+
+// int	main(int argc, char **argv)
+// {
+// 	t_mlx	*mlx;
+	
+// 	check_argument(argv[1], argc);
+// 	mlx = malloc(sizeof(t_mlx));
+// 	open_file(mlx, argv[1]);
+// 	if (store_data(mlx) == 1)
+// 		return (1);
+// 	if (check_textures(mlx) == 1)
+// 		return (1);
+// 	// display_data(mlx);
+// 	find_player(mlx);
+// 	measure_map(mlx);
+// 	store_map_one(mlx);
+// 	if (check_map(mlx) == 1)
+// 		return (1);
+// 	store_textures(mlx);
+// 	store_map(mlx);
+// 	display_parsing(mlx);
+// 	init_values(mlx);
+// 	init_minilibx(mlx);
+// 	return (0);
+// }
