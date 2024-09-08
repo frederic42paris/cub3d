@@ -59,8 +59,8 @@ int	main(int argc, char **argv)
 	open_file(mlx, argv[1]);
 	if (store_data(mlx) == 1)
 		return (1);
-	// if (check_textures(mlx) == 1)
-		// return (1);
+	if (check_textures(mlx) == 1)
+		return (1);
 	// display_data(mlx);
 	find_player(mlx);
 	measure_map(mlx);

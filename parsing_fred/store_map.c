@@ -12,6 +12,15 @@
 
 #include "../cub3d.h"
 
+void	fill_empty(t_mlx *mlx, int i, int j)
+{
+	while (j < mlx->map_height)
+	{
+		mlx->map_int[i][j] = 1;
+		j++;
+	}
+}
+
 int	store_map(t_mlx *mlx)
 {
 	int	i;
@@ -30,7 +39,7 @@ int	store_map(t_mlx *mlx)
 			else if (mlx->map_char[i][j] == ' ')
 				mlx->map_int[i][j] = 1;
 			else if (mlx->map_char[i][j] == '\0')
-				mlx->map_int[i][j] = 1;
+				fill_empty(mlx, i, j);
 			else
 				mlx->map_int[i][j] = mlx->map_char[i][j] - '0';
 			j++;
@@ -46,12 +55,12 @@ int	store_map_one(t_mlx *mlx)
 	int	j;
 
 	i = 0;
-	mlx->map_int_one = malloc(sizeof(int *) * (mlx->map_height));
-	while (i < mlx->map_height)
+	mlx->map_int_one = malloc(sizeof(int *) * (mlx->map_width));
+	while (i < mlx->map_width)
 	{
-		mlx->map_int_one[i] = malloc(sizeof(int) * (mlx->map_width));
+		mlx->map_int_one[i] = malloc(sizeof(int) * (mlx->map_height));
 		j = 0;
-		while (j < mlx->map_width)
+		while (j < mlx->map_height)
 		{
 			if (mlx->map_char[i][j] == 'N')
 				mlx->map_int_one[i][j] = 0;
