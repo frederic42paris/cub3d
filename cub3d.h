@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/08 13:31:01 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:35:44 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,4 +212,7 @@ int	store_map_one(t_mlx *mlx);
 int check_map_character(t_mlx *mlx);
 int check_map_players(t_mlx *mlx);
 int check_map_line(t_mlx *mlx);
+void	init_minilibx(t_mlx *mlx);
+void	init_values(t_mlx *mlx);
+int		raycasting(t_mlx *mlx);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:23:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 12:24:49 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:37:18 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void check_map_int(t_mlx *mlx)
 
 	i = 0;
 	j = 0;
-	while(i < mlx->map_height)
+	while(i < mlx->map_width)
 	{
 		j = 0;
-		while(j < mlx->map_width)
+		while(j < mlx->map_height)
 		{
 			printf("%d", mlx->map_int[i][j]);
 			j++;

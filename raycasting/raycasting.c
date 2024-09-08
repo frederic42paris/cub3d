@@ -6,11 +6,11 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 10:13:56 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 18:35:59 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
