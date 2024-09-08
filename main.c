@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 12:50:52 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 13:26:13 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ int	check_textures(t_mlx *mlx)
 	return (0);
 }
 
+int	check_map(t_mlx *mlx)
+{
+	if (check_map_line(mlx) == 1)
+		return (1);
+	if (check_map_walls(mlx) == 1)
+		return (1);
+	if (check_characters(mlx) == 1)
+		return (1);
+	if (check_nb_players(mlx) == 1)
+		return (1);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
@@ -45,20 +58,13 @@ int	main(int argc, char **argv)
 	open_file(mlx, argv[1]);
 	if (store_data(mlx) == 1)
 		return (1);
-	// if (check_textures(mlx) == 1)
-		// return (1);
+	if (check_textures(mlx) == 1)
+		return (1);
 	// display_data(mlx);
-	
 	find_player(mlx);
 	measure_map(mlx);
 	store_map_one(mlx);
-	if (check_map_line(mlx) == 1)
-		return (1);
-	if (check_map_walls(mlx) == 1)
-		return (1);
-	if (check_characters(mlx) == 1)
-		return (1);
-	if (check_nb_players(mlx) == 1)
+	if (check_map(mlx) == 1)
 		return (1);
 	store_textures(mlx);
 	store_map(mlx);
