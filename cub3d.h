@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/08 13:31:01 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 17:53:41 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,14 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define SW 640
-# define SH 480
-# define MAPW 24
-# define MAPH 24
-# define KEY_W	119
-# define KEY_S	115
-# define KEY_D	100
-# define KEY_A	97
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
-# define TEXTW 64
-# define TEXTH 64
+#define SW 640
+#define SH 480
+#define MAPW 24
+#define MAPH 24
+#define KEY_W	119
+#define KEY_S	115
+#define KEY_D	100
+#define KEY_A	97
 
 typedef struct s_mlx
 {
@@ -212,4 +208,8 @@ int	store_map_one(t_mlx *mlx);
 int check_map_character(t_mlx *mlx);
 int check_map_players(t_mlx *mlx);
 int check_map_line(t_mlx *mlx);
+
+void	init_minilibx(t_mlx *mlx);
+void	init_values(t_mlx *mlx);
+int		raycasting(t_mlx *mlx);
 #endif

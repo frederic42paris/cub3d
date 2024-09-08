@@ -6,11 +6,11 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/06 10:13:56 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 17:08:49 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
@@ -21,30 +21,30 @@ int	key_hook(int keycode, t_mlx *mlx)
 	}
 	if (keycode == KEY_W)
 	{
-		if (!mlx->map_int[(int)(mlx->posX + mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)mlx->posY][(int)(mlx->posX + mlx->dirX * mlx->moveSpeed)])
 			mlx->posX += mlx->dirX * mlx->moveSpeed;
-		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)(mlx->posY + mlx->dirY * mlx->moveSpeed)][(int)mlx->posX])
 			mlx->posY += mlx->dirY * mlx->moveSpeed;
 	}
 	if (keycode == KEY_S)
 	{
-		if (!mlx->map_int[(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)mlx->posY][(int)(mlx->posX - mlx->dirX * mlx->moveSpeed)])
 			mlx->posX -= mlx->dirX * mlx->moveSpeed;
-		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)(mlx->posY - mlx->dirY * mlx->moveSpeed)][(int)mlx->posX])
 			mlx->posY -= mlx->dirY * mlx->moveSpeed;
 	}
 	if (keycode == KEY_D)
 	{
-		if (!mlx->map_int[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)mlx->posY][(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)])
 			mlx->posX += mlx->dirY * mlx->moveSpeed;
-		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY - mlx->dirX * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)(mlx->posY - mlx->dirX * mlx->moveSpeed)][(int)mlx->posX])
 			mlx->posY -= mlx->dirX * mlx->moveSpeed;
 	}
 	if (keycode == KEY_A)
 	{
-		if (!mlx->map_int[(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)][(int)mlx->posY])
+		if (!mlx->map_int[(int)mlx->posY][(int)(mlx->posX + mlx->dirY * mlx->moveSpeed)])
 			mlx->posX -= mlx->dirY * mlx->moveSpeed;
-		if (!mlx->map_int[(int)mlx->posX][(int)(mlx->posY + mlx->dirX * mlx->moveSpeed)])
+		if (!mlx->map_int[(int)(mlx->posY + mlx->dirX * mlx->moveSpeed)][(int)mlx->posX])
 			mlx->posY += mlx->dirX * mlx->moveSpeed;
 	}
 	if (keycode == KEY_LEFT)
@@ -156,22 +156,22 @@ void walls(t_mlx *mlx)
 		if (mlx->rayDirX < 0)
 		{
 			mlx->stepX = -1;
-			mlx->sideDistX = (mlx->posX - mlx->mapX) * mlx->deltaDistX;
+			mlx->sideDistX = (mlx->posX - mlx->mapY) * mlx->deltaDistX;
 		}
 		else
 		{
 			mlx->stepX = 1;
-			mlx->sideDistX = (mlx->mapX + 1.0 - mlx->posX) * mlx->deltaDistX;
+			mlx->sideDistX = (mlx->mapY + 1.0 - mlx->posX) * mlx->deltaDistX;
 		}
 		if (mlx->rayDirY < 0)
 		{
 			mlx->stepY = -1;
-			mlx->sideDistY = (mlx->posY - mlx->mapY) * mlx->deltaDistY;
+			mlx->sideDistY = (mlx->posY - mlx->mapX) * mlx->deltaDistY;
 		}
 		else
 		{
 			mlx->stepY = 1;
-			mlx->sideDistY = (mlx->mapY + 1.0 - mlx->posY) * mlx->deltaDistY;
+			mlx->sideDistY = (mlx->mapX + 1.0 - mlx->posY) * mlx->deltaDistY;
 		}
 
 		//perform DDA
@@ -180,16 +180,16 @@ void walls(t_mlx *mlx)
 			if (mlx->sideDistX < mlx->sideDistY)
 			{
 				mlx->sideDistX += mlx->deltaDistX;
-				mlx->mapX += mlx->stepX;
+				mlx->mapY += mlx->stepX;
 				mlx->side = 0;
 			}
 			else
 			{
 				mlx->sideDistY += mlx->deltaDistY;
-				mlx->mapY += mlx->stepY;
+				mlx->mapX += mlx->stepY;
 				mlx->side = 1;
 			}
-			if (mlx->map_int[mlx->mapX][mlx->mapY] > 0)
+			if (mlx->map_int[mlx->mapY][mlx->mapX] > 0)
 				mlx->hit = 1;
 		}
 
@@ -211,7 +211,7 @@ void walls(t_mlx *mlx)
 			mlx->drawEnd = SH - 1;
 
 		//texturing calculations
-		mlx->texNum = mlx->map_int[mlx->mapX][mlx->mapY] - 1;
+		mlx->texNum = mlx->map_int[mlx->mapY][mlx->mapX] - 1;
 		
 		//calculate value of wallX
 		if(mlx->side == 0)
@@ -260,7 +260,7 @@ void walls(t_mlx *mlx)
 
 int	raycasting(t_mlx *mlx)
 {
-	floor_ceiling(mlx);
+	// floor_ceiling(mlx);
 	walls(mlx);
 	mlx_put_image_to_window(mlx->mlx_p, mlx->win_ptr, mlx->img, 0, 0);
 	return 0;
@@ -278,6 +278,12 @@ void	init_values(t_mlx *mlx)
 	mlx->oldTime = 0;
 	mlx->moveSpeed = 1;
 	mlx->rotSpeed = 0.5;
+	mlx->count_no = 0;
+	mlx->count_so = 0;
+	mlx->count_ea = 0;
+	mlx->count_we = 0;
+	mlx->count_c = 0;
+	mlx->count_f = 0;
 }
 
 int	store_images(t_mlx *mlx)
