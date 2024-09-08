@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/07 19:03:49 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 12:45:18 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,4 +209,7 @@ int	parse_input(char *string);
 long	ft_atoi_fred(const char *string);
 int	check_map_walls(t_mlx *mlx);
 int	store_map_one(t_mlx *mlx);
+int check_characters(t_mlx *mlx);
+int check_nb_players(t_mlx *mlx);
+int check_map_line(t_mlx *mlx);
 #endif

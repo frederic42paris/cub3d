@@ -14,6 +14,9 @@ SRCS = main.c \
 	parsing_fred/find_player.c \
 	parsing_fred/check_duplicates.c \
 	parsing_fred/check_map_walls.c \
+	parsing_fred/check_characters.c \
+	parsing_fred/check_nb_players.c \
+	parsing_fred/check_map_line.c \
 	parsing_fred/check_path.c \
 	parsing_fred/check_rgb.c \
 	parser/init.c \

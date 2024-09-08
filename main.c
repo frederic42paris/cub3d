@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 19:25:09 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 12:50:52 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ int	main(int argc, char **argv)
 	find_player(mlx);
 	measure_map(mlx);
 	store_map_one(mlx);
-	check_map_walls(mlx);
+	if (check_map_line(mlx) == 1)
+		return (1);
+	if (check_map_walls(mlx) == 1)
+		return (1);
+	if (check_characters(mlx) == 1)
+		return (1);
+	if (check_nb_players(mlx) == 1)
+		return (1);
 	store_textures(mlx);
 	store_map(mlx);
 	display_parsing(mlx);

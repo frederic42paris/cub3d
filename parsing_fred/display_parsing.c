@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:23:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 17:58:26 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/08 12:24:49 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,29 +74,29 @@ void check_map_int_one(t_mlx *mlx)
 
 void	display_parsing(t_mlx *mlx)
 {
-	// printf("%s\n", mlx->path_north);
-	// printf("%s\n", mlx->path_south);
-	// printf("%s\n", mlx->path_east);
-	// printf("%s\n", mlx->path_west);
-	// printf("----------\n");
-	// printf("%d\n", mlx->floor_r);
-	// printf("%d\n", mlx->floor_g);
-	// printf("%d\n", mlx->floor_b);
-	// printf("%d\n", mlx->ceiling_r);
-	// printf("%d\n", mlx->ceiling_g);
-	// printf("%d\n", mlx->ceiling_b);
+	printf("%s\n", mlx->path_north);
+	printf("%s\n", mlx->path_south);
+	printf("%s\n", mlx->path_east);
+	printf("%s\n", mlx->path_west);
+	printf("----------\n");
+	printf("%d\n", mlx->floor_r);
+	printf("%d\n", mlx->floor_g);
+	printf("%d\n", mlx->floor_b);
+	printf("%d\n", mlx->ceiling_r);
+	printf("%d\n", mlx->ceiling_g);
+	printf("%d\n", mlx->ceiling_b);
 	printf("----------\n");
 	check_map_char(mlx);
-	// printf("----------\n");
-	// printf("%f\n", mlx->posX);
-	// printf("%f\n", mlx->posY);
-	// printf("----------\n");
-	// printf("%d\n", mlx->map_width);
-	// printf("%d\n", mlx->map_height);
-	// printf("----------\n");
-	// check_map_int_one(mlx);
-	// printf("----------\n");
-	// check_map_int(mlx);
+	printf("----------\n");
+	printf("%f\n", mlx->posX);
+	printf("%f\n", mlx->posY);
+	printf("----------\n");
+	printf("%d\n", mlx->map_width);
+	printf("%d\n", mlx->map_height);
+	printf("----------\n");
+	check_map_int_one(mlx);
+	printf("----------\n");
+	check_map_int(mlx);
 }
 
 void	display_data(t_mlx *mlx)
