@@ -24,10 +24,11 @@ void	find_player(t_mlx *mlx)
 		i = 0;
 		while (mlx->map_char[j][i] != '\0')
 		{
-			if (mlx->map_char[j][i] == 'N')
+			if (is_player_character(mlx->map_char[j][i]) == 1)
 			{
 				mlx->posX = j;
 				mlx->posY = i;
+				mlx->player_char = mlx->map_char[j][i];
 			}
 			i++;
 		}

@@ -268,16 +268,36 @@ int	raycasting(t_mlx *mlx)
 
 void	init_values(t_mlx *mlx)
 {
-	// mlx->posX = 22;
-	// mlx->posY = 12;
-	mlx->dirX = -1;
+	mlx->dirX = 0;
 	mlx->dirY = 0;
 	mlx->planeX = 0;
-	mlx->planeY = 0.66;
-	mlx->time = 0;
-	mlx->oldTime = 0;
+	mlx->planeY = 0;
+	if (mlx->player_char == 'N')
+	{
+		mlx->dirX = -1;
+		mlx->planeY = 0.66;
+	}
+	else if (mlx->player_char == 'S')
+	{
+		mlx->dirX = 1;
+		mlx->planeY = -0.66;
+	}
+	else if (mlx->player_char == 'E')
+	{
+		mlx->dirY = 1;
+		mlx->planeX = 0.66;
+	}
+	else if (mlx->player_char == 'W')
+	{
+		mlx->dirY = -1;
+		mlx->planeX = -0.66;
+	}
 	mlx->moveSpeed = 1;
 	mlx->rotSpeed = 0.5;
+	// mlx->time = 0;
+	// mlx->oldTime = 0;
+	// mlx->posX = 22;
+	// mlx->posY = 12;
 }
 
 int	store_images(t_mlx *mlx)
