@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 18:42:09 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:05:51 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ int	main(int argc, char **argv)
 	if (check_argument(argv[1], argc) == 1)
 		return (1);
 	mlx = malloc(sizeof(t_mlx));
+	mlx->count_no = 0;
+	mlx->count_so = 0;
+	mlx->count_ea = 0;
+	mlx->count_we = 0;
+	mlx->count_c = 0;
+	mlx->count_f = 0;
 	open_file(mlx, argv[1]);
 	if (store_data(mlx) == 1)
 		return (1);

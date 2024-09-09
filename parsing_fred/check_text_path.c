@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:39:00 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 13:32:45 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:12:08 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	open_xpm(char *str)
 		j++;
 	path = ft_substr(str, i, j);
 	fd = open(path, O_RDONLY);
+	free(path);
 	if (fd < 0)
 	{
 		printf("Xpm not found\n");

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:01:44 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 13:56:34 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:06:37 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_strdup_digit(const char *s, int *j)
 	*j = *j + i;
 	dest[i] = '\0';
 	final = ft_atoi(dest);
+	free(dest);
 	return (final);
 }
 
