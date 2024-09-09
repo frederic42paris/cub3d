@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 17:44:00 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:50:02 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static void	nullifer(t_mlx *mlx)
 	mlx->bluestone = NULL;
 	mlx->red = NULL;
 	mlx->wood = NULL;
+	mlx->img = NULL;
 }
 
 int	main(int argc, char **argv)

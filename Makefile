@@ -63,7 +63,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re libft
-
-# simple_parsing_fred/parse_element.c \
-# parsing_fred/error_message.c \
-# simple_parsing_fred/parse_map.c \
