@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 16:42:49 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:11:40 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 {
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(mlx->mlx_p, mlx->win_ptr);
+		ender(mlx);
 		return (0);
 	}
 	if (keycode == KEY_W)

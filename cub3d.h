@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/09 16:41:22 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/09 16:59:48 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ typedef struct s_mlx
 	int				ceiling_g;
 	int				ceiling_b;
 	char			**textures;
-	char			*string_buffer;
 	int				count_no;
 	int				count_so;
 	int				count_ea;
