@@ -68,10 +68,10 @@ static void	nullifer(t_mlx *mlx)
 	mlx->win_ptr = NULL;
 	mlx->mlx_p = NULL;
 	mlx->fd = 0;
-	mlx->greystone = NULL;
-	mlx->bluestone = NULL;
-	mlx->red = NULL;
-	mlx->wood = NULL;
+	mlx->text_south = NULL;
+	mlx->text_east = NULL;
+	mlx->text_north = NULL;
+	mlx->text_west = NULL;
 	mlx->img = NULL;
 }
 

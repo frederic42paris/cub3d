@@ -14,14 +14,14 @@
 
 static void	ending_subroutine(t_mlx *mlx)
 {
-	if (mlx->greystone != NULL)
-		mlx_destroy_image(mlx->mlx_p, mlx->greystone);
-	if (mlx->bluestone != NULL)
-		mlx_destroy_image(mlx->mlx_p, mlx->bluestone);
-	if (mlx->red != NULL)
-		mlx_destroy_image(mlx->mlx_p, mlx->red);
-	if (mlx->wood != NULL)
-		mlx_destroy_image(mlx->mlx_p, mlx->wood);
+	if (mlx->text_south != NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->text_south);
+	if (mlx->text_east != NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->text_east);
+	if (mlx->text_north != NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->text_north);
+	if (mlx->text_west != NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->text_west);
 	if (mlx->img != NULL)
 		mlx_destroy_image(mlx->mlx_p, mlx->img);
 	if (mlx->win_ptr != NULL)

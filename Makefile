@@ -19,15 +19,6 @@ SRCS = main.c \
 	parsing_fred/check_map_character.c \
 	parsing_fred/check_map_players.c \
 	parsing_fred/check_map_line.c \
-	parser/init.c \
-	parser/parsing_utils.c \
-	parser/parsing_utils2.c \
-	parser/parsing_utils3.c \
-	parser/map_builder_utils.c \
-	parser/map_checker.c \
-	parser/map_checker_utils.c \
-	parser/map_checker_utils2.c \
-	parser/rgb_checks.c \
 	raycasting/raycasting.c \
 	ender.c
 

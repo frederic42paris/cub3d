@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 17:27:45 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/09 18:53:53 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,16 +255,16 @@ void walls(t_mlx *mlx)
         	mlx->texPos += mlx->step;
 
 			if (mlx->side == 0 && mlx->rayDirX < 0)
-				mlx->color = mlx->bluestone_addr[mlx->texY * TEXTH + mlx->texX];
+				mlx->color = mlx->text_east_addr[mlx->texY * TEXTH + mlx->texX];
 			else if (mlx->side == 0 && mlx->rayDirX >= 0)
-				mlx->color = mlx->greystone_addr[mlx->texY * TEXTH + mlx->texX];
+				mlx->color = mlx->text_south_addr[mlx->texY * TEXTH + mlx->texX];
 			else if (mlx->side == 1 && mlx->rayDirY < 0)
-				mlx->color = mlx->red_addr[mlx->texY * TEXTH + mlx->texX];
+				mlx->color = mlx->text_north_addr[mlx->texY * TEXTH + mlx->texX];
 			else if (mlx->side == 1 && mlx->rayDirY >= 0)
-				mlx->color = mlx->wood_addr[mlx->texY * TEXTH + mlx->texX];
+				mlx->color = mlx->text_west_addr[mlx->texY * TEXTH + mlx->texX];
 			// int d = y * 256 - SH * 128 + mlx->lineHeight * 128;
 			// mlx->texY = ((d * TEXTH) / mlx->lineHeight) / 256;
-			// mlx->color = mlx->greystone_addr[mlx->texY * TEXTW + mlx->texX];
+			// mlx->color = mlx->text_south_addr[mlx->texY * TEXTW + mlx->texX];
 			
 			my_mlx_pixel_put(mlx, x, y, mlx->color);
 			y++;
@@ -320,19 +320,19 @@ int	store_images(t_mlx *mlx)
 	int		img_width;
 	int		img_height;
 
-	mlx->greystone = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_north, &img_width, &img_height);
-	mlx->bluestone = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_south, &img_width, &img_height);
-	mlx->red = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_east, &img_width, &img_height);
-	mlx->wood = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_west, &img_width, &img_height);
+	mlx->text_north = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_east, &img_width, &img_height);
+	mlx->text_south = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_south, &img_width, &img_height);
+	mlx->text_west = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_west, &img_width, &img_height);
+	mlx->text_east = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_north, &img_width, &img_height);
 	return (0);
 }
 
 int	store_images_addr(t_mlx *mlx)
 {
-	mlx->greystone_addr = (int *)mlx_get_data_addr(mlx->greystone, &mlx->bits_per_pixel_grey, &mlx->line_length_grey, &mlx->endian_grey);
-	mlx->bluestone_addr = (int *)mlx_get_data_addr(mlx->bluestone, &mlx->bits_per_pixel_blue, &mlx->line_length_blue, &mlx->endian_blue);
-	mlx->red_addr = (int *)mlx_get_data_addr(mlx->red, &mlx->bits_per_pixel_red, &mlx->line_length_red, &mlx->endian_red);
-	mlx->wood_addr = (int *)mlx_get_data_addr(mlx->wood, &mlx->bits_per_pixel_wood, &mlx->line_length_wood, &mlx->endian_wood);
+	mlx->text_south_addr = (int *)mlx_get_data_addr(mlx->text_south, &mlx->bits_per_pixel_text_south, &mlx->line_length_text_south, &mlx->endian_text_south);
+	mlx->text_east_addr = (int *)mlx_get_data_addr(mlx->text_east, &mlx->bits_per_pixel_text_east, &mlx->line_length_text_east, &mlx->endian_text_east);
+	mlx->text_north_addr = (int *)mlx_get_data_addr(mlx->text_north, &mlx->bits_per_pixel_text_north, &mlx->line_length_text_north, &mlx->endian_text_north);
+	mlx->text_west_addr = (int *)mlx_get_data_addr(mlx->text_west, &mlx->bits_per_pixel_text_west, &mlx->line_length_text_west, &mlx->endian_text_west);
 	return (0);
 }
 
