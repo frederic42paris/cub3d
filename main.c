@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 17:05:51 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:44:00 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,31 @@ int	check_map(t_mlx *mlx)
 	return (0);
 }
 
+static void	nullifer(t_mlx *mlx)
+{
+	mlx->count_no = 0;
+	mlx->count_so = 0;
+	mlx->count_ea = 0;
+	mlx->count_we = 0;
+	mlx->count_c = 0;
+	mlx->count_f = 0;
+	mlx->path_north = NULL;
+	mlx->path_south = NULL;
+	mlx->path_east = NULL;
+	mlx->path_west = NULL;
+	mlx->textures = NULL;
+	mlx->map_char = NULL;
+	mlx->map_int = NULL;
+	mlx->map_int_one = NULL;
+	mlx->win_ptr = NULL;
+	mlx->mlx_p = NULL;
+	mlx->fd = 0;
+	mlx->greystone = NULL;
+	mlx->bluestone = NULL;
+	mlx->red = NULL;
+	mlx->wood = NULL;
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
@@ -56,27 +81,24 @@ int	main(int argc, char **argv)
 	if (check_argument(argv[1], argc) == 1)
 		return (1);
 	mlx = malloc(sizeof(t_mlx));
-	mlx->count_no = 0;
-	mlx->count_so = 0;
-	mlx->count_ea = 0;
-	mlx->count_we = 0;
-	mlx->count_c = 0;
-	mlx->count_f = 0;
+	nullifer(mlx);
+	if (!mlx)
+		return (printf("Error: memory allocation failed\n"), 1);
 	open_file(mlx, argv[1]);
 	if (store_data(mlx) == 1)
-		return (1);
+		return (ender(mlx), 1);
 	if (check_textures(mlx) == 1)
-		return (1);
+		return (ender(mlx), 1);
 	// display_data(mlx);
 	find_player(mlx);
 	measure_map(mlx);
 	store_map_one(mlx);
 	if (check_map(mlx) == 1)
-		return (1);
+		return (ender(mlx), 1);
 	store_textures(mlx);
 	store_map(mlx);
 	display_parsing(mlx);
 	init_values(mlx);
 	init_minilibx(mlx);
-	return (0);
+	return (ender(mlx), 0);
 }

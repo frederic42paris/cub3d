@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/08 18:35:44 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:28:14 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,4 +216,6 @@ void	init_minilibx(t_mlx *mlx);
 void	init_values(t_mlx *mlx);
 int		raycasting(t_mlx *mlx);
 int is_player_character(char c);
+void	double_free_int(int **tab, t_mlx *mlx);
+void	ender(t_mlx *mlx);
 #endif

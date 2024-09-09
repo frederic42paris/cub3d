@@ -28,7 +28,8 @@ SRCS = main.c \
 	parser/map_checker_utils.c \
 	parser/map_checker_utils2.c \
 	parser/rgb_checks.c \
-	raycasting/raycasting.c\
+	raycasting/raycasting.c \
+	ender.c
 
 
 MINILIBX = ./minilibx/libmlx_Linux.a -lXext -lX11

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:59:37 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 18:45:03 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:14:26 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	find_player(t_mlx *mlx)
 				mlx->posX = j;
 				mlx->posY = i;
 				mlx->player_char = mlx->map_char[j][i];
+				return ;
 			}
 			i++;
 		}

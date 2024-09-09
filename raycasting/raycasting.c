@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 17:22:09 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 17:27:45 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 {
 	if (keycode == 65307)
 	{
-		if (mlx->greystone != NULL)
-			mlx_destroy_image(mlx->mlx_p, mlx->greystone);
-		if (mlx->bluestone != NULL)
-			mlx_destroy_image(mlx->mlx_p, mlx->bluestone);
-		if (mlx->red != NULL)
-			mlx_destroy_image(mlx->mlx_p, mlx->red);
-		if (mlx->wood != NULL)
-			mlx_destroy_image(mlx->mlx_p, mlx->wood);
-		if (mlx->wood != NULL)
-			mlx_destroy_image(mlx->mlx_p, mlx->img);
-		
-		
-		mlx_destroy_window(mlx->mlx_p, mlx->win_ptr);
-		mlx_destroy_display(mlx->mlx_p);
-		free(mlx->path_north);
-		free(mlx->path_south);
-		free(mlx->path_east);
-		free(mlx->path_west);
-		double_free((void **)mlx->textures);
-		double_free((void **)mlx->map_char);
-		double_free_int(mlx->map_int, mlx);
-		double_free_int(mlx->map_int_one, mlx);
-		// double_free((void **)mlx->map_int_one);
-		// double_free((void **)mlx->map_int);
-		free(mlx->mlx_p);
-		close(mlx->fd);
-		free(mlx);
+		ender(mlx);
 		exit(0);
 	}
 	if (keycode == KEY_W)
