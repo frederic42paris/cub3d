@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 18:42:09 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 16:48:13 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,46 @@ int	check_map(t_mlx *mlx)
 	return (0);
 }
 
+static void	mlx_ender(t_mlx *mlx)
+{
+	if (mlx->greystone == NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->greystone);
+	if (mlx->bluestone == NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->bluestone);
+	if (mlx->red == NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->red);
+	if (mlx->wood == NULL)
+		mlx_destroy_image(mlx->mlx_p, mlx->wood);
+	mlx_destroy_display(mlx->mlx_p);
+}
+
+void	ender(t_mlx *mlx)
+{
+	if (mlx->map_char != NULL)
+		double_free((void **)mlx->map_char);
+	if (mlx->map_int != NULL)
+		free(mlx->map_int);
+		// double_free((void **)mlx->map_int);
+	if (mlx->path_north != NULL)
+		free(mlx->path_north);
+	if (mlx->path_east != NULL)
+		free(mlx->path_east);
+	if (mlx->path_west != NULL)
+		free(mlx->path_west);
+	if (mlx->path_south != NULL)
+		free(mlx->path_south);
+	if (mlx->textures != NULL)
+		double_free((void **)mlx->textures);
+	if (mlx->string_buffer != NULL)
+		free(mlx->string_buffer);
+	if (mlx->map_int_one != NULL)
+		free(mlx->map_int_one);
+		// double_free((void **)mlx->map_int_one);
+	if (mlx->fd > 0)
+		close(mlx->fd);
+	mlx_ender(mlx);
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
@@ -72,5 +112,6 @@ int	main(int argc, char **argv)
 	display_parsing(mlx);
 	init_values(mlx);
 	init_minilibx(mlx);
-	return (0);
+	printf("reached main end\n");
+	return (ender(mlx), 0);
 }

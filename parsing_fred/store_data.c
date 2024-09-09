@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 13:13:57 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 16:38:17 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,12 @@ int	store_six_line(t_mlx *mlx, char **string)
 			if (has_alpha_num(*string))
 			{
 				concat2 = ft_strjoin(temp, *string);
-				free(*string);
 				free(temp);
 				// mlx->textures[counter] = ft_strdup(string);
 				// parse_information(mlx, string);
 				counter++;
 			}
-			else
-				free(*string);
+			free(*string);
 		}
 		else
 		{
@@ -132,12 +130,8 @@ int	store_map_char(t_mlx *mlx, char **string)
 	char	*temp;
 	char	*concat;
 
-	concat = ft_strdup("");
-	temp = concat;
-	concat = ft_strjoin(temp, *string);
+	concat = ft_strjoin("", *string);
 	free(*string);
-	free(temp);
-
 	while (1)
 	{
 		*string = NULL;
@@ -167,10 +161,7 @@ int	store_data(t_mlx *mlx)
 	if (skip_empty_line(mlx, &string))
 		return (1);
 	if (string == NULL)
-	{
-		printf("Error\nIncomplete file\n");
 		return (1);
-	}
 	else
 		store_map_char(mlx, &string);
 	return (0);
