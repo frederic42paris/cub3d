@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 13:13:57 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/09 18:15:34 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	store_six_line(t_mlx *mlx, char **string)
 		}
 		else
 		{
+			free(concat2);
 			printf("Error\nIncomplete file\n");
 			return (1);
 		}
