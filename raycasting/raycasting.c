@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 18:53:53 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/09 19:01:35 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,7 +263,7 @@ void walls(t_mlx *mlx)
 			else if (mlx->side == 1 && mlx->rayDirY >= 0)
 				mlx->color = mlx->text_west_addr[mlx->texY * TEXTH + mlx->texX];
 			// int d = y * 256 - SH * 128 + mlx->lineHeight * 128;
-			// mlx->texY = ((d * TEXTH) / mlx->lineHeight) / 256;
+			// mlx->texY = ((d * TEXTH) / mlx->lineHeight) / 256;text_north
 			// mlx->color = mlx->text_south_addr[mlx->texY * TEXTW + mlx->texX];
 			
 			my_mlx_pixel_put(mlx, x, y, mlx->color);
@@ -321,9 +321,9 @@ int	store_images(t_mlx *mlx)
 	int		img_height;
 
 	mlx->text_north = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_east, &img_width, &img_height);
-	mlx->text_south = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_south, &img_width, &img_height);
+	mlx->text_east = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_south, &img_width, &img_height);
 	mlx->text_west = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_west, &img_width, &img_height);
-	mlx->text_east = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_north, &img_width, &img_height);
+	mlx->text_south = mlx_xpm_file_to_image(mlx->mlx_p, mlx->path_north, &img_width, &img_height);
 	return (0);
 }
 
