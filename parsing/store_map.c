@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:16:10 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:39:10 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 17:55:16 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	fill_empty_one(t_mlx *mlx, int i, int j, int k)
 	}
 }
 
-int	store_map(t_mlx *mlx)
+void	store_map(t_mlx *mlx)
 {
 	static int	i = 0;
 	int			j;
@@ -57,10 +57,9 @@ int	store_map(t_mlx *mlx)
 		}
 		i++;
 	}
-	return (0);
 }
 
-int	store_map_one(t_mlx *mlx)
+void	store_map_one(t_mlx *mlx)
 {
 	static int	i = 0;
 	int			j;
@@ -87,5 +86,4 @@ int	store_map_one(t_mlx *mlx)
 		}
 		i++;
 	}
-	return (0);
 }
