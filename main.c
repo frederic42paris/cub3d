@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 17:50:02 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:42:31 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_textures(t_mlx *mlx)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < 6)
@@ -78,7 +78,7 @@ static void	nullifer(t_mlx *mlx)
 int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
-	
+
 	if (check_argument(argv[1], argc) == 1)
 		return (1);
 	mlx = malloc(sizeof(t_mlx));
@@ -90,7 +90,6 @@ int	main(int argc, char **argv)
 		return (ender(mlx), 1);
 	if (check_textures(mlx) == 1)
 		return (ender(mlx), 1);
-	// display_data(mlx);
 	find_player(mlx);
 	measure_map(mlx);
 	store_map_one(mlx);

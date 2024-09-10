@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:05:19 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/06 17:28:58 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:43:19 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,8 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	**ft_split(char const *s, char c);
 
-
 /*-------------------------ft_printf----------------------------*/
 int		ft_printf(const char *format, ...);
-
 
 /*-------------------------get_next_line------------------------*/
 char	*get_next_line(int fd);
