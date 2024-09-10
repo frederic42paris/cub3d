@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/10 17:17:29 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 17:31:59 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,34 @@ typedef struct s_mlx
 	int		endian;
 	void	*win_ptr;
 	double	pos_x;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	double	time;
-	double	oldTime;
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	double	moveSpeed;
-	double	rotSpeed;
-	double	oldDirX;
-	double	oldPlaneX;
-	int		stepX;
-	int		stepY;
+	double	old_time;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	double	move_speed;
+	double	rot_speed;
+	double	olddir_x;
+	double	oldplane_x;
+	int		step_x;
+	int		step_y;
 	int		hit;
 	int		side;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 	int		color;
 
 	void	*text_south;
@@ -83,12 +83,12 @@ typedef struct s_mlx
 	int		*text_north_addr;
 	void	*text_west;
 	int		*text_west_addr;
-	int		texNum;
-	double	wallX;
-	int 	texX;
+	// int		texNum;
+	double	wall_x;
+	int 	tex_x;
 	double 	step;
-	double	texPos;
-	int		texY;
+	double	tex_pos;
+	int		tex_y;
 	int		bits_per_pixel_text_south;
 	int		line_length_text_south;
 	int		endian_text_south;
@@ -102,24 +102,24 @@ typedef struct s_mlx
 	int		line_length_text_west;
 	int		endian_text_west;
 
-	float	rayDirX0;
-	float	rayDirY0;
-	float	rayDirX1;
-	float	rayDirY1;
+	float	raydir_x_o;
+	float	raydir_y_o;
+	float	raydir_x_i;
+	float	raydir_y_i;
 	int		p;
-	float	posZ;
-	float	rowDistance;
-	float	floorStepX;
-	float	floorStepY;
-	float	floorX;
-	float	floorY;
-	int		cellX;
-	int		cellY;
+	float	pos_z;
+	float	row_distance;
+	float	floorstep_x;
+	float	floorstep_y;
+	float	floor_x;
+	float	floor_y;
+	int		cell_x;
+	int		cell_y;
 	int		tx;
 	int		ty;
-	int		checkerBoardPattern;
-	int		floorTexture;
-	int		ceilingTexture;
+	// int		checkerBoardPattern;
+	// int		floorTexture;
+	// int		ceilingTexture;
 
 	char			**map_char;
 	int				fd;
