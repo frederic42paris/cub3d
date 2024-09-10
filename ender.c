@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ender.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:27:07 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/09 17:42:23 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:38:29 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	double_free_int(int **tab, t_mlx *mlx)
+{
+	int	i;
+
+	if (tab == NULL)
+		return ;
+	i = 0;
+	while (i < mlx->map_width)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 static void	ending_subroutine(t_mlx *mlx)
 {

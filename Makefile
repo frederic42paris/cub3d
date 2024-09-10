@@ -22,6 +22,13 @@ SRCS = main.c \
 	parsing/check_map_players.c \
 	parsing/check_map_line.c \
 	raycasting/raycasting.c \
+	raycasting/draw_wall.c \
+	raycasting/get_texture.c \
+	raycasting/put_pixel.c \
+	raycasting/store_textures.c \
+	raycasting/key_event.c \
+	raycasting/draw_floor_ceiling.c \
+	raycasting/init_values.c \
 	ender.c
 
 

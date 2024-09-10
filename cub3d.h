@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/09 17:28:14 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:52:08 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,4 +218,17 @@ int		raycasting(t_mlx *mlx);
 int is_player_character(char c);
 void	double_free_int(int **tab, t_mlx *mlx);
 void	ender(t_mlx *mlx);
+
+void	draw_walls(t_mlx *mlx);
+void	calculate_texture(t_mlx *mlx, int x);
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+void	draw_floor_ceiling(t_mlx *mlx);
+int		store_images_addr(t_mlx *mlx);
+int		store_images(t_mlx *mlx);
+void	move_up_down(t_mlx *mlx, int keycode);
+void	move_left_right(t_mlx *mlx, int keycode);
+void	rotate_right(t_mlx *mlx, int keycode);
+void	rotate_left(t_mlx *mlx, int keycode);
+void	init_player_direction(t_mlx *mlx);
+void	init_speed(t_mlx *mlx);
 #endif
