@@ -6,11 +6,18 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:52:11 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 17:48:37 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int destroy(t_mlx *mlx)
+{
+	ender(mlx);
+	exit(0);
+	return (0);
+}
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
@@ -48,6 +55,7 @@ void	init_minilibx(t_mlx *mlx)
 	store_images(mlx);
 	store_images_addr(mlx);
 	mlx_hook(mlx->win_ptr, KeyPress, KeyPressMask, &key_hook, mlx);
+	mlx_hook(mlx->win_ptr, DestroyNotify, StructureNotifyMask, &destroy, mlx);
 	mlx_loop_hook(mlx->mlx_p, raycasting, mlx);
 	mlx_loop(mlx->mlx_p);
 }
