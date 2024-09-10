@@ -2,12 +2,14 @@ SRCS = main.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c \
 	parsing/store_data.c \
+	parsing/store_data_utils.c \
 	parsing/check_argument.c \
 	parsing/display_parsing.c \
 	parsing/open_file.c \
 	parsing/parsing_utils.c \
 	parsing/parsing_utils2.c \
 	parsing/store_textures.c \
+	parsing/store_textures_utils.c \
 	parsing/store_map.c \
 	parsing/measure_map.c \
 	parsing/find_player.c \

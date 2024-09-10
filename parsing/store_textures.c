@@ -6,39 +6,11 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:01:44 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 15:56:50 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:08:24 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int	create_argb(int a, int r, int g, int b)
-{
-	return (a << 24 | r << 16 | g << 8 | b);
-}
-
-int	ft_strdup_digit(const char *s, int *j)
-{
-	char	*dest;
-	int		i;
-	int		final;
-
-	i = 0;
-	while (s[i] >= '0' && s[i] <= '9')
-		i++;
-	dest = (char *)malloc(i + 1);
-	i = 0;
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		dest[i] = s[i];
-		i++;
-	}
-	*j = *j + i;
-	dest[i] = '\0';
-	final = ft_atoi(dest);
-	free(dest);
-	return (final);
-}
 
 char	*ft_strdup_path(const char *s)
 {

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:39:00 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 15:52:54 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:10:05 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	open_xpm(char *str)
 
 int	check_text_path(char *str)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen_word(str);
 	if (len == 2 && (ft_strncmp(str, "NO", 2) == 0 || ft_strncmp(str, "SO",
