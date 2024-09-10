@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:59:37 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 17:14:26 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:53:32 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	find_player(t_mlx *mlx)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	mlx->hasplayer = 0;
 	j = 0;

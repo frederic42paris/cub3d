@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:17:28 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 18:38:11 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:56:05 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	measure_map(t_mlx *mlx)
 {
-	int		i;
-	int		j;
-	int		width;
+	int	i;
+	int	j;
+	int	width;
 
 	width = 0;
 	j = 0;

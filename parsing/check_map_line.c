@@ -6,15 +6,15 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:18:26 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 12:48:49 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:50:45 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int check_map_line(t_mlx *mlx)
+int	check_map_line(t_mlx *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (mlx->map_char[i])

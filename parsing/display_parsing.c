@@ -6,23 +6,23 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:23:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 18:41:48 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:57:27 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void check_map_char(t_mlx *mlx)
+void	check_map_char(t_mlx *mlx)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while(mlx->map_char[i])
+	while (mlx->map_char[i])
 	{
 		j = 0;
-		while(mlx->map_char[i][j])
+		while (mlx->map_char[i][j])
 		{
 			printf("%c", mlx->map_char[i][j]);
 			j++;
@@ -32,17 +32,17 @@ void check_map_char(t_mlx *mlx)
 	}
 }
 
-void check_map_int(t_mlx *mlx)
+void	check_map_int(t_mlx *mlx)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while(i < mlx->map_width)
+	while (i < mlx->map_width)
 	{
 		j = 0;
-		while(j < mlx->map_height)
+		while (j < mlx->map_height)
 		{
 			printf("%d", mlx->map_int[i][j]);
 			j++;
@@ -52,17 +52,17 @@ void check_map_int(t_mlx *mlx)
 	}
 }
 
-void check_map_int_one(t_mlx *mlx)
+void	check_map_int_one(t_mlx *mlx)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while(i < mlx->map_height)
+	while (i < mlx->map_height)
 	{
 		j = 0;
-		while(j < mlx->map_width)
+		while (j < mlx->map_width)
 		{
 			printf("%d", mlx->map_int_one[i][j]);
 			j++;
@@ -94,17 +94,16 @@ void	display_parsing(t_mlx *mlx)
 	printf("----------\n");
 	printf("%d\n", mlx->map_width);
 	printf("%d\n", mlx->map_height);
-	// printf("----------\n");
-	// check_map_int_one(mlx);
 	printf("----------\n");
 	check_map_int(mlx);
 }
 
 void	display_data(t_mlx *mlx)
 {
-	int k;
+	int	k;
+
 	k = 0;
-	while(k < 6)
+	while (k < 6)
 	{
 		printf("[%s]\n", mlx->textures[k]);
 		k++;

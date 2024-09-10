@@ -14,16 +14,14 @@
 
 int	check_text_dup(t_mlx *mlx)
 {
-	if (mlx->count_no != 1
-		|| mlx->count_so != 1
-		|| mlx->count_ea != 1
-		|| mlx->count_we != 1
-		|| mlx->count_c != 1
-		|| mlx->count_f != 1)
+	if (mlx->count_no != 1 || mlx->count_so != 1 || mlx->count_ea != 1
+		|| mlx->count_we != 1 || mlx->count_c != 1 || mlx->count_f != 1)
 	{
-		printf("no: %d\nea: %d\nwe: %d\nso: %d\nc: %d\nf: %d\n", mlx->count_no, mlx->count_so, mlx->count_ea, mlx->count_we, mlx->count_c, mlx->count_f);
+		printf("no: %d\nea: %d\nwe: %d\nso: %d\nc: %d\nf: %d\n", mlx->count_no,
+			mlx->count_so, mlx->count_ea, mlx->count_we, mlx->count_c,
+			mlx->count_f);
 		printf("Error\nDuplicate IDs\n");
 		return (1);
 	}
-		return (0);
+	return (0);
 }

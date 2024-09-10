@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 18:15:34 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:54:48 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,13 @@ int	store_six_line(t_mlx *mlx, char **string)
 	int		counter;
 	char	*concat2;
 	char	*temp;
+
 	counter = 0;
 	concat2 = ft_strdup("");
 	while (1)
 	{
 		if (counter == 6)
-			break;
+			break ;
 		*string = NULL;
 		temp = concat2;
 		*string = get_next_line(mlx->fd);
@@ -85,8 +86,6 @@ int	store_six_line(t_mlx *mlx, char **string)
 				concat2 = ft_strjoin(temp, *string);
 				free(*string);
 				free(temp);
-				// mlx->textures[counter] = ft_strdup(string);
-				// parse_information(mlx, string);
 				counter++;
 			}
 			else
@@ -114,10 +113,10 @@ int	skip_empty_line(t_mlx *mlx, char **string)
 			if (!has_alpha_num(*string))
 			{
 				free(*string);
-				continue;
+				continue ;
 			}
 			else
-				break;
+				break ;
 		}
 		else
 		{
@@ -138,7 +137,6 @@ int	store_map_char(t_mlx *mlx, char **string)
 	concat = ft_strjoin(temp, *string);
 	free(*string);
 	free(temp);
-
 	while (1)
 	{
 		*string = NULL;
@@ -151,7 +149,7 @@ int	store_map_char(t_mlx *mlx, char **string)
 			free(temp);
 		}
 		else
-			break;
+			break ;
 	}
 	if (is_empty(mlx, temp, concat) == 1)
 		return (1);

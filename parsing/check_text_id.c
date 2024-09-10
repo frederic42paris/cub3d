@@ -12,14 +12,12 @@
 
 #include "../cub3d.h"
 
-
-
 int	check_text_id(t_mlx *mlx, char *texture)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen_word(texture);
-	if (len == 2 && ft_strncmp(texture, "NO",2) == 0)
+	if (len == 2 && ft_strncmp(texture, "NO", 2) == 0)
 		mlx->count_no++;
 	else if (len == 2 && ft_strncmp(texture, "SO ", 3) == 0)
 		mlx->count_so++;

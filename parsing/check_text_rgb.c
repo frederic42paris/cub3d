@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:13:22 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 17:08:04 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:55:48 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	check_rgb_value(char *str)
 {
-	int	i;
-	char *path;
-	long nb;
+	int		i;
+	char	*path;
+	long	nb;
 
 	path = NULL;
 	i = 0;
@@ -36,18 +36,15 @@ int	check_rgb_value(char *str)
 
 int	check_text_rgb(char *str)
 {
-	int len;
+	int	len;
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
 	len = ft_strlen_word(str);
-	if (len == 1
-		&& (
-			ft_strncmp(str, "C",1) == 0
-			|| ft_strncmp(str, "F",1) == 0
-			))
+	if (len == 1 && (ft_strncmp(str, "C", 1) == 0 || ft_strncmp(str, "F",
+				1) == 0))
 	{
 		while (i < 3)
 		{

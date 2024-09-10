@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 16:30:19 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/07 17:10:37 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:56:27 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ long	ft_atoi_fred(const char *string)
 	result = 0;
 	sign = 1;
 	i = 0;
-	while (string[i] == ' ' || string[i] == '\f'
-		|| string[i] == '\n' || string[i] == '\r'
-		|| string[i] == '\t' || string[i] == '\v')
-	i++;
+	while (string[i] == ' ' || string[i] == '\f' || string[i] == '\n'
+		|| string[i] == '\r' || string[i] == '\t' || string[i] == '\v')
+		i++;
 	if (string[i] == '-' || string[i] == '+')
 	{
 		if (string[i] == '-')
@@ -41,7 +40,7 @@ long	ft_atoi_fred(const char *string)
 
 static int	getlength(long longnum)
 {
-	int		size;
+	int	size;
 
 	size = 0;
 	if (longnum == 0)

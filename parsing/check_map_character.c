@@ -6,15 +6,15 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 12:27:09 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/08 13:33:10 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:50:09 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int check_map_character(t_mlx *mlx)
+int	check_map_character(t_mlx *mlx)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = 0;
@@ -23,11 +23,9 @@ int check_map_character(t_mlx *mlx)
 		j = 0;
 		while (mlx->map_char[i][j])
 		{
-			if (mlx->map_char[i][j] != '0'
-				&& mlx->map_char[i][j] != '1'
+			if (mlx->map_char[i][j] != '0' && mlx->map_char[i][j] != '1'
 				&& is_player_character(mlx->map_char[i][j]) == 0
-				&& mlx->map_char[i][j] != ' '
-			)
+				&& mlx->map_char[i][j] != ' ')
 			{
 				printf("Error\nMap character incorrect\n");
 				return (1);

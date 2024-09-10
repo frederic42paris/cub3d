@@ -6,18 +6,18 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 12:27:09 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 12:11:24 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 15:51:25 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int check_map_players(t_mlx *mlx)
+int	check_map_players(t_mlx *mlx)
 {
-	int i;
+	int	i;
 	int	j;
 	int	counter;
-	
+
 	i = 0;
 	counter = 0;
 	while (mlx->map_char[i])
