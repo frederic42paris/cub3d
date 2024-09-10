@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 15:47:14 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:53:29 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ int	main(int argc, char **argv)
 	store_textures(mlx);
 	store_map(mlx);
 	display_parsing(mlx);
-	init_values(mlx);
+	init_player_direction(mlx);
+	init_speed(mlx);
 	init_minilibx(mlx);
 	return (ender(mlx), 0);
 }

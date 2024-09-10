@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/10 16:29:35 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 17:03:36 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,8 @@ int			up_to_down_subroutine(char **map, int i, int j);
 int			down_to_up_subroutine(char **map, int i, int j);
 
 int			store_data(t_mlx *mlx);
-void		ssl_subrountine(char **string, char **c2, char **temp, int *counter);
+void		ssl_subrountine(char **string, char **c2, char **temp,
+				int *counter);
 int			is_empty(t_mlx *mlx, char *temp, char *concat);
 int			store_textures(t_mlx *mlx);
 int			create_argb(int a, int r, int g, int b);
@@ -222,4 +223,41 @@ int			is_player_character(char c);
 void		double_free_int(int **tab, t_mlx *mlx);
 void		ender(t_mlx *mlx);
 
+int			store_data(t_mlx *mlx);
+int			store_textures(t_mlx *mlx);
+int			store_map(t_mlx *mlx);
+void		find_player(t_mlx *mlx);
+void		measure_map(t_mlx *mlx);
+void		display_data(t_mlx *mlx);
+int			check_text_id(t_mlx *mlx, char *str);
+int			check_text_dup(t_mlx *mlx);
+int			check_text_path(char *str);
+int			check_text_rgb(char *str);
+size_t		ft_strlen_word(const char *s);
+int			parse_input(char *string);
+long		ft_atoi_ftext_north(const char *string);
+int			check_map_walls(t_mlx *mlx);
+int			store_map_one(t_mlx *mlx);
+int			check_map_character(t_mlx *mlx);
+int			check_map_players(t_mlx *mlx);
+int			check_map_line(t_mlx *mlx);
+void		init_minilibx(t_mlx *mlx);
+void		init_values(t_mlx *mlx);
+int			raycasting(t_mlx *mlx);
+int			is_player_character(char c);
+void		double_free_int(int **tab, t_mlx *mlx);
+void		ender(t_mlx *mlx);
+
+void		draw_walls(t_mlx *mlx);
+void		calculate_texture(t_mlx *mlx, int x);
+void		my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+void		draw_floor_ceiling(t_mlx *mlx);
+int			store_images_addr(t_mlx *mlx);
+int			store_images(t_mlx *mlx);
+void		move_up_down(t_mlx *mlx, int keycode);
+void		move_left_right(t_mlx *mlx, int keycode);
+void		rotate_right(t_mlx *mlx, int keycode);
+void		rotate_left(t_mlx *mlx, int keycode);
+void		init_player_direction(t_mlx *mlx);
+void		init_speed(t_mlx *mlx);
 #endif
