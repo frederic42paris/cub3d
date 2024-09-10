@@ -47,10 +47,10 @@ void	draw_floor_ceiling(t_mlx *mlx)
 		mlx->p = y - SH / 2;
 		mlx->pos_z = 0.5 * SH;
 		mlx->row_distance = mlx->pos_z / mlx->p;
-		mlx->floorstep_x = mlx->row_distance * (mlx->raydir_x_i - mlx->raydir_x_o)
-			/ SW;
-		mlx->floorstep_y = mlx->row_distance * (mlx->raydir_y_i - mlx->raydir_y_o)
-			/ SW;
+		mlx->floorstep_x = mlx->row_distance * (mlx->raydir_x_i
+				- mlx->raydir_x_o) / SW;
+		mlx->floorstep_y = mlx->row_distance * (mlx->raydir_y_i
+				- mlx->raydir_y_o) / SW;
 		mlx->floor_x = mlx->pos_x + mlx->row_distance * mlx->raydir_x_o;
 		mlx->floor_y = mlx->pos_y + mlx->row_distance * mlx->raydir_y_o;
 		draw_floor_ceiling_x(mlx, y);
