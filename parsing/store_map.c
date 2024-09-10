@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:16:10 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/09 18:11:56 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:39:10 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ void	fill_empty_one(t_mlx *mlx, int i, int j, int k)
 
 int	store_map(t_mlx *mlx)
 {
-	int	i;
-	int	j;
+	static int	i = 0;
+	int			j;
 
-	i = 0;
 	mlx->map_int = malloc(sizeof(int *) * (mlx->map_width));
 	while (i < mlx->map_width)
 	{
@@ -63,10 +62,9 @@ int	store_map(t_mlx *mlx)
 
 int	store_map_one(t_mlx *mlx)
 {
-	int	i;
-	int	j;
+	static int	i = 0;
+	int			j;
 
-	i = 0;
 	mlx->map_int_one = malloc(sizeof(int *) * (mlx->map_width));
 	while (i < mlx->map_width)
 	{

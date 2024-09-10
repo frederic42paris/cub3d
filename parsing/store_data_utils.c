@@ -6,7 +6,7 @@
 /*   By: arguez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:10:31 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/10 16:10:50 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:28:58 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,12 @@ int	is_empty(t_mlx *mlx, char *temp, char *concat)
 	mlx->map_char = ft_split(concat, '\n');
 	free(concat);
 	return (0);
+}
+
+void	ssl_subrountine(char **string, char **c2, char **temp, int *counter)
+{
+	*c2 = ft_strjoin(*temp, *string);
+	free(*string);
+	free(*temp);
+	*counter += 1;
 }

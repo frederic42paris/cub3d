@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:10:49 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 16:29:44 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,17 @@ int	store_six_line(t_mlx *mlx, char **string)
 	{
 		if (counter == 6)
 			break ;
-		*string = NULL;
 		temp = concat2;
 		*string = get_next_line(mlx->fd);
 		if (*string)
 		{
 			if (has_alpha_num(*string))
-			{
-				concat2 = ft_strjoin(temp, *string);
-				free(*string);
-				free(temp);
-				counter++;
-			}
+				ssl_subrountine(string, &concat2, &temp, &counter);
 			else
 				free(*string);
 		}
 		else
-		{
-			free(concat2);
-			printf("Error\nIncomplete file\n");
-			return (1);
-		}
+			return (free(concat2), printf("Error\nIncomplete file\n"), 1);
 	}
 	if (is_empty2(mlx, temp, concat2) == 1)
 		return (1);
