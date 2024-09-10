@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 17:41:45 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/10 18:01:58 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,20 @@ int	check_textures(t_mlx *mlx)
 	return (0);
 }
 
+static int	check_map_size(t_mlx *mlx)
+{
+	if ((mlx->map_width < 3) || (mlx->map_height < 3))
+	{
+		printf("Error: map must be at least 3x3\n");
+		return (1);
+	}
+	return (0);
+}
+
 int	check_map(t_mlx *mlx)
 {
+	if (check_map_size(mlx) == 1)
+		return (1);
 	if (check_map_line(mlx) == 1)
 		return (1);
 	if (check_map_character(mlx) == 1)
