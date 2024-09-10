@@ -1,24 +1,24 @@
 SRCS = main.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c \
-	parsing_fred/store_data.c \
-	parsing_fred/check_argument.c \
-	parsing_fred/display_parsing.c \
-	parsing_fred/open_file.c \
-	parsing_fred/parsing_utils.c \
-	parsing_fred/parsing_utils2.c \
-	parsing_fred/store_textures.c \
-	parsing_fred/store_map.c \
-	parsing_fred/measure_map.c \
-	parsing_fred/find_player.c \
-	parsing_fred/check_text_id.c \
-	parsing_fred/check_text_dup.c \
-	parsing_fred/check_text_path.c \
-	parsing_fred/check_text_rgb.c \
-	parsing_fred/check_map_walls.c \
-	parsing_fred/check_map_character.c \
-	parsing_fred/check_map_players.c \
-	parsing_fred/check_map_line.c \
+	parsing/store_data.c \
+	parsing/check_argument.c \
+	parsing/display_parsing.c \
+	parsing/open_file.c \
+	parsing/parsing_utils.c \
+	parsing/parsing_utils2.c \
+	parsing/store_textures.c \
+	parsing/store_map.c \
+	parsing/measure_map.c \
+	parsing/find_player.c \
+	parsing/check_text_id.c \
+	parsing/check_text_dup.c \
+	parsing/check_text_path.c \
+	parsing/check_text_rgb.c \
+	parsing/check_map_walls.c \
+	parsing/check_map_character.c \
+	parsing/check_map_players.c \
+	parsing/check_map_line.c \
 	raycasting/raycasting.c \
 	ender.c
 

@@ -1,14 +1,14 @@
 
 
-   NO       ./textures/greystone.xpm  
+   NO        ./textures/red.xpm  
 
-  SO     ./textures/bluestone.xpm                
+  SO     ./textures/wood.xpm                
    
     F    220  ,  100,0  
 	 
-   WE    ./textures/red.xpm  
+   WE     ./textures/greystone.xpm
    
-   EA    ./textures/wood.xpm 
+   EA      ./textures/bluestone.xpm 
   
 
    
