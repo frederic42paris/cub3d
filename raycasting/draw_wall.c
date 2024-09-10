@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:18:40 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:50:20 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 17:18:59 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	calculate_raydir(t_mlx *mlx, int x)
 	mlx->cameraX = 2 * x / (double)SW - 1;
 	mlx->rayDirX = mlx->dirX + mlx->planeX * mlx->cameraX;
 	mlx->rayDirY = mlx->dirY + mlx->planeY * mlx->cameraX;
-	mlx->mapX = (int)mlx->posX;
+	mlx->mapX = (int)mlx->pos_x;
 	mlx->mapY = (int)mlx->posY;
 	mlx->deltaDistX = fabs(1 / mlx->rayDirX);
 	mlx->deltaDistY = fabs(1 / mlx->rayDirY);
@@ -29,12 +29,12 @@ void	calculate_sidedist(t_mlx *mlx)
 	if (mlx->rayDirX < 0)
 	{
 		mlx->stepX = -1;
-		mlx->sideDistX = (mlx->posX - mlx->mapX) * mlx->deltaDistX;
+		mlx->sideDistX = (mlx->pos_x - mlx->mapX) * mlx->deltaDistX;
 	}
 	else
 	{
 		mlx->stepX = 1;
-		mlx->sideDistX = (mlx->mapX + 1.0 - mlx->posX) * mlx->deltaDistX;
+		mlx->sideDistX = (mlx->mapX + 1.0 - mlx->pos_x) * mlx->deltaDistX;
 	}
 	if (mlx->rayDirY < 0)
 	{

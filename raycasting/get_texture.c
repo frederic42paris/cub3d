@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:22:27 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:50:04 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 17:19:11 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	calculate_texture(t_mlx *mlx, int x)
 	if (mlx->side == 0)
 		mlx->wallX = mlx->posY + mlx->perpWallDist * mlx->rayDirY;
 	else
-		mlx->wallX = mlx->posX + mlx->perpWallDist * mlx->rayDirX;
+		mlx->wallX = mlx->pos_x + mlx->perpWallDist * mlx->rayDirX;
 	mlx->wallX -= floor((mlx->wallX));
 	mlx->texX = (int)(mlx->wallX * (double)(TEXTW));
 	if (mlx->side == 0 && mlx->rayDirX > 0)

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:28:16 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:49:48 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/10 17:19:32 by arguez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw_floor_ceiling(t_mlx *mlx)
 			/ SW;
 		mlx->floorStepY = mlx->rowDistance * (mlx->rayDirY1 - mlx->rayDirY0)
 			/ SW;
-		mlx->floorX = mlx->posX + mlx->rowDistance * mlx->rayDirX0;
+		mlx->floorX = mlx->pos_x + mlx->rowDistance * mlx->rayDirX0;
 		mlx->floorY = mlx->posY + mlx->rowDistance * mlx->rayDirY0;
 		draw_floor_ceiling_x(mlx, y);
 		y++;
