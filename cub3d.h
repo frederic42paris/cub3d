@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/11 12:31:15 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:50:23 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void		rotate_right(t_mlx *mlx, int keycode);
 void		rotate_left(t_mlx *mlx, int keycode);
 void		init_player_direction(t_mlx *mlx);
 void		init_speed(t_mlx *mlx);
-void		init_minilibx(t_mlx *mlx);
+int			init_minilibx(t_mlx *mlx);
 int			raycasting(t_mlx *mlx);
 
 #endif

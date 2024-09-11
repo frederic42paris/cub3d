@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 17:48:37 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:57:07 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ int	key_hook(int keycode, t_mlx *mlx)
 	move_left_right(mlx, keycode);
 	mlx_destroy_image(mlx->mlx_p, mlx->img);
 	mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
+	if (mlx->img == NULL)
+		return (1);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
 			&mlx->line_length, &mlx->endian);
+	if (mlx->addr == NULL)
+		return (1);
 	return (0);
 }
 
@@ -45,17 +49,29 @@ int	raycasting(t_mlx *mlx)
 	return (0);
 }
 
-void	init_minilibx(t_mlx *mlx)
+int	init_minilibx(t_mlx *mlx)
 {
 	mlx->mlx_p = mlx_init();
+	if (mlx->mlx_p == NULL)
+		return (1);
 	mlx->win_ptr = mlx_new_window(mlx->mlx_p, SW, SH, "cub3d");
+	if (mlx->win_ptr == NULL)
+		return (1);
 	mlx->img = mlx_new_image(mlx->mlx_p, SW, SH);
+	if (mlx->img == NULL)
+		return (1);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
 			&mlx->line_length, &mlx->endian);
-	store_images(mlx);
-	store_images_addr(mlx);
-	mlx_hook(mlx->win_ptr, KeyPress, KeyPressMask, &key_hook, mlx);
+	if (mlx->addr == NULL)
+		return (1);
+	if (store_images(mlx) == 1)
+		return (1);
+	if (store_images_addr(mlx) == 1)
+		return (1);
+	if (mlx_hook(mlx->win_ptr, KeyPress, KeyPressMask, &key_hook, mlx) == 1)
+		return (1);
 	mlx_hook(mlx->win_ptr, DestroyNotify, StructureNotifyMask, &destroy, mlx);
 	mlx_loop_hook(mlx->mlx_p, raycasting, mlx);
 	mlx_loop(mlx->mlx_p);
+	return (0);
 }

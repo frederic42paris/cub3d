@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:45:07 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:50:11 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int	main(int argc, char **argv)
 		return (ender(mlx), 1);
 	init_player_direction(mlx);
 	init_speed(mlx);
-	init_minilibx(mlx);
+	if (init_minilibx(mlx) == 1)
+		return (ender(mlx), 1);
 	return (ender(mlx), 0);
 }
