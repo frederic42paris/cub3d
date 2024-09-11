@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:39:00 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:10:05 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:11:39 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ int	open_xpm(char *str)
 	while (is_not_space(str[i + j]))
 		j++;
 	path = ft_substr(str, i, j);
+	if (path == NULL)
+		return (1);
 	fd = open(path, O_RDONLY);
 	free(path);
 	if (fd < 0)
-	{
-		printf("Xpm not found\n");
-		close(fd);
-		return (1);
-	}
+		return (printf("Xpm not found\n"), close(fd), 1);
 	close(fd);
 	return (0);
 }
@@ -46,9 +44,11 @@ int	check_text_path(char *str)
 	int	len;
 
 	len = ft_strlen_word(str);
-	if (len == 2 && (ft_strncmp(str, "NO", 2) == 0 || ft_strncmp(str, "SO",
-				2) == 0 || ft_strncmp(str, "EA", 2) == 0 || ft_strncmp(str,
-				"WE", 2) == 0))
+	if (len == 2
+		&& (ft_strncmp(str, "NO", 2) == 0
+			|| ft_strncmp(str, "SO", 2) == 0
+			|| ft_strncmp(str, "EA", 2) == 0
+			|| ft_strncmp(str, "WE", 2) == 0))
 	{
 		if (open_xpm(str) == 1)
 			return (1);

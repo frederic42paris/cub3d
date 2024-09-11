@@ -6,18 +6,11 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 11:44:03 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:07:44 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int	split_string_1(t_mlx *mlx, char *concat)
-{
-	mlx->textures = ft_split(concat, '\n');
-	free(concat);
-	return (0);
-}
 
 int	store_six_line(t_mlx *mlx, char **string)
 {
@@ -43,7 +36,7 @@ int	store_six_line(t_mlx *mlx, char **string)
 		else
 			return (free(concat), printf("Error\nIncomplete file\n"), 1);
 	}
-	if (split_string_1(mlx, concat) == 1)
+	if (split_string_text(mlx, concat) == 1)
 		return (1);
 	return (0);
 }
@@ -72,16 +65,23 @@ int	skip_empty_line(t_mlx *mlx, char **string)
 	return (0);
 }
 
+void	concat_map_firstline(char **temp, char **concat, char **string)
+{
+	*temp = *concat;
+	*concat = ft_strjoin(*temp, *string);
+	free(*string);
+	free(*temp);
+}
+
 int	store_map_char(t_mlx *mlx, char **string)
 {
 	char	*temp;
 	char	*concat;
 
 	concat = ft_strdup("");
-	temp = concat;
-	concat = ft_strjoin(temp, *string);
-	free(*string);
-	free(temp);
+	if (concat == NULL)
+		return (1);
+	concat_map_firstline(&temp, &concat, string);
 	while (1)
 	{
 		*string = NULL;
@@ -96,7 +96,7 @@ int	store_map_char(t_mlx *mlx, char **string)
 		else
 			break ;
 	}
-	if (split_string_2(mlx, concat) == 1)
+	if (split_string_map(mlx, concat) == 1)
 		return (1);
 	return (0);
 }
@@ -116,6 +116,9 @@ int	store_data(t_mlx *mlx)
 		return (1);
 	}
 	else
-		store_map_char(mlx, &string);
+	{
+		if (store_map_char(mlx, &string) == 1)
+			return (1);
+	}
 	return (0);
 }

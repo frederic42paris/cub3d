@@ -18,6 +18,7 @@ SRCS = main.c \
 	parsing/check_text_path.c \
 	parsing/check_text_rgb.c \
 	parsing/check_map_walls.c \
+	parsing/check_map_size.c \
 	parsing/check_map_character.c \
 	parsing/check_map_players.c \
 	parsing/check_map_line.c \
