@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:23:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 17:23:47 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:29:53 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_map_int(t_mlx *mlx)
 	}
 }
 
-void	check_map_int_one(t_mlx *mlx)
+void	check_map_intermediate(t_mlx *mlx)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,7 @@ void	check_map_int_one(t_mlx *mlx)
 		j = 0;
 		while (j < mlx->map_width)
 		{
-			printf("%d", mlx->map_int_one[i][j]);
+			printf("%d", mlx->map_intermediate[i][j]);
 			j++;
 		}
 		printf("\n");

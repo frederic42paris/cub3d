@@ -6,28 +6,30 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:16:10 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 17:55:16 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:29:53 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	fill_empty(t_mlx *mlx, int i, int j, int k)
+int	conditions_map(t_mlx *mlx, int i, int j)
 {
-	while (j < mlx->map_height)
+	if (is_player_character(mlx->map_char[i][j]) == 1)
+		mlx->map_int[i][j] = 0;
+	else if (mlx->map_char[i][j] == ' ')
+		mlx->map_int[i][j] = 1;
+	else if (mlx->map_char[i][j] == '\0')
 	{
-		mlx->map_int[i][j] = k;
-		j++;
+		while (j < mlx->map_height)
+		{
+			mlx->map_int[i][j] = 1;
+			j++;
+		}
+		return (1);
 	}
-}
-
-void	fill_empty_one(t_mlx *mlx, int i, int j, int k)
-{
-	while (j < mlx->map_height)
-	{
-		mlx->map_int_one[i][j] = k;
-		j++;
-	}
+	else
+		mlx->map_int[i][j] = mlx->map_char[i][j] - '0';
+	return (0);
 }
 
 void	store_map(t_mlx *mlx)
@@ -42,46 +44,48 @@ void	store_map(t_mlx *mlx)
 		j = 0;
 		while (j < mlx->map_height)
 		{
-			if (is_player_character(mlx->map_char[i][j]) == 1)
-				mlx->map_int[i][j] = 0;
-			else if (mlx->map_char[i][j] == ' ')
-				mlx->map_int[i][j] = 1;
-			else if (mlx->map_char[i][j] == '\0')
-			{
-				fill_empty(mlx, i, j, 1);
-				break ;
-			}
-			else
-				mlx->map_int[i][j] = mlx->map_char[i][j] - '0';
+			if (conditions_map(mlx, i, j) == 1)
+				break;
 			j++;
 		}
 		i++;
 	}
 }
 
-void	store_map_one(t_mlx *mlx)
+int	conditions_midmap(t_mlx *mlx, int i, int j)
+{
+	if (is_player_character(mlx->map_char[i][j]) == 1)
+		mlx->map_intermediate[i][j] = 0;
+	else if (mlx->map_char[i][j] == ' ')
+		mlx->map_intermediate[i][j] = 2;
+	else if (mlx->map_char[i][j] == '\0')
+	{
+		while (j < mlx->map_height)
+		{
+			mlx->map_intermediate[i][j] = 2;
+			j++;
+		}
+		return (1);
+	}
+	else
+		mlx->map_intermediate[i][j] = mlx->map_char[i][j] - '0';
+	return (0);
+}
+
+void	store_midmap(t_mlx *mlx)
 {
 	static int	i = 0;
 	int			j;
 
-	mlx->map_int_one = malloc(sizeof(int *) * (mlx->map_width));
+	mlx->map_intermediate = malloc(sizeof(int *) * (mlx->map_width));
 	while (i < mlx->map_width)
 	{
-		mlx->map_int_one[i] = malloc(sizeof(int) * (mlx->map_height));
+		mlx->map_intermediate[i] = malloc(sizeof(int) * (mlx->map_height));
 		j = 0;
 		while (j < mlx->map_height)
 		{
-			if (is_player_character(mlx->map_char[i][j]) == 1)
-				mlx->map_int_one[i][j] = 0;
-			else if (mlx->map_char[i][j] == ' ')
-				mlx->map_int_one[i][j] = 2;
-			else if (mlx->map_char[i][j] == '\0')
-			{
-				fill_empty_one(mlx, i, j, 2);
-				break ;
-			}
-			else
-				mlx->map_int_one[i][j] = mlx->map_char[i][j] - '0';
+			if (conditions_midmap(mlx, i, j) == 1)
+				break;
 			j++;
 		}
 		i++;

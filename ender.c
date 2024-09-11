@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:27:07 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/10 16:38:29 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:29:53 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	ender(t_mlx *mlx)
 		double_free((void **)mlx->map_char);
 	if (mlx->map_int != NULL)
 		double_free_int(mlx->map_int, mlx);
-	if (mlx->map_int_one != NULL)
-		double_free_int(mlx->map_int_one, mlx);
+	if (mlx->map_intermediate != NULL)
+		double_free_int(mlx->map_intermediate, mlx);
 	if (mlx->mlx_p != NULL)
 		free(mlx->mlx_p);
 	if (mlx->fd > 0)

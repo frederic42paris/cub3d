@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 17:29:23 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:45:56 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:29:53 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	cmw_x_subroutine(t_mlx *mlx, int x, int y)
 {
-	if (mlx->map_int_one[y][x - 1] != 1)
+	if (mlx->map_intermediate[y][x - 1] != 1)
 	{
 		printf("x error 2  map %d %d\n", y, x - 1);
 		return (1);
@@ -32,16 +32,16 @@ int	check_map_walls_x(t_mlx *mlx)
 		x = 0;
 		while (x < mlx->map_height)
 		{
-			while (x < mlx->map_height && mlx->map_int_one[y][x] == 2)
+			while (x < mlx->map_height && mlx->map_intermediate[y][x] == 2)
 				x++;
-			if (x < mlx->map_height && mlx->map_int_one[y][x] != 1)
+			if (x < mlx->map_height && mlx->map_intermediate[y][x] != 1)
 			{
 				printf("x error 1 map %d %d\n", y, x);
 				return (1);
 			}
 			else if (x == mlx->map_height)
 				break ;
-			while (x < mlx->map_height && mlx->map_int_one[y][x] != 2)
+			while (x < mlx->map_height && mlx->map_intermediate[y][x] != 2)
 				x++;
 			if (cmw_x_subroutine(mlx, x, y) == 1)
 				return (1);
@@ -53,7 +53,7 @@ int	check_map_walls_x(t_mlx *mlx)
 
 static int	cmw_y_subroutine(t_mlx *mlx, int x, int y)
 {
-	if (mlx->map_int_one[y - 1][x] != 1)
+	if (mlx->map_intermediate[y - 1][x] != 1)
 	{
 		printf("y error 2 map %d %d\n", y - 1, x);
 		return (1);
@@ -71,16 +71,16 @@ int	check_map_walls_y(t_mlx *mlx)
 		y = 0;
 		while (y < mlx->map_width)
 		{
-			while (y < mlx->map_width && mlx->map_int_one[y][x] == 2)
+			while (y < mlx->map_width && mlx->map_intermediate[y][x] == 2)
 				y++;
-			if (y < mlx->map_width && mlx->map_int_one[y][x] != 1)
+			if (y < mlx->map_width && mlx->map_intermediate[y][x] != 1)
 			{
 				printf("y error  1map %d %d\n", y, x);
 				return (1);
 			}
 			else if (y == mlx->map_width)
 				break ;
-			while (y < mlx->map_width && mlx->map_int_one[y][x] != 2)
+			while (y < mlx->map_width && mlx->map_intermediate[y][x] != 2)
 				y++;
 			if (cmw_y_subroutine(mlx, x, y) == 1)
 				return (1);

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:17:22 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:29:53 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	nullifer(t_mlx *mlx)
 	mlx->textures = NULL;
 	mlx->map_char = NULL;
 	mlx->map_int = NULL;
-	mlx->map_int_one = NULL;
+	mlx->map_intermediate = NULL;
 	mlx->win_ptr = NULL;
 	mlx->mlx_p = NULL;
 	mlx->fd = 0;
@@ -94,7 +94,7 @@ int	main(int argc, char **argv)
 		return (ender(mlx), 1);
 	find_player(mlx);
 	measure_map(mlx);
-	store_map_one(mlx);
+	store_midmap(mlx);
 	if (check_map(mlx) == 1)
 		return (ender(mlx), 1);
 	store_textures(mlx);
