@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/11 12:29:53 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:31:15 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,8 +165,8 @@ int			split_string_text(t_mlx *mlx, char *concat);
 void		ssl_subrountine(char **string, char **c2, char **temp,
 				int *counter);
 int			store_textures(t_mlx *mlx);
-void		store_map(t_mlx *mlx);
-void		store_midmap(t_mlx *mlx);
+int			store_map(t_mlx *mlx);
+int			store_midmap(t_mlx *mlx);
 void		measure_map(t_mlx *mlx);
 int			ft_strdup_digit(const char *s, int *j);
 char		*ft_strdup_path(const char *s);

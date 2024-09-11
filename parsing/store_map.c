@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 11:16:10 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:29:53 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:33:51 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,29 @@ int	conditions_map(t_mlx *mlx, int i, int j)
 	return (0);
 }
 
-void	store_map(t_mlx *mlx)
+int	store_map(t_mlx *mlx)
 {
 	static int	i = 0;
 	int			j;
 
 	mlx->map_int = malloc(sizeof(int *) * (mlx->map_width));
+	if (mlx->map_int == NULL)
+		return (1);
 	while (i < mlx->map_width)
 	{
 		mlx->map_int[i] = malloc(sizeof(int) * (mlx->map_height));
+		if (mlx->map_int[i] == NULL)
+			return (1);
 		j = 0;
 		while (j < mlx->map_height)
 		{
 			if (conditions_map(mlx, i, j) == 1)
-				break;
+				break ;
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	conditions_midmap(t_mlx *mlx, int i, int j)
@@ -72,22 +77,27 @@ int	conditions_midmap(t_mlx *mlx, int i, int j)
 	return (0);
 }
 
-void	store_midmap(t_mlx *mlx)
+int	store_midmap(t_mlx *mlx)
 {
 	static int	i = 0;
 	int			j;
 
 	mlx->map_intermediate = malloc(sizeof(int *) * (mlx->map_width));
+	if (mlx->map_intermediate == NULL)
+		return (1);
 	while (i < mlx->map_width)
 	{
 		mlx->map_intermediate[i] = malloc(sizeof(int) * (mlx->map_height));
+		if (mlx->map_intermediate[i] == NULL)
+			return (1);
 		j = 0;
 		while (j < mlx->map_height)
 		{
 			if (conditions_midmap(mlx, i, j) == 1)
-				break;
+				break ;
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
