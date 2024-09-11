@@ -1,13 +1,13 @@
 NO ./textures/bluestone.xpm
 SO ./textures/wood.xpm
-F 128,128,128
-F 128,128,128
+WE ./textures/wood.xpm
+F 119,181,254
 EA ./textures/greystone.xpm
 C 119,181,254
 
 
 
-
+EA ./textures/greystone.xpm
 
 
 

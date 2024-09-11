@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 13:12:27 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 13:27:30 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ int	main(int argc, char **argv)
 	if (!mlx)
 		return (printf("Error: memory allocation failed\n"), 1);
 	nullifer(mlx);
-	open_file(mlx, argv[1]);
+	if (open_file(mlx, argv[1]) == 1)
+		return (1);
 	if (parsing(mlx) == 1)
 		return (ender(mlx), 1);
 	init_player_direction(mlx);
