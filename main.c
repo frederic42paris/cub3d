@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 18:01:58 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/11 11:32:11 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ int	main(int argc, char **argv)
 	if (check_argument(argv[1], argc) == 1)
 		return (1);
 	mlx = malloc(sizeof(t_mlx));
-	nullifer(mlx);
 	if (!mlx)
 		return (printf("Error: memory allocation failed\n"), 1);
+	nullifer(mlx);
 	open_file(mlx, argv[1]);
 	if (store_data(mlx) == 1)
 		return (ender(mlx), 1);

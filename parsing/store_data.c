@@ -6,33 +6,14 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 10:52:01 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/10 16:29:44 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/11 11:44:03 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	is_empty2(t_mlx *mlx, char *temp, char *concat)
+int	split_string_1(t_mlx *mlx, char *concat)
 {
-	int	i;
-
-	i = 0;
-	if (concat[0] == '\0')
-	{
-		printf("Error\nEmpty map\n");
-		free(temp);
-		return (1);
-	}
-	while (concat[i] != '\0')
-	{
-		if (concat[i] == '\n' && concat[i + 1] == '\n')
-		{
-			printf("Error\nEmpty line in map\n");
-			free(temp);
-			return (1);
-		}
-		i++;
-	}
 	mlx->textures = ft_split(concat, '\n');
 	free(concat);
 	return (0);
@@ -41,28 +22,28 @@ int	is_empty2(t_mlx *mlx, char *temp, char *concat)
 int	store_six_line(t_mlx *mlx, char **string)
 {
 	int		counter;
-	char	*concat2;
+	char	*concat;
 	char	*temp;
 
 	counter = 0;
-	concat2 = ft_strdup("");
+	concat = ft_strdup("");
 	while (1)
 	{
 		if (counter == 6)
 			break ;
-		temp = concat2;
+		temp = concat;
 		*string = get_next_line(mlx->fd);
 		if (*string)
 		{
 			if (has_alpha_num(*string))
-				ssl_subrountine(string, &concat2, &temp, &counter);
+				ssl_subrountine(string, &concat, &temp, &counter);
 			else
 				free(*string);
 		}
 		else
-			return (free(concat2), printf("Error\nIncomplete file\n"), 1);
+			return (free(concat), printf("Error\nIncomplete file\n"), 1);
 	}
-	if (is_empty2(mlx, temp, concat2) == 1)
+	if (split_string_1(mlx, concat) == 1)
 		return (1);
 	return (0);
 }
@@ -115,7 +96,7 @@ int	store_map_char(t_mlx *mlx, char **string)
 		else
 			break ;
 	}
-	if (is_empty(mlx, temp, concat) == 1)
+	if (split_string_2(mlx, concat) == 1)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:23:24 by arguez            #+#    #+#             */
-/*   Updated: 2024/09/10 17:59:09 by arguez           ###   ########.fr       */
+/*   Updated: 2024/09/11 11:43:29 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ int			parse_input(char *string);
 // parsing
 
 int			store_data(t_mlx *mlx);
-int			is_empty(t_mlx *mlx, char *temp, char *concat);
+int			split_string_2(t_mlx *mlx, char *concat);
 void		ssl_subrountine(char **string, char **c2, char **temp,
 				int *counter);
 int			store_textures(t_mlx *mlx);
