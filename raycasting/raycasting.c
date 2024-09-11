@@ -6,13 +6,13 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:13:34 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:57:07 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 12:59:13 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int destroy(t_mlx *mlx)
+int	destroy(t_mlx *mlx)
 {
 	ender(mlx);
 	exit(0);
