@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 17:29:23 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 13:09:04 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 13:12:44 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	cmw_x_subroutine(t_mlx *mlx, int x, int y)
 {
 	if (mlx->map_intermediate[y][x - 1] != 1)
 	{
-		printf("Error map\n", y, x - 1);
+		printf("Error map\n");
 		return (1);
 	}
 	return (0);
@@ -36,7 +36,7 @@ int	check_map_walls_x(t_mlx *mlx)
 				x++;
 			if (x < mlx->map_height && mlx->map_intermediate[y][x] != 1)
 			{
-				printf("Error map\n", y, x);
+				printf("Error map\n");
 				return (1);
 			}
 			else if (x == mlx->map_height)

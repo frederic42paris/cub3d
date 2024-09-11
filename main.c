@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 13:01:42 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 13:12:27 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	parsing(t_mlx *mlx)
 		return (1);
 	if (store_map(mlx) == 1)
 		return (1);
+	return (0);
 }
 
 int	main(int argc, char **argv)
