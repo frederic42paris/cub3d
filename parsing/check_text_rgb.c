@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:13:22 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:14:05 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 13:18:20 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_rgb_value(char *str)
 	nb = parse_input(path);
 	free(path);
 	if (nb > 255 || nb < 0)
-		return (printf("wrong rgb value\n"), 1);
+		return (printf("Wrong rgb value\n"), 1);
 	return (0);
 }
 
