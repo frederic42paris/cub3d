@@ -6,7 +6,7 @@
 /*   By: ftanon <ftanon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:58:17 by ftanon            #+#    #+#             */
-/*   Updated: 2024/09/11 12:50:11 by ftanon           ###   ########.fr       */
+/*   Updated: 2024/09/11 13:01:42 by ftanon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,24 @@ static void	nullifer(t_mlx *mlx)
 	mlx->img = NULL;
 }
 
+int	parsing(t_mlx *mlx)
+{
+	if (store_data(mlx) == 1)
+		return (1);
+	if (check_textures(mlx) == 1)
+		return (1);
+	find_player(mlx);
+	measure_map(mlx);
+	if (store_midmap(mlx) == 1)
+		return (1);
+	if (check_map(mlx) == 1)
+		return (1);
+	if (store_textures(mlx) == 1)
+		return (1);
+	if (store_map(mlx) == 1)
+		return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
@@ -88,19 +106,7 @@ int	main(int argc, char **argv)
 		return (printf("Error: memory allocation failed\n"), 1);
 	nullifer(mlx);
 	open_file(mlx, argv[1]);
-	if (store_data(mlx) == 1)
-		return (ender(mlx), 1);
-	if (check_textures(mlx) == 1)
-		return (ender(mlx), 1);
-	find_player(mlx);
-	measure_map(mlx);
-	if (store_midmap(mlx) == 1)
-		return (ender(mlx), 1);
-	if (check_map(mlx) == 1)
-		return (ender(mlx), 1);
-	if (store_textures(mlx) == 1)
-		return (ender(mlx), 1);
-	if (store_map(mlx) == 1)
+	if (parsing(mlx) == 1)
 		return (ender(mlx), 1);
 	init_player_direction(mlx);
 	init_speed(mlx);
